@@ -8,11 +8,11 @@ test:
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 amazon:
- service: S3
- access_key_id: <%= ENV['USER_ACCESS_KEY_ID'] %>
- secret_access_key: <%= ENV['USER_SECRET_ACCESS_KEY'] %>
- region: ap-southeast-1
- bucket: divisionly-api
+  service: S3
+  access_key_id: <%= ENV['USER_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['USER_SECRET_ACCESS_KEY'] %>
+  region: ap-southeast-1
+  bucket: divisionly-api
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
