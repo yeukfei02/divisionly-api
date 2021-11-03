@@ -17,5 +17,7 @@ Rails.application.routes.draw do
     end
 
     resources :activities, only: [:index]
+
+    resources :groups, only: [:index]
   end
 end

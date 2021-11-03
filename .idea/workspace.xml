@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="512d4a8e-6ddd-4306-977b-6cca7c74633e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/activities_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/activities_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/activities/get_activities.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/activities/index.json.jbuilder" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/users/get_user_by_id.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/show.json.jbuilder" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/users/get_users.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/index.json.jbuilder" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/groups.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/groups_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/helpers/groups_helper.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/group.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/groups/index.json.jbuilder" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20211103161737_create_groups.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/helpers/groups_helper_spec.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/models/group_spec.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/requests/groups_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

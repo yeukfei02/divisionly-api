@@ -11,6 +11,7 @@
 class User < ApplicationRecord
   # association
   has_many :activities
+  has_many :groups
 
   # validation
   validates :email, presence: true, uniqueness: true
