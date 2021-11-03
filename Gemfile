@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.2'
 
 gem 'annotate', '~> 3.1'
+gem 'aws-sdk-s3', '~> 1.104'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'dotenv-rails', '~> 2.7'

@@ -6,9 +6,20 @@ Rails.application.routes.draw do
   get '/api', to: 'main#index'
 
   scope '/api' do
-    post '/users/signup', to: 'users#signup'
-    post '/users/login', to: 'users#login'
-    get '/users', to: 'users#get_users'
-    get '/users/:id', to: 'users#get_user_by_id'
+    resources :users, only: %i[index show] do
+      collection do
+        post '/signup', to: 'users#signup'
+        post '/login', to: 'users#login'
+      end
+      member do
+        post '/change-password', to: 'users#change_password'
+      end
+    end
+
+    resources :activities, only: %i[create index show]
+
+    resources :groups, only: %i[create index show]
+
+    resources :friends, only: %i[create index show]
   end
 end
