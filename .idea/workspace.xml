@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="512d4a8e-6ddd-4306-977b-6cca7c74633e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/groups.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/groups_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/groups_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/group.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/groups/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20211103161737_create_groups.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/helpers/groups_helper_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/models/group_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/requests/groups_spec.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/friends.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/friends_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/helpers/friends_helper.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/friend.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/friends/index.json.jbuilder" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20211103162638_create_friends.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/helpers/friends_helper_spec.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/models/friend_spec.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/requests/friends_spec.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
     </list>

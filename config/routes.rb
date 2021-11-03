@@ -19,5 +19,7 @@ Rails.application.routes.draw do
     resources :activities, only: [:index]
 
     resources :groups, only: [:index]
+
+    resources :friends, only: [:index]
   end
 end

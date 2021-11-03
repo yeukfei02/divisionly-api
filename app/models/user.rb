@@ -12,6 +12,7 @@ class User < ApplicationRecord
   # association
   has_many :activities
   has_many :groups
+  has_many :friends
 
   # validation
   validates :email, presence: true, uniqueness: true
