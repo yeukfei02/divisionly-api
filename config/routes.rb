@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     get '/users', to: 'users#get_users'
     get '/users/:id', to: 'users#get_user_by_id'
     post '/users/:id/change-password', to: 'users#change_password'
+
+    get '/activities', to: 'activities#get_activities'
   end
 end
