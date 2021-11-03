@@ -10,9 +10,10 @@
 #
 class User < ApplicationRecord
   # association
-  has_many :activities
   has_many :groups
   has_many :friends
+  has_many :activities
+  has_many :expenses
 
   # validation
   validates :email, presence: true, uniqueness: true

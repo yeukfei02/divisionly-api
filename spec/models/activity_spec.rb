@@ -5,6 +5,7 @@
 #  id          :uuid             not null, primary key
 #  title       :text             not null
 #  description :text             not null
+#  user_id     :uuid             not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

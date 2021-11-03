@@ -1,23 +1,25 @@
 # == Schema Information
 #
-# Table name: friends
+# Table name: expenses
 #
 #  id           :uuid             not null, primary key
-#  title        :text             not null
 #  description  :text             not null
-#  phone_number :integer          not null
+#  amount       :float            not null
+#  split_method :text             not null
 #  user_id      :uuid             not null
+#  group_id     :uuid             not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
-class Friend < ApplicationRecord
+class Expense < ApplicationRecord
   # association
   belongs_to :user
+  belongs_to :group
 
   has_one_attached :image
 
   # validation
-  validates :title, presence: true
   validates :description, presence: true
-  validates :phone_number, presence: true, numericality: { only_integer: true }
+  validates :amount, presence: true, numericality: { only_float: true }
+  validates :split_method, presence: true
 end
