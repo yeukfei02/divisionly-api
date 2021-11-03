@@ -1,4 +1,6 @@
 class ActivitiesController < AuthApiController
+  def create; end
+
   def index
     @message = 'getActivities'
     @activities = Activity.all
@@ -10,4 +12,6 @@ class ActivitiesController < AuthApiController
     @error = e.message.to_s
     render :index, status: 400
   end
+
+  def show; end
 end

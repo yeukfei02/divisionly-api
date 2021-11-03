@@ -1,4 +1,6 @@
 class GroupsController < AuthApiController
+  def create; end
+
   def index
     @message = 'getGroups'
     @groups = Group.all
@@ -10,4 +12,6 @@ class GroupsController < AuthApiController
     @error = e.message.to_s
     render :index, status: 400
   end
+
+  def show; end
 end

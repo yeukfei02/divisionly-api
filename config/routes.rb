@@ -16,10 +16,10 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :activities, only: [:index]
+    resources :activities, only: %i[create index show]
 
-    resources :groups, only: [:index]
+    resources :groups, only: %i[create index show]
 
-    resources :friends, only: [:index]
+    resources :friends, only: %i[create index show]
   end
 end
