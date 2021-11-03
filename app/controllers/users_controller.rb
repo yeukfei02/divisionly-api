@@ -52,28 +52,28 @@ class UsersController < ApplicationController
     render :login, status: 400
   end
 
-  def get_users
+  def index
     @message = 'getUsers'
     @users = User.all
-    render :get_users, status: 200
+    render :index, status: 200
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'getUsers error'
     @error = e.message.to_s
-    render :get_users, status: 400
+    render :index, status: 400
   end
 
-  def get_user_by_id
+  def show
     @message = 'getUserById'
     @user = User.find(params[:id])
-    render :get_user_by_id, status: 200
+    render :show, status: 200
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'getUserById error'
     @error = e.message.to_s
-    render :get_user_by_id, status: 400
+    render :show, status: 400
   end
 
   def change_password
