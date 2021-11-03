@@ -2,14 +2,12 @@ class UsersController < ApplicationController
   include UsersHelper
 
   def signup
-    request_body = params
-    email = request_body['email']
-    password = request_body['password']
+    email = params['email']
+    password = params['password']
 
     hash_password = UsersHelper.get_hash_password(password)
 
     user = User.create(email: email, password: hash_password)
-
     if user.present?
       @message = 'signup'
       render :signup, status: 200
@@ -26,12 +24,10 @@ class UsersController < ApplicationController
   end
 
   def login
-    request_body = params
-    email = request_body['email']
-    password = request_body['password']
+    email = params['email']
+    password = params['password']
 
     user = User.find_by(email: email)
-
     if user.present?
       hash_password_from_db = BCrypt::Password.new(user.password)
       if hash_password_from_db == password
@@ -78,5 +74,29 @@ class UsersController < ApplicationController
     @message = 'getUserById error'
     @error = e.message.to_s
     render :get_user_by_id, status: 400
+  end
+
+  def change_password
+    old_password = params['old_password']
+    new_password = params['new_password']
+
+    user = User.find(params[:id])
+    if user.present?
+      user_password_from_db = BCrypt::Password.new(user.password)
+      if user_password_from_db == old_password
+        hash_new_password = UsersHelper.get_hash_password(new_password)
+        user.update!(password: hash_new_password)
+
+        @message = 'changePassword'
+        render :change_password, status: 200
+      else
+        @message = 'changePassword error, old password is wrong'
+        render :change_password, status: 400
+      end
+    end
+  rescue StandardError => e
+    @message = 'changePassword error'
+    @error = e.message.to_s
+    render :change_password, status: 400
   end
 end

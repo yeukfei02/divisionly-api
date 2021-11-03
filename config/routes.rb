@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     post '/users/login', to: 'users#login'
     get '/users', to: 'users#get_users'
     get '/users/:id', to: 'users#get_user_by_id'
+    post '/users/:id/change-password', to: 'users#change_password'
   end
 end
