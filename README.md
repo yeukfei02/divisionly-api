@@ -1,6 +1,6 @@
 # divisionly-api
 
-divisionly-api
+split expenses with friends
 
 documentation: <https://documenter.getpostman.com/view/3827865/UVBzoVbG>
 

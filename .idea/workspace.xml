@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="512d4a8e-6ddd-4306-977b-6cca7c74633e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/activities/create.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/activities/create.json.jbuilder" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/activities/show.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/activities/show.json.jbuilder" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/expenses/create.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/expenses/create.json.jbuilder" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/expenses/show.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/expenses/show.json.jbuilder" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/friends/create.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/friends/create.json.jbuilder" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/friends/show.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/friends/show.json.jbuilder" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/groups/create.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/groups/create.json.jbuilder" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/groups/show.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/groups/show.json.jbuilder" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
-    </list>
+    <list default="true" id="512d4a8e-6ddd-4306-977b-6cca7c74633e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,11 +38,11 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="dev" />
-                    <option name="lastUsedInstant" value="1635935885" />
+                    <option name="lastUsedInstant" value="1635961101" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1635935884" />
+                    <option name="lastUsedInstant" value="1635961092" />
                   </RecentBranch>
                 </list>
               </option>
