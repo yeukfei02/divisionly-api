@@ -1,6 +1,6 @@
-# sweet-factory-backend-rails
+# divisionly-api
 
-sweet-factory-backend-rails
+divisionly-api
 
 documentation: <https://documenter.getpostman.com/view/3827865/UVBzoVbG>
 
