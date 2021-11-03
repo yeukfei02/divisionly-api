@@ -11,7 +11,7 @@
 #  updated_at  :datetime         not null
 #
 class Group < ApplicationRecord
-  enum type: [:trip, :home, :couple, :other]
+  enum type: %i[trip home couple other]
 
   # association
   belongs_to :user

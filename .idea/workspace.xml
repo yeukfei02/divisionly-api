@@ -5,33 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="512d4a8e-6ddd-4306-977b-6cca7c74633e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/expenses.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/expenses_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/expenses_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/expense.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/expenses/create.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/expenses/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/expenses/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20211103163603_create_expenses.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/helpers/expenses_helper_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/models/expense_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/requests/expenses_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/activity.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/activity.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/friend.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/friend.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/group.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/group.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/activities/create.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/activities/create.json.jbuilder" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/friends/create.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/friends/create.json.jbuilder" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/groups/create.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/groups/create.json.jbuilder" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/application.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/application.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20211103153954_create_activities.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20211103153954_create_activities.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20211103161737_create_groups.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20211103161737_create_groups.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20211103162638_create_friends.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20211103162638_create_friends.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/models/activity_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/activity_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/models/friend_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/friend_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/models/group_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/group_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
