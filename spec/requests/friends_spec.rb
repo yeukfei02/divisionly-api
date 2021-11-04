@@ -32,7 +32,10 @@ RSpec.describe 'Friends', type: :request do
 
   describe 'GET /api/friends' do
     before do
-      get '/api/friends', headers: @headers
+      params = {
+        user_id: @friend.user.id
+      }
+      get '/api/friends', params: params, headers: @headers
     end
 
     it 'test result' do

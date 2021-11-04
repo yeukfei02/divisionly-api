@@ -16,10 +16,22 @@ class Friend < ApplicationRecord
 
   has_one_attached :avatar
 
+  # callback
+  before_validation :set_default_avatar
+
   # validation
   validates :title, presence: true
   validates :description, presence: true
   validates :phone_number, presence: true, numericality: { only_integer: true }
   validates :avatar, presence: true, file_size: { less_than_or_equal_to: 10.megabytes },
                      file_content_type: { allow: %w[image/jpeg image/png] }
+
+  private
+
+  def set_default_avatar
+    unless avatar.attached?
+      avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'friend.jpg')),
+                    filename: 'friend.jpg', content_type: 'image/jpg')
+    end
+  end
 end

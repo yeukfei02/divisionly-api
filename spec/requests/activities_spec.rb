@@ -31,7 +31,10 @@ RSpec.describe 'Activities', type: :request do
 
   describe 'GET /api/activities' do
     before do
-      get '/api/activities', headers: @headers
+      params = {
+        user_id: @activity.user.id
+      }
+      get '/api/activities', params: params, headers: @headers
     end
 
     it 'test result' do

@@ -25,9 +25,7 @@ class ActivitiesController < AuthApiController
     user_id = params['user_id']
 
     @activities = []
-    if user_id.present?
-      @activities = Activity.where(user_id: user_id)
-    end
+    @activities = Activity.where(user_id: user_id) if user_id.present?
 
     @message = 'getActivities'
     render :index, status: 200

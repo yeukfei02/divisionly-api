@@ -32,7 +32,10 @@ RSpec.describe 'Groups', type: :request do
 
   describe 'GET /api/groups' do
     before do
-      get '/api/groups', headers: @headers
+      params = {
+        user_id: @group.user.id
+      }
+      get '/api/groups', params: params, headers: @headers
     end
 
     it 'test result' do
