@@ -3,6 +3,7 @@ class ExpensesController < AuthApiController
     description = params['description']
     amount = params['amount']
     split_method = params['split_method']
+    image = params['image']
     user_id = params['user_id']
     group_id = params['group_id']
 
@@ -10,8 +11,8 @@ class ExpensesController < AuthApiController
     is_split_method_correct = true if Expense.expense_split_methods.has_value?(split_method)
 
     if is_split_method_correct
-      expense = Expense.create(description: description, amount: amount, split_method: split_method, user_id: user_id,
-                               group_id: group_id)
+      expense = Expense.create!(description: description, amount: amount, split_method: split_method, image: image, user_id: user_id,
+                                group_id: group_id)
       if expense.present?
         @message = 'createExpense'
         render :create, status: 200
@@ -32,8 +33,14 @@ class ExpensesController < AuthApiController
   end
 
   def index
+    user_id = params['user_id']
+
+    @expenses = []
+    if user_id.present?
+      @expenses = Expense.where(user_id: user_id)
+    end
+
     @message = 'getExpenses'
-    @expenses = Expense.all
     render :index, status: 200
   rescue StandardError => e
     puts "error = #{e}"

@@ -4,10 +4,11 @@ class UsersController < ApplicationController
   def signup
     email = params['email']
     password = params['password']
+    avatar = params['avatar']
 
     hash_password = UsersHelper.get_hash_password(password)
 
-    user = User.create(email: email, password: hash_password)
+    user = User.create!(email: email, password: hash_password, avatar: avatar)
     if user.present?
       @message = 'signup'
       render :signup, status: 200

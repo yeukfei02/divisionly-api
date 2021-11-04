@@ -3,13 +3,15 @@ class GroupsController < AuthApiController
     name = params['name']
     description = params['description']
     group_type = params['group_type']
+    image = params['image']
     user_id = params['user_id']
 
     is_type_correct = false
     is_type_correct = true if Group.types.has_value?(group_type)
 
     if is_type_correct
-      group = Group.create(name: name, description: description, group_type: group_type, user_id: user_id)
+      group = Group.create!(name: name, description: description, group_type: group_type, image: image,
+                            user_id: user_id)
       if group.present?
         @message = 'createGroup'
         render :create, status: 200
@@ -30,8 +32,14 @@ class GroupsController < AuthApiController
   end
 
   def index
+    user_id = params['user_id']
+
+    @groups = []
+    if user_id.present?
+      @groups = Group.where(user_id: user_id)
+    end
+
     @message = 'getGroups'
-    @groups = Group.all
     render :index, status: 200
   rescue StandardError => e
     puts "error = #{e}"

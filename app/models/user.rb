@@ -15,10 +15,11 @@ class User < ApplicationRecord
   has_many :activities
   has_many :expenses
 
-  has_one_attached :image
   has_one_attached :avatar
 
   # validation
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
+  validates :avatar, presence: true, file_size: { less_than_or_equal_to: 10.megabytes },
+                     file_content_type: { allow: %w[image/jpeg image/png] }
 end

@@ -8,6 +8,7 @@ gem 'aws-sdk-s3', '~> 1.104'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'dotenv-rails', '~> 2.7'
+gem 'file_validators', '~> 3.0'
 gem 'jbuilder', '~> 2.7'
 gem 'jwt', '~> 2.3'
 gem 'pg', '~> 1.2'

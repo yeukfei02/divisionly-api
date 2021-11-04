@@ -2,9 +2,10 @@ class ActivitiesController < AuthApiController
   def create
     title = params['title']
     description = params['description']
+    image = params['image']
     user_id = params['user_id']
 
-    activity = Activity.create(title: title, description: description, user_id: user_id)
+    activity = Activity.create!(title: title, description: description, image: image, user_id: user_id)
     if activity.present?
       @message = 'createActivity'
       render :create, status: 200
@@ -21,8 +22,14 @@ class ActivitiesController < AuthApiController
   end
 
   def index
+    user_id = params['user_id']
+
+    @activities = []
+    if user_id.present?
+      @activities = Activity.where(user_id: user_id)
+    end
+
     @message = 'getActivities'
-    @activities = Activity.all
     render :index, status: 200
   rescue StandardError => e
     puts "error = #{e}"

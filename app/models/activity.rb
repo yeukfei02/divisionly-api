@@ -14,9 +14,10 @@ class Activity < ApplicationRecord
   belongs_to :user
 
   has_one_attached :image
-  has_one_attached :avatar
 
   # validation
   validates :title, presence: true
   validates :description, presence: true
+  validates :image, presence: true, file_size: { less_than_or_equal_to: 10.megabytes },
+                    file_content_type: { allow: %w[image/jpeg image/png] }
 end
