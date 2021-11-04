@@ -35,7 +35,7 @@ class GroupsController < AuthApiController
     user_id = params['user_id']
 
     @groups = []
-    @groups = Group.where(user_id: user_id) if user_id.present?
+    @groups = Group.where(user_id: user_id).order('created_at desc') if user_id.present?
 
     @message = 'getGroups'
     render :index, status: 200

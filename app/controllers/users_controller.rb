@@ -55,7 +55,7 @@ class UsersController < ApplicationController
 
   def index
     @message = 'getUsers'
-    @users = User.all
+    @users = User.all.order('created_at desc')
     render :index, status: 200
   rescue StandardError => e
     puts "error = #{e}"
