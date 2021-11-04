@@ -2,9 +2,10 @@ class ActivitiesController < AuthApiController
   def create
     title = params['title']
     description = params['description']
+    image = params['image']
     user_id = params['user_id']
 
-    activity = Activity.create(title: title, description: description, user_id: user_id)
+    activity = Activity.create!(title: title, description: description, image: image, user_id: user_id)
     if activity.present?
       @message = 'createActivity'
       render :create, status: 200
