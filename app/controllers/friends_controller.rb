@@ -27,9 +27,7 @@ class FriendsController < AuthApiController
     user_id = params['user_id']
 
     @friends = []
-    if user_id.present?
-      @friends = Friend.where(user_id: user_id)
-    end
+    @friends = Friend.where(user_id: user_id) if user_id.present?
 
     @message = 'getFriends'
     render :index, status: 200

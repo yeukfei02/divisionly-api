@@ -25,10 +25,22 @@ class Expense < ApplicationRecord
 
   has_one_attached :image
 
+  # callback
+  before_validation :set_default_image
+
   # validation
   validates :description, presence: true
   validates :amount, presence: true, numericality: { only_float: true }
   validates :split_method, presence: true
   validates :image, presence: true, file_size: { less_than_or_equal_to: 10.megabytes },
                     file_content_type: { allow: %w[image/jpeg image/png] }
+
+  private
+
+  def set_default_image
+    unless image.attached?
+      image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'expense.jpg')),
+                   filename: 'expense.jpg', content_type: 'image/jpg')
+    end
+  end
 end

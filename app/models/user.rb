@@ -17,9 +17,21 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  # callback
+  before_validation :set_default_avatar
+
   # validation
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
   validates :avatar, presence: true, file_size: { less_than_or_equal_to: 10.megabytes },
                      file_content_type: { allow: %w[image/jpeg image/png] }
+
+  private
+
+  def set_default_avatar
+    unless avatar.attached?
+      avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'profile.jpg')),
+                    filename: 'profile.jpg', content_type: 'image/jpg')
+    end
+  end
 end

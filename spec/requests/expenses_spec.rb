@@ -33,7 +33,10 @@ RSpec.describe 'Expenses', type: :request do
 
   describe 'GET /api/expenses' do
     before do
-      get '/api/expenses', headers: @headers
+      params = {
+        user_id: @expense.user.id
+      }
+      get '/api/expenses', params: params, headers: @headers
     end
 
     it 'test result' do

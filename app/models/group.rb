@@ -23,10 +23,22 @@ class Group < ApplicationRecord
 
   has_one_attached :image
 
+  # callback
+  before_validation :set_default_image
+
   # validation
   validates :name, presence: true
   validates :description, presence: true
   validates :group_type, presence: true
   validates :image, presence: true, file_size: { less_than_or_equal_to: 10.megabytes },
                     file_content_type: { allow: %w[image/jpeg image/png] }
+
+  private
+
+  def set_default_image
+    unless image.attached?
+      image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'group.jpg')),
+                   filename: 'group.jpg', content_type: 'image/jpg')
+    end
+  end
 end
