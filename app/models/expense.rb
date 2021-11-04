@@ -12,6 +12,9 @@
 #  updated_at   :datetime         not null
 #
 class Expense < ApplicationRecord
+  enum split_method: %i[you_paid_and_split_equally you_owed_the_full_amount friend_paid_and_split_equally
+                        friend_owed_the_full_amount]
+
   # association
   belongs_to :user
   belongs_to :group
