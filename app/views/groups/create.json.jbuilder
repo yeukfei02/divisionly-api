@@ -1,2 +1,2 @@
-# json.message @message
-# json.error @error if @error.present?
+json.message @message
+json.error @error if @error.present?
