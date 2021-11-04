@@ -15,10 +15,10 @@ class User < ApplicationRecord
   has_many :activities
   has_many :expenses
 
-  has_one_attached :image
   has_one_attached :avatar
 
   # validation
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
+  # validates :avatar, presence: true
 end
