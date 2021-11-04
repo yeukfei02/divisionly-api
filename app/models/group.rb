@@ -27,4 +27,6 @@ class Group < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :group_type, presence: true
+  validates :image, presence: true, file_size: { less_than_or_equal_to: 10.megabytes },
+                    file_content_type: { allow: %w[image/jpeg image/png] }
 end

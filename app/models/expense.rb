@@ -29,4 +29,6 @@ class Expense < ApplicationRecord
   validates :description, presence: true
   validates :amount, presence: true, numericality: { only_float: true }
   validates :split_method, presence: true
+  validates :image, presence: true, file_size: { less_than_or_equal_to: 10.megabytes },
+                    file_content_type: { allow: %w[image/jpeg image/png] }
 end

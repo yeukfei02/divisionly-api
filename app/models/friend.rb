@@ -20,4 +20,6 @@ class Friend < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validates :phone_number, presence: true, numericality: { only_integer: true }
+  validates :avatar, presence: true, file_size: { less_than_or_equal_to: 10.megabytes },
+                     file_content_type: { allow: %w[image/jpeg image/png] }
 end

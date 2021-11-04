@@ -83,6 +83,7 @@
     <orderEntry type="library" scope="PROVIDED" name="faraday-rack (v1.0.0, RVM: ruby-2.7.2 [global]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="fasterer (v0.9.0, RVM: ruby-2.7.2 [global]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.15.4, RVM: ruby-2.7.2 [global]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="file_validators (v3.0.0, RVM: ruby-2.7.2 [global]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="gitlab (v4.17.0, RVM: ruby-2.7.2 [global]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v0.5.2, RVM: ruby-2.7.2 [global]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="httparty (v0.20.0, RVM: ruby-2.7.2 [global]) [gem]" level="application" />
