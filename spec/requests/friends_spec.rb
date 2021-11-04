@@ -13,7 +13,7 @@ RSpec.describe 'Friends', type: :request do
   describe 'POST /api/friends' do
     before do
       params = {
-        title: @friend.title,
+        name: @friend.name,
         description: @friend.description,
         phone_number: @friend.phone_number,
         user_id: @friend.user_id

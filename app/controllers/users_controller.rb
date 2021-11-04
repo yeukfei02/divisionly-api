@@ -1,5 +1,7 @@
-class UsersController < ApplicationController
+class UsersController < AuthApiController
   include UsersHelper
+
+  before_action :validate_jwt_token, only: :change_password
 
   def signup
     email = params['email']
@@ -55,7 +57,7 @@ class UsersController < ApplicationController
 
   def index
     @message = 'getUsers'
-    @users = User.all
+    @users = User.all.order('created_at desc')
     render :index, status: 200
   rescue StandardError => e
     puts "error = #{e}"

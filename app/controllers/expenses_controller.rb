@@ -36,7 +36,7 @@ class ExpensesController < AuthApiController
     user_id = params['user_id']
 
     @expenses = []
-    @expenses = Expense.where(user_id: user_id) if user_id.present?
+    @expenses = Expense.where(user_id: user_id).order('created_at desc') if user_id.present?
 
     @message = 'getExpenses'
     render :index, status: 200

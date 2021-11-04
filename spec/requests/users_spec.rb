@@ -3,6 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Users', type: :request do
   before(:all) do
     @user = create(:user)
+
+    token = UsersHelper.get_jwt_token(@user.email)
+    @headers = {
+      Authorization: "Bearer #{token}"
+    }
   end
 
   describe 'POST /api/users/signup' do
@@ -79,7 +84,7 @@ RSpec.describe 'Users', type: :request do
         old_password: 'test',
         new_password: 'test1'
       }
-      post "/api/users/#{@user.id}/change-password", params: params
+      post "/api/users/#{@user.id}/change-password", params: params, headers: @headers
     end
 
     it 'test result' do

@@ -56,3 +56,24 @@ $ rubocop --auto-correct
 // reek
 $ reek
 ```
+
+## Docker
+
+```zsh
+// build images and start container in one line
+docker-compose up -d --build
+
+// run db migration in container
+docker-compose exec web bundle exec rails db:migrate
+
+// go inside container
+docker exec -it <containerId> /bin/bash
+
+// check container logs
+docker logs <containerId>
+
+// remove and stop container
+docker-compose down
+```
+
+open localhost:3000
