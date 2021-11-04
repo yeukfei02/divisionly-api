@@ -1,7 +1,7 @@
 json.message @message
 json.friend do
   json.id @friend.id
-  json.title @friend.title
+  json.name @friend.name
   json.description @friend.description
   json.phone_number @friend.phone_number
 

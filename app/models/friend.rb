@@ -3,7 +3,7 @@
 # Table name: friends
 #
 #  id           :uuid             not null, primary key
-#  title        :text             not null
+#  name         :text             not null
 #  description  :text             not null
 #  phone_number :integer          not null
 #  user_id      :uuid             not null
@@ -20,7 +20,7 @@ class Friend < ApplicationRecord
   before_validation :set_default_avatar
 
   # validation
-  validates :title, presence: true
+  validates :name, presence: true
   validates :description, presence: true
   validates :phone_number, presence: true, numericality: { only_integer: true }
   validates :avatar, presence: true, file_size: { less_than_or_equal_to: 10.megabytes },

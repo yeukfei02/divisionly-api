@@ -1,12 +1,12 @@
 class FriendsController < AuthApiController
   def create
-    title = params['title']
+    name = params['name']
     description = params['description']
     phone_number = params['phone_number']
     avatar = params['avatar']
     user_id = params['user_id']
 
-    friend = Friend.create!(title: title, description: description, phone_number: phone_number, avatar: avatar,
+    friend = Friend.create!(name: name, description: description, phone_number: phone_number, avatar: avatar,
                             user_id: user_id)
     if friend.present?
       @message = 'createFriend'

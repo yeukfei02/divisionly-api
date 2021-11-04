@@ -3,7 +3,7 @@
 # Table name: friends
 #
 #  id           :uuid             not null, primary key
-#  title        :text             not null
+#  name         :text             not null
 #  description  :text             not null
 #  phone_number :integer          not null
 #  user_id      :uuid             not null
