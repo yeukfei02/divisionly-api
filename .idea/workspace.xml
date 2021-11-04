@@ -5,13 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="512d4a8e-6ddd-4306-977b-6cca7c74633e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env.sample" beforeDir="false" afterPath="$PROJECT_DIR$/.env.sample" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/factories/activity.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/factories/expense.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/factories/friend.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/factories/group.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/activities_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/activities_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/expenses_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/expenses_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/friends_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/friends_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/expense.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/expense.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/initializers/redis.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/redis.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/requests/activities_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/requests/activities_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/requests/friends_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/requests/friends_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/requests/groups_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/requests/groups_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +212,7 @@
       <workItem from="1635935547996" duration="2257000" />
       <workItem from="1635937839295" duration="316000" />
       <workItem from="1635938551456" duration="8155000" />
-      <workItem from="1635993269414" duration="4393000" />
+      <workItem from="1635993269414" duration="6974000" />
     </task>
     <servers />
   </component>
