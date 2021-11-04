@@ -1,5 +1,7 @@
-class UsersController < ApplicationController
+class UsersController < AuthApiController
   include UsersHelper
+
+  before_action :validate_jwt_token, only: :change_password
 
   def signup
     email = params['email']
