@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_211_103_163_603) do
+ActiveRecord::Schema.define(version: 20_211_104_052_129) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20_211_103_163_603) do
   create_table 'groups', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
     t.text 'name', null: false
     t.text 'description', null: false
-    t.text 'type', null: false
+    t.text 'group_type', null: false
     t.uuid 'user_id', null: false
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false

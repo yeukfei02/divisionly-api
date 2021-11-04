@@ -6,13 +6,21 @@ class ExpensesController < AuthApiController
     user_id = params['user_id']
     group_id = params['group_id']
 
-    expense = Expense.create(description: description, amount: amount, split_method: split_method, user_id: user_id,
-                             group_id: group_id)
-    if expense.present?
-      @message = 'createExpense'
-      render :create, status: 200
+    is_split_method_correct = false
+    is_split_method_correct = true if Expense.expense_split_methods.has_value?(split_method)
+
+    if is_split_method_correct
+      expense = Expense.create(description: description, amount: amount, split_method: split_method, user_id: user_id,
+                               group_id: group_id)
+      if expense.present?
+        @message = 'createExpense'
+        render :create, status: 200
+      else
+        @message = 'createExpense error'
+        render :create, status: 400
+      end
     else
-      @message = 'createExpense error'
+      @message = 'createExpense error, wrong split_method'
       render :create, status: 400
     end
   rescue StandardError => e

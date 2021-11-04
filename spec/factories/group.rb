@@ -3,7 +3,7 @@ FactoryBot.define do
     association :user
     name { Faker::Name.name }
     description { Faker::Lorem.sentence }
-    type { Group.types['trip'] }
-    user_id { user.first.id }
+    group_type { Group.types['trip'] }
+    user_id { user.id }
   end
 end

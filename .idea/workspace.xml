@@ -5,12 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="512d4a8e-6ddd-4306-977b-6cca7c74633e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/spec/factories/activity.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/factories/expense.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/factories/friend.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/factories/group.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20211104052129_change_type_in_group.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/expenses_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/expenses_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/groups_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/groups_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/expense.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/expense.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/group.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/group.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/factories/activity.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/factories/activity.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/factories/expense.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/factories/expense.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/factories/friend.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/factories/friend.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/factories/group.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/factories/group.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/requests/activities_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/requests/activities_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/requests/expenses_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/requests/expenses_spec.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/requests/friends_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/requests/friends_spec.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/requests/groups_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/requests/groups_spec.rb" afterDir="false" />
     </list>

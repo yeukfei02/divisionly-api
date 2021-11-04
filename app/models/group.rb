@@ -11,7 +11,12 @@
 #  updated_at  :datetime         not null
 #
 class Group < ApplicationRecord
-  enum type: %i[trip home couple other]
+  enum type: {
+    trip: 'trip',
+    home: 'home',
+    couple: 'couple',
+    other: 'other'
+  }
 
   # association
   belongs_to :user
@@ -21,5 +26,5 @@ class Group < ApplicationRecord
   # validation
   validates :name, presence: true
   validates :description, presence: true
-  validates :type, presence: true
+  validates :group_type, presence: true
 end

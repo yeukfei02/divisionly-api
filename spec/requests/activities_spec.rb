@@ -3,6 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Activities', type: :request do
   before(:all) do
     @activity = create(:activity)
+
+    token = UsersHelper.get_jwt_token(@activity.user.email)
+    @headers = {
+      Authorization: "Bearer #{token}"
+    }
   end
 
   describe 'POST /api/activities' do
@@ -12,7 +17,7 @@ RSpec.describe 'Activities', type: :request do
         description: @activity.description,
         user_id: @activity.user_id
       }
-      post '/api/activities', params: params
+      post '/api/activities', params: params, headers: @headers
     end
 
     it 'test result' do
@@ -26,7 +31,7 @@ RSpec.describe 'Activities', type: :request do
 
   describe 'GET /api/activities' do
     before do
-      get '/api/activities'
+      get '/api/activities', headers: @headers
     end
 
     it 'test result' do
@@ -41,7 +46,7 @@ RSpec.describe 'Activities', type: :request do
 
   describe 'GET /api/activities/:id' do
     before do
-      get "/api/activities/#{@activity.id}"
+      get "/api/activities/#{@activity.id}", headers: @headers
     end
 
     it 'test result' do

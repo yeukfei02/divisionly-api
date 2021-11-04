@@ -3,6 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Expenses', type: :request do
   before(:all) do
     @expense = create(:expense)
+
+    token = UsersHelper.get_jwt_token(@expense.user.email)
+    @headers = {
+      Authorization: "Bearer #{token}"
+    }
   end
 
   describe 'POST /api/expenses' do
@@ -14,7 +19,7 @@ RSpec.describe 'Expenses', type: :request do
         user_id: @expense.user_id,
         group_id: @expense.group_id
       }
-      post '/api/expenses', params: params
+      post '/api/expenses', params: params, headers: @headers
     end
 
     it 'test result' do
@@ -28,7 +33,7 @@ RSpec.describe 'Expenses', type: :request do
 
   describe 'GET /api/expenses' do
     before do
-      get '/api/expenses'
+      get '/api/expenses', headers: @headers
     end
 
     it 'test result' do
@@ -43,7 +48,7 @@ RSpec.describe 'Expenses', type: :request do
 
   describe 'GET /api/expenses/:id' do
     before do
-      get "/api/expenses/#{@expense.id}"
+      get "/api/expenses/#{@expense.id}", headers: @headers
     end
 
     it 'test result' do

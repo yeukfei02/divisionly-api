@@ -3,6 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Friends', type: :request do
   before(:all) do
     @friend = create(:friend)
+
+    token = UsersHelper.get_jwt_token(@friend.user.email)
+    @headers = {
+      Authorization: "Bearer #{token}"
+    }
   end
 
   describe 'POST /api/friends' do
@@ -13,7 +18,7 @@ RSpec.describe 'Friends', type: :request do
         phone_number: @friend.phone_number,
         user_id: @friend.user_id
       }
-      post '/api/friends', params: params
+      post '/api/friends', params: params, headers: @headers
     end
 
     it 'test result' do
@@ -27,7 +32,7 @@ RSpec.describe 'Friends', type: :request do
 
   describe 'GET /api/friends' do
     before do
-      get '/api/friends'
+      get '/api/friends', headers: @headers
     end
 
     it 'test result' do
@@ -42,7 +47,7 @@ RSpec.describe 'Friends', type: :request do
 
   describe 'GET /api/friends/:id' do
     before do
-      get "/api/friends/#{@friend.id}"
+      get "/api/friends/#{@friend.id}", headers: @headers
     end
 
     it 'test result' do

@@ -3,6 +3,6 @@ FactoryBot.define do
     association :user
     title { Faker::Lorem.word }
     description { Faker::Lorem.sentence }
-    user_id { user.first.id }
+    user_id { user.id }
   end
 end

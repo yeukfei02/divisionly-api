@@ -2,15 +2,23 @@ class GroupsController < AuthApiController
   def create
     name = params['name']
     description = params['description']
-    type = params['type']
+    group_type = params['group_type']
     user_id = params['user_id']
 
-    group = Group.create(name: name, description: description, type: type, user_id: user_id)
-    if group.present?
-      @message = 'createGroup'
-      render :create, status: 200
+    is_type_correct = false
+    is_type_correct = true if Group.types.has_value?(group_type)
+
+    if is_type_correct
+      group = Group.create(name: name, description: description, group_type: group_type, user_id: user_id)
+      if group.present?
+        @message = 'createGroup'
+        render :create, status: 200
+      else
+        @message = 'createGroup error'
+        render :create, status: 400
+      end
     else
-      @message = 'createGroup error'
+      @message = 'createGroup error, wrong type'
       render :create, status: 400
     end
   rescue StandardError => e

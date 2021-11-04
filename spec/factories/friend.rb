@@ -4,6 +4,6 @@ FactoryBot.define do
     title { Faker::Lorem.word }
     description { Faker::Lorem.sentence }
     phone_number { Faker::Number.number(digits: 8) }
-    user_id { user.first.id }
+    user_id { user.id }
   end
 end

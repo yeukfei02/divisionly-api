@@ -3,6 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Groups', type: :request do
   before(:all) do
     @group = create(:group)
+
+    token = UsersHelper.get_jwt_token(@group.user.email)
+    @headers = {
+      Authorization: "Bearer #{token}"
+    }
   end
 
   describe 'POST /api/groups' do
@@ -10,10 +15,10 @@ RSpec.describe 'Groups', type: :request do
       params = {
         name: @group.name,
         description: @group.description,
-        type: @group.type,
+        group_type: @group.group_type,
         user_id: @group.user_id
       }
-      post '/api/groups', params: params
+      post '/api/groups', params: params, headers: @headers
     end
 
     it 'test result' do
@@ -27,7 +32,7 @@ RSpec.describe 'Groups', type: :request do
 
   describe 'GET /api/groups' do
     before do
-      get '/api/groups'
+      get '/api/groups', headers: @headers
     end
 
     it 'test result' do
@@ -42,7 +47,7 @@ RSpec.describe 'Groups', type: :request do
 
   describe 'GET /api/groups/:id' do
     before do
-      get "/api/groups/#{@group.id}"
+      get "/api/groups/#{@group.id}", headers: @headers
     end
 
     it 'test result' do
