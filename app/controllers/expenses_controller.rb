@@ -12,7 +12,7 @@ class ExpensesController < AuthApiController
 
     if is_split_method_correct
       expense = Expense.create!(description: description, amount: amount, split_method: split_method, image: image, user_id: user_id,
-                               group_id: group_id)
+                                group_id: group_id)
       if expense.present?
         @message = 'createExpense'
         render :create, status: 200

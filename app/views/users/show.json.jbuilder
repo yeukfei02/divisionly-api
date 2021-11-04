@@ -2,7 +2,12 @@ json.message @message
 json.user do
   json.id @user.id
   json.email @user.email
-  # json.avatar @user.avatar
+
+  json.avatar do
+    json.url @user.avatar.service_url
+    json.filename @user.avatar.filename
+  end
+
   json.created_at @user.created_at
   json.updated_at @user.updated_at
 end
