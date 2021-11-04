@@ -5,7 +5,7 @@
 #  id          :uuid             not null, primary key
 #  name        :text             not null
 #  description :text             not null
-#  type        :text             not null
+#  group_type  :text             not null
 #  user_id     :uuid             not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
