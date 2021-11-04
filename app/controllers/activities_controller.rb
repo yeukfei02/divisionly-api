@@ -22,8 +22,14 @@ class ActivitiesController < AuthApiController
   end
 
   def index
+    user_id = params['user_id']
+
+    @activities = []
+    if user_id.present?
+      @activities = Activity.where(user_id: user_id)
+    end
+
     @message = 'getActivities'
-    @activities = Activity.all
     render :index, status: 200
   rescue StandardError => e
     puts "error = #{e}"

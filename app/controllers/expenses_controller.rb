@@ -33,8 +33,14 @@ class ExpensesController < AuthApiController
   end
 
   def index
+    user_id = params['user_id']
+
+    @expenses = []
+    if user_id.present?
+      @expenses = Expense.where(user_id: user_id)
+    end
+
     @message = 'getExpenses'
-    @expenses = Expense.all
     render :index, status: 200
   rescue StandardError => e
     puts "error = #{e}"

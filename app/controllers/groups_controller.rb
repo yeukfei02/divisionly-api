@@ -32,8 +32,14 @@ class GroupsController < AuthApiController
   end
 
   def index
+    user_id = params['user_id']
+
+    @groups = []
+    if user_id.present?
+      @groups = Group.where(user_id: user_id)
+    end
+
     @message = 'getGroups'
-    @groups = Group.all
     render :index, status: 200
   rescue StandardError => e
     puts "error = #{e}"

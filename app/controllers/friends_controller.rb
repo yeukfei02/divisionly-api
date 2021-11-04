@@ -24,8 +24,14 @@ class FriendsController < AuthApiController
   end
 
   def index
+    user_id = params['user_id']
+
+    @friends = []
+    if user_id.present?
+      @friends = Friend.where(user_id: user_id)
+    end
+
     @message = 'getFriends'
-    @friends = Friend.all
     render :index, status: 200
   rescue StandardError => e
     puts "error = #{e}"
