@@ -5,21 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="512d4a8e-6ddd-4306-977b-6cca7c74633e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/db/migrate/20211104052129_change_type_in_group.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20211104060717_create_active_storage_tables.active_storage.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/expenses_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/expenses_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/groups_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/groups_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/expense.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/expense.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/group.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/group.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/factories/activity.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/factories/activity.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/factories/expense.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/factories/expense.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/factories/friend.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/factories/friend.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/factories/group.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/factories/group.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/requests/activities_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/requests/activities_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/requests/expenses_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/requests/expenses_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/requests/friends_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/requests/friends_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/requests/groups_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/requests/groups_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/groups/index.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/groups/index.json.jbuilder" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/models/group_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/group_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,6 +233,6 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/divisionly_api@Development__divisionly_api.rcov" NAME="Development: divisionly-api Coverage Results" MODIFIED="1635996515245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="divisionly-api" />
+    <SUITE FILE_PATH="coverage/divisionly_api@Development__divisionly_api.rcov" NAME="Development: divisionly-api Coverage Results" MODIFIED="1636005431878" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="divisionly-api" />
   </component>
 </project>
