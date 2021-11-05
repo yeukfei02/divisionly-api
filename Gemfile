@@ -17,6 +17,7 @@ gem 'rack-cors', '~> 1.1'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'redis', '~> 4.0'
 gem 'sass-rails', '>= 6'
+gem 'sidekiq', '~> 6.2'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 
