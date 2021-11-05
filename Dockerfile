@@ -1,5 +1,7 @@
 FROM timbru31/ruby-node:2.7-slim-14
 
+ENV RAILS_ENV=production
+
 RUN mkdir -p /app
 
 WORKDIR /app
