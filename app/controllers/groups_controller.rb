@@ -58,4 +58,55 @@ class GroupsController < AuthApiController
     @error = e.message.to_s
     render :show, status: 400
   end
+
+  def update
+    name = params['name']
+    description = params['description']
+    group_type = params['group_type']
+    image = params['image']
+
+    is_type_correct = false
+    is_type_correct = true if Group.types.has_value?(group_type)
+
+    if is_type_correct
+      group = Group.find(params[:id])
+      if group.present?
+        group.update!(name: name, description: description, group_type: group_type, image: image)
+
+        @message = 'updateGroupById'
+        render :update, status: 200
+      else
+        @message = 'updateGroupById error, no this group'
+        render :update, status: 400
+      end
+    else
+      @message = 'updateGroupById error, wrong type'
+      render :update, status: 400
+    end
+  rescue StandardError => e
+    puts "error = #{e}"
+
+    @message = 'updateGroupById error'
+    @error = e.message.to_s
+    render :update, status: 400
+  end
+
+  def destroy
+    group = Group.find(params[:id])
+    if group.present?
+      group.destroy
+
+      @message = 'deleteGroupById'
+      render :destroy, status: 200
+    else
+      @message = 'deleteGroupById error, no this group'
+      render :destroy, status: 400
+    end
+  rescue StandardError => e
+    puts "error = #{e}"
+
+    @message = 'deleteGroupById error'
+    @error = e.message.to_s
+    render :destroy, status: 400
+  end
 end

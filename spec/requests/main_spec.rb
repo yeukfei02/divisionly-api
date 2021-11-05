@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Mains', type: :request do
-  describe 'GET /' do
+  describe '001 - GET /' do
     before do
       get '/'
     end
@@ -11,7 +11,7 @@ RSpec.describe 'Mains', type: :request do
     end
   end
 
-  describe 'GET /api' do
+  describe '002 - GET /api' do
     before do
       get '/api'
     end

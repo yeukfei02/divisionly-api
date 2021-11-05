@@ -10,7 +10,7 @@ RSpec.describe 'Expenses', type: :request do
     }
   end
 
-  describe 'POST /api/expenses' do
+  describe '001 - POST /api/expenses' do
     before do
       params = {
         description: @expense.description,
@@ -31,7 +31,7 @@ RSpec.describe 'Expenses', type: :request do
     end
   end
 
-  describe 'GET /api/expenses' do
+  describe '002 - GET /api/expenses' do
     before do
       params = {
         user_id: @expense.user.id
@@ -49,7 +49,7 @@ RSpec.describe 'Expenses', type: :request do
     end
   end
 
-  describe 'GET /api/expenses/:id' do
+  describe '003 - GET /api/expenses/:id' do
     before do
       get "/api/expenses/#{@expense.id}", headers: @headers
     end
@@ -61,6 +61,39 @@ RSpec.describe 'Expenses', type: :request do
 
       expect(response_body['message']).to eq('getExpenseById')
       expect(response_body['expense'].present?).to be true
+    end
+  end
+
+  describe '004 - PUT /api/expenses/:id' do
+    before do
+      params = {
+        description: "#{@expense.description}-test",
+        amount: 200.22,
+        split_method: Expense.expense_split_methods['method_3']
+      }
+      put "/api/expenses/#{@expense.id}", params: params, headers: @headers
+    end
+
+    it 'test result' do
+      response_body = JSON.parse(response.body)
+      puts "response_body = #{response_body}"
+      expect(response_body.present?).to be true
+
+      expect(response_body['message']).to eq('updateExpenseById')
+    end
+  end
+
+  describe '005 - DELETE /api/expenses/:id' do
+    before do
+      delete "/api/expenses/#{@expense.id}", headers: @headers
+    end
+
+    it 'test result' do
+      response_body = JSON.parse(response.body)
+      puts "response_body = #{response_body}"
+      expect(response_body.present?).to be true
+
+      expect(response_body['message']).to eq('deleteExpenseById')
     end
   end
 end

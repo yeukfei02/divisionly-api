@@ -50,4 +50,47 @@ class FriendsController < AuthApiController
     @error = e.message.to_s
     render :show, status: 400
   end
+
+  def update
+    name = params['name']
+    description = params['description']
+    phone_number = params['phone_number']
+    avatar = params['avatar']
+
+    friend = Friend.find(params[:id])
+    if friend.present?
+      friend.update!(name: name, description: description, phone_number: phone_number, avatar: avatar)
+
+      @message = 'updateFriendById'
+      render :update, status: 200
+    else
+      @message = 'updateFriendById error, no this friend'
+      render :update, status: 400
+    end
+  rescue StandardError => e
+    puts "error = #{e}"
+
+    @message = 'updateFriendById error'
+    @error = e.message.to_s
+    render :update, status: 400
+  end
+
+  def destroy
+    friend = Friend.find(params[:id])
+    if friend.present?
+      friend.destroy
+
+      @message = 'deleteFriendById'
+      render :destroy, status: 200
+    else
+      @message = 'deleteFriendById error, no this friend'
+      render :destroy, status: 400
+    end
+  rescue StandardError => e
+    puts "error = #{e}"
+
+    @message = 'deleteFriendById error'
+    @error = e.message.to_s
+    render :destroy, status: 400
+  end
 end
