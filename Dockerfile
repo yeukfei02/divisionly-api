@@ -1,5 +1,9 @@
 FROM timbru31/ruby-node:2.7-slim-14
 
+RUN apt-get update && apt-get install -y curl wget build-essential libpq-dev cmake pkg-config
+
+ENV RAILS_ENV=production
+
 RUN mkdir -p /app
 
 WORKDIR /app
