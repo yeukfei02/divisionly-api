@@ -65,14 +65,22 @@ class GroupsController < AuthApiController
     group_type = params['group_type']
     image = params['image']
 
-    group = Group.find(params[:id])
-    if group.present?
-      group.update!(name: name, description: description, group_type: group_type, image: image)
+    is_type_correct = false
+    is_type_correct = true if Group.types.has_value?(group_type)
 
-      @message = 'updateGroupById'
-      render :update, status: 200
+    if is_type_correct
+      group = Group.find(params[:id])
+      if group.present?
+        group.update!(name: name, description: description, group_type: group_type, image: image)
+
+        @message = 'updateGroupById'
+        render :update, status: 200
+      else
+        @message = 'updateGroupById error, no this group'
+        render :update, status: 400
+      end
     else
-      @message = 'updateGroupById error, no this group'
+      @message = 'updateGroupById error, wrong type'
       render :update, status: 400
     end
   rescue StandardError => e

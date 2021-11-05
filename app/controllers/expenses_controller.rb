@@ -66,14 +66,22 @@ class ExpensesController < AuthApiController
     split_method = params['split_method']
     image = params['image']
 
-    expense = Expense.find(params[:id])
-    if expense.present?
-      expense.update!(description: description, amount: amount, split_method: split_method, image: image)
+    is_split_method_correct = false
+    is_split_method_correct = true if Expense.expense_split_methods.has_value?(split_method)
 
-      @message = 'updateExpenseById'
-      render :update, status: 200
+    if is_split_method_correct
+      expense = Expense.find(params[:id])
+      if expense.present?
+        expense.update!(description: description, amount: amount, split_method: split_method, image: image)
+
+        @message = 'updateExpenseById'
+        render :update, status: 200
+      else
+        @message = 'updateExpenseById error, no this expense'
+        render :update, status: 400
+      end
     else
-      @message = 'updateExpenseById error, no this expense'
+      @message = 'updateExpenseById error, wrong split_method'
       render :update, status: 400
     end
   rescue StandardError => e
