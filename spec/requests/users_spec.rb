@@ -10,11 +10,11 @@ RSpec.describe 'Users', type: :request do
     }
   end
 
-  describe 'POST /api/users/signup' do
+  describe '001 - POST /api/users/signup' do
     before do
       params = {
-        email: @user.email,
-        password: @user.password
+        email: Faker::Internet.email,
+        password: 'test'
       }
       post '/api/users/signup', params: params
     end
@@ -28,7 +28,7 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe 'POST /api/users/login' do
+  describe '002 - POST /api/users/login' do
     before do
       params = {
         email: @user.email,
@@ -48,7 +48,7 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe 'GET /api/users' do
+  describe '003 - GET /api/users' do
     before do
       get '/api/users'
     end
@@ -63,7 +63,7 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe 'GET /api/users/:id' do
+  describe '004 - GET /api/users/:id' do
     before do
       get "/api/users/#{@user.id}"
     end
@@ -78,7 +78,7 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe 'POST /api/users/:id/change-password' do
+  describe '005 - POST /api/users/:id/change-password' do
     before do
       params = {
         old_password: 'test',

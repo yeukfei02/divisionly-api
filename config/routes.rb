@@ -20,12 +20,12 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :groups, only: %i[create index show]
+    resources :groups, only: %i[create index show update destroy]
 
-    resources :friends, only: %i[create index show]
+    resources :friends, only: %i[create index show update destroy]
 
-    resources :activities, only: %i[create index show]
+    resources :activities, only: %i[create index show update destroy]
 
-    resources :expenses, only: %i[create index show]
+    resources :expenses, only: %i[create index show update destroy]
   end
 end

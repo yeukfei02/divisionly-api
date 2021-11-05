@@ -62,4 +62,37 @@ RSpec.describe 'Friends', type: :request do
       expect(response_body['friend'].present?).to be true
     end
   end
+
+  describe 'PUT /api/friends/:id' do
+    before do
+      params = {
+        name: "#{@friend.name}-test",
+        description: "#{@friend.description}-test",
+        phone_number: 99_998_888
+      }
+      put "/api/friends/#{@friend.id}", params: params, headers: @headers
+    end
+
+    it 'test result' do
+      response_body = JSON.parse(response.body)
+      puts "response_body = #{response_body}"
+      expect(response_body.present?).to be true
+
+      expect(response_body['message']).to eq('updateFriendById')
+    end
+  end
+
+  describe 'DELETE /api/friends/:id' do
+    before do
+      delete "/api/friends/#{@friend.id}", headers: @headers
+    end
+
+    it 'test result' do
+      response_body = JSON.parse(response.body)
+      puts "response_body = #{response_body}"
+      expect(response_body.present?).to be true
+
+      expect(response_body['message']).to eq('deleteFriendById')
+    end
+  end
 end

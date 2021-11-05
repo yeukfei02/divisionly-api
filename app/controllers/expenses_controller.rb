@@ -59,4 +59,47 @@ class ExpensesController < AuthApiController
     @error = e.message.to_s
     render :show, status: 400
   end
+
+  def update
+    description = params['description']
+    amount = params['amount']
+    split_method = params['split_method']
+    image = params['image']
+
+    expense = Expense.find(params[:id])
+    if expense.present?
+      expense.update!(description: description, amount: amount, split_method: split_method, image: image)
+
+      @message = 'updateExpenseById'
+      render :update, status: 200
+    else
+      @message = 'updateExpenseById error, no this expense'
+      render :update, status: 400
+    end
+  rescue StandardError => e
+    puts "error = #{e}"
+
+    @message = 'updateExpenseById error'
+    @error = e.message.to_s
+    render :update, status: 400
+  end
+
+  def destroy
+    expense = Expense.find(params[:id])
+    if expense.present?
+      expense.destroy
+
+      @message = 'deleteExpenseById'
+      render :destroy, status: 200
+    else
+      @message = 'deleteExpenseById error, no this expense'
+      render :destroy, status: 400
+    end
+  rescue StandardError => e
+    puts "error = #{e}"
+
+    @message = 'deleteExpenseById error'
+    @error = e.message.to_s
+    render :destroy, status: 400
+  end
 end
