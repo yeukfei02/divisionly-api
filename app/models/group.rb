@@ -36,7 +36,7 @@ class Group < ApplicationRecord
   private
 
   def set_default_image
-    unless image.attached?
+    unless image.attached? && Rails.env != 'production'
       image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'group.jpg')),
                    filename: 'group.jpg', content_type: 'image/jpg')
     end
