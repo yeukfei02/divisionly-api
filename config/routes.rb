@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       collection do
         post '/signup', to: 'users#signup'
         post '/login', to: 'users#login'
+        post '/upload', to: 'users#upload'
       end
       member do
         post '/change-password', to: 'users#change_password'
