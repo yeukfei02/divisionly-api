@@ -24,6 +24,9 @@ module DivisionlyApi
     config.time_zone = 'Hong Kong'
     config.active_record.default_timezone = :local
 
+    config.i18n.available_locales = %i[en zh_HK]
+    config.i18n.default_locale = :en
+
     config.generators do |g|
       g.orm :active_record, primary_key_type: :uuid
       g.orm :active_record, foreign_key_type: :uuid
