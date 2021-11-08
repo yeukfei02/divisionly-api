@@ -1,4 +1,7 @@
-# divisionly-api
+<p align="center">
+  <img width="200px" src="https://github.com/yeukfei02/divisionly-api/blob/master/readme-icon.png"><br/>
+  <h2 align="center">divisionly-api</h2>
+</p>
 
 split expenses with friends
 
