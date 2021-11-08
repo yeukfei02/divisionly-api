@@ -55,6 +55,21 @@ class UsersController < AuthApiController
     render :login, status: 400
   end
 
+  def upload
+    file = params['file']
+
+    if file.present?
+      @message = 'upload success'
+      render :upload, status: 200
+    end
+  rescue StandardError => e
+    puts "error = #{e}"
+
+    @message = 'upload error'
+    @error = e.message.to_s
+    render :upload, status: 400
+  end
+
   def index
     @message = 'getUsers'
     @users = User.all.order('created_at desc')
