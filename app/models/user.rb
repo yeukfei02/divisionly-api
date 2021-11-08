@@ -29,7 +29,7 @@ class User < ApplicationRecord
   private
 
   def set_default_avatar
-    unless avatar.attached? && Rails.env != 'production'
+    unless avatar.attached? && Rails.env == 'test'
       avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'profile.jpg')),
                     filename: 'profile.jpg', content_type: 'image/jpg')
     end
