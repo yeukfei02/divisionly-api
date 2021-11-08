@@ -38,7 +38,7 @@ class Expense < ApplicationRecord
   private
 
   def set_default_image
-    unless image.attached? && Rails.env == 'test'
+    if Rails.env == 'test' && !image.attached?
       image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'expense.jpg')),
                    filename: 'expense.jpg', content_type: 'image/jpg')
     end
