@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="200px" src="https://github.com/yeukfei02/divisionly-api/blob/master/readme-icon.png"><br/>
+  <img width="350px" src="https://github.com/yeukfei02/divisionly-api/blob/main/readme-icon.png?raw=true"><br/>
   <h2 align="center">divisionly-api</h2>
 </p>
 
