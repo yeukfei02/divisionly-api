@@ -30,14 +30,13 @@ class UsersController < AuthApiController
     email = params['email']
     password = params['password']
 
-    user = User.find_by(email: email)
-    if user.present?
-      hash_password_from_db = BCrypt::Password.new(user.password)
+    @user = User.find_by(email: email)
+    if @user.present?
+      hash_password_from_db = BCrypt::Password.new(@user.password)
       if hash_password_from_db == password
         @token = UsersHelper.get_jwt_token(email)
 
         @message = 'login'
-        @user_id = user.id
         render :login, status: 200
       else
         @message = 'login error, wrong password'
