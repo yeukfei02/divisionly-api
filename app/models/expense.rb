@@ -22,7 +22,7 @@ class Expense < ApplicationRecord
   # association
   belongs_to :user
   belongs_to :group
-
+  has_many :expense_categories
   has_one_attached :image
 
   # callback

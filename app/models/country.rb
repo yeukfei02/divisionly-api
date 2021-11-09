@@ -13,5 +13,4 @@
 #  updated_at :datetime         not null
 #
 class Country < ApplicationRecord
-
 end
