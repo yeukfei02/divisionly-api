@@ -53,6 +53,9 @@ $ rails db:migrate:down
 // list routes
 $ rails routes
 
+// run test case
+$ bundle exec rspec
+
 // rubocop
 $ rubocop --auto-correct
 
