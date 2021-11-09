@@ -7,6 +7,8 @@
 #  password   :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  first_name :text             not null
+#  last_name  :text             not null
 #
 class User < ApplicationRecord
   # association
