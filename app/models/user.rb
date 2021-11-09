@@ -23,6 +23,8 @@ class User < ApplicationRecord
   # validation
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates :avatar, presence: true, file_size: { less_than_or_equal_to: 10.megabytes },
                      file_content_type: { allow: %w[image/jpeg image/png] }
 
@@ -30,8 +32,8 @@ class User < ApplicationRecord
 
   def set_default_avatar
     if Rails.env == 'test' && !avatar.attached?
-      avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'profile.jpg')),
-                    filename: 'profile.jpg', content_type: 'image/jpg')
+      avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'dummy_profile.jpg')),
+                    filename: 'dummy_profile.jpg', content_type: 'image/jpg')
     end
   end
 end

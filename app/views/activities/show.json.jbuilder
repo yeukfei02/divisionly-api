@@ -13,6 +13,8 @@ if @activity.present?
     json.user do
       json.id @activity.user.id
       json.email @activity.user.email
+      json.first_name @activity.user.first_name
+      json.last_name @activity.user.last_name
       json.created_at @activity.user.created_at
       json.updated_at @activity.user.updated_at
     end

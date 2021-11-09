@@ -14,6 +14,8 @@ if @expense.present?
     json.user do
       json.id @expense.user.id
       json.email @expense.user.email
+      json.first_name @expense.user.first_name
+      json.last_name @expense.user.last_name
       json.created_at @expense.user.created_at
       json.updated_at @expense.user.updated_at
     end

@@ -13,6 +13,8 @@ json.friends @friends do |friend|
   json.user do
     json.id friend.user.id
     json.email friend.user.email
+    json.first_name friend.user.first_name
+    json.last_name friend.user.last_name
     json.created_at friend.user.created_at
     json.updated_at friend.user.updated_at
   end
