@@ -58,13 +58,13 @@ class UsersController < AuthApiController
     file = params['file']
 
     if file.present?
-      @message = 'upload success'
+      @message = 'user file upload success'
       render :upload, status: 200
     end
   rescue StandardError => e
     puts "error = #{e}"
 
-    @message = 'upload error'
+    @message = 'user file upload error'
     @error = e.message.to_s
     render :upload, status: 400
   end
