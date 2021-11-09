@@ -68,7 +68,8 @@ RSpec.describe 'Friends', type: :request do
       params = {
         name: "#{@friend.name}-test",
         description: "#{@friend.description}-test",
-        phone_number: '99998888'
+        phone_number: '99998888',
+        user_id: @friend.user.id
       }
       put "/api/friends/#{@friend.id}", params: params, headers: @headers
     end
