@@ -14,6 +14,8 @@ if @group.present?
     json.user do
       json.id @group.user.id
       json.email @group.user.email
+      json.first_name @group.user.first_name
+      json.last_name @group.user.last_name
       json.created_at @group.user.created_at
       json.updated_at @group.user.updated_at
     end

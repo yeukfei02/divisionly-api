@@ -14,7 +14,9 @@ RSpec.describe 'Users', type: :request do
     before do
       params = {
         email: Faker::Internet.email,
-        password: 'test'
+        password: 'test',
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name
       }
       post '/api/users/signup', params: params
     end

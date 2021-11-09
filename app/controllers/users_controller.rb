@@ -6,11 +6,14 @@ class UsersController < AuthApiController
   def signup
     email = params['email']
     password = params['password']
+    first_name = params['first_name']
+    last_name = params['last_name']
     avatar = params['avatar']
 
     hash_password = UsersHelper.get_hash_password(password)
 
-    user = User.create!(email: email, password: hash_password, avatar: avatar)
+    user = User.create!(email: email, password: hash_password, first_name: first_name, last_name: last_name,
+                        avatar: avatar)
     if user.present?
       @message = 'signup'
       render :signup, status: 200
