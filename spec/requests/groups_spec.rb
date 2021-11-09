@@ -68,7 +68,8 @@ RSpec.describe 'Groups', type: :request do
       params = {
         name: "#{@group.name}-test",
         description: "#{@group.description}-test",
-        group_type: Group.types['other']
+        group_type: Group.types['other'],
+        user_id: @group.user.id
       }
       put "/api/groups/#{@group.id}", params: params, headers: @headers
     end

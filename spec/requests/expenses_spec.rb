@@ -69,7 +69,8 @@ RSpec.describe 'Expenses', type: :request do
       params = {
         description: "#{@expense.description}-test",
         amount: 200.22,
-        split_method: Expense.expense_split_methods['method_3']
+        split_method: Expense.expense_split_methods['method_3'],
+        user_id: @expense.user.id
       }
       put "/api/expenses/#{@expense.id}", params: params, headers: @headers
     end
