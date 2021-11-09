@@ -59,7 +59,7 @@ class FriendsController < AuthApiController
 
     friend = Friend.find(params[:id])
     if friend.present?
-      friend.update!(name: name, description: description, phone_number: phone_number, avatar: avatar)
+      friend.update!(name: name, description: description, phone_number: phone_number.to_i, avatar: avatar)
 
       @message = 'updateFriendById'
       render :update, status: 200
