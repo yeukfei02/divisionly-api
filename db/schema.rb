@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_211_109_091_113) do
+ActiveRecord::Schema.define(version: 20_211_109_151_524) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pgcrypto'
   enable_extension 'plpgsql'
@@ -52,6 +52,24 @@ ActiveRecord::Schema.define(version: 20_211_109_091_113) do
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
     t.index ['user_id'], name: 'index_activities_on_user_id'
+  end
+
+  create_table 'countries', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.string 'iso'
+    t.text 'name'
+    t.text 'nice_name'
+    t.string 'iso3'
+    t.integer 'num_code'
+    t.integer 'phone_code'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+  end
+
+  create_table 'expense_categories', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.text 'expense_category_group', null: false
+    t.text 'name', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
   create_table 'expenses', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
