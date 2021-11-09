@@ -44,7 +44,8 @@ RSpec.describe 'Users', type: :request do
 
       expect(response_body['message']).to eq('login')
       expect(response_body['token'].present?).to be true
-      expect(response_body['user_id']).to eq(@user.id)
+      expect(response_body['user'].present?).to be true
+      expect(response_body['user']['id']).to eq(@user.id)
     end
   end
 
