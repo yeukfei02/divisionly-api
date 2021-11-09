@@ -16,6 +16,15 @@ amazon:
   upload:
     acl: "public-read"
 
+amazon_test:
+  service: S3
+  access_key_id: <%= ENV['USER_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['USER_SECRET_ACCESS_KEY'] %>
+  region: ap-southeast-1
+  bucket: divisionly-api-test
+  upload:
+    acl: "public-read"
+
 # Remember not to checkin your GCS keyfile to a repository
 # google:
 #   service: GCS

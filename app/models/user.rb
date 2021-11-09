@@ -10,10 +10,10 @@
 #
 class User < ApplicationRecord
   # association
-  has_many :groups
-  has_many :friends
-  has_many :activities
-  has_many :expenses
+  has_many :groups, dependent: :destroy
+  has_many :friends, dependent: :destroy
+  has_many :activities, dependent: :destroy
+  has_many :expenses, dependent: :destroy
 
   has_one_attached :avatar
 
