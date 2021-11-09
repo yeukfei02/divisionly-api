@@ -6,7 +6,7 @@ class FriendsController < AuthApiController
     avatar = params['avatar']
     user_id = params['user_id']
 
-    friend = Friend.create!(name: name, description: description, phone_number: phone_number, avatar: avatar,
+    friend = Friend.create!(name: name, description: description, phone_number: phone_number.to_i, avatar: avatar,
                             user_id: user_id)
     if friend.present?
       @message = 'createFriend'
