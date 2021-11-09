@@ -28,5 +28,9 @@ Rails.application.routes.draw do
     resources :activities, only: %i[create index show update destroy]
 
     resources :expenses, only: %i[create index show update destroy]
+
+    scope 'files' do
+      post '/upload', to: 'files#upload'
+    end
   end
 end
