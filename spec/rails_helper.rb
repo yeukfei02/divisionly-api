@@ -1,6 +1,5 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
-require 'support/factory_bot'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
@@ -27,6 +26,7 @@ require 'rspec/rails'
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |file| require file }
 Dir[Rails.root.join('spec', 'factories', '**', '*.rb')].sort.each { |file| require file }
 
 begin
@@ -66,28 +66,4 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-
-  # database cleaner
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
-  end
-
-  config.after(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
-
-    s3 = Aws::S3::Client.new(access_key_id: ENV['USER_ACCESS_KEY_ID'],
-                             secret_access_key: ENV['USER_SECRET_ACCESS_KEY'], region: 'ap-southeast-1')
-    resp = s3.list_objects(bucket: 'divisionly-api-test')
-    if resp.present?
-      resp.contents.each do |object|
-        delete_resp = s3.delete_object({
-                                         bucket: 'divisionly-api-test',
-                                         key: object.key
-                                       })
-        puts "delete_resp = #{delete_resp}"
-      end
-    end
-  end
 end
