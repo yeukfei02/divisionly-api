@@ -13,6 +13,8 @@ class GroupsController < AuthApiController
       group = Group.create!(name: name, description: description, group_type: group_type, image: image,
                             user_id: user_id)
       if group.present?
+        create_activity(user_id)
+
         @message = 'createGroup'
         render :create, status: 200
       else
@@ -63,6 +65,7 @@ class GroupsController < AuthApiController
     name = params['name']
     description = params['description']
     group_type = params['group_type']
+    user_id = params['user_id']
     image = params['image']
 
     is_type_correct = false
@@ -72,6 +75,7 @@ class GroupsController < AuthApiController
       group = Group.find(params[:id])
       if group.present?
         group.update!(name: name, description: description, group_type: group_type, image: image)
+        create_activity(user_id)
 
         @message = 'updateGroupById'
         render :update, status: 200
@@ -108,5 +112,17 @@ class GroupsController < AuthApiController
     @message = 'deleteGroupById error'
     @error = e.message.to_s
     render :destroy, status: 400
+  end
+
+  private
+
+  def create_activity(user_id)
+    user = User.find(user_id)
+    if user.present?
+      username = "#{user.first_name} #{user.last_name}"
+      title = "#{username} created group"
+      description = "#{username} created group"
+      Activity.create!(title: title, description: description, user_id: user_id)
+    end
   end
 end
