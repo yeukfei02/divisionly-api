@@ -27,6 +27,17 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
+      redis:
+        image: redis:6.2
+        ports:
+          - 6379:6379
+        # Set health checks to wait until redis has started
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -55,6 +66,13 @@ jobs:
           POSTGRES_USER: divisionly_api
           POSTGRES_PASSWORD: divisionly_api
           POSTGRES_DB: divisionly_api_test
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          USER_ACCESS_KEY_ID: ${{ secrets.USER_ACCESS_KEY_ID }}
+          USER_SECRET_ACCESS_KEY: ${{ secrets.USER_SECRET_ACCESS_KEY }}
+          REDIS_HOST: localhost
+          REDIS_PORT: 6379
+          REDIS_URL: redis://localhost:6379/0
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
           RAILS_ENV: test
 
       - name: Upload coverage results
