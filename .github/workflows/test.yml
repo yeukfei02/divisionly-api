@@ -29,8 +29,10 @@ jobs:
       - run: yarn
 
       - name: Run test case
-      - uses: actions/checkout@v2
-      - run: bundle exec rspec
+        run: |
+          gem install bundler
+          bundle install
+          COVERAGE=true bundle exec rspec
 
       - name: Upload coverage results
         uses: actions/upload-artifact@master
