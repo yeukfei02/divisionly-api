@@ -39,6 +39,7 @@ group :development, :test do
   gem 'rexml', '~> 3.2'
   gem 'rspec-rails', '~> 5.0'
   gem 'rubocop', '~> 1.22'
+  gem 'simplecov', '~> 0.21.2'
   gem 'solargraph', '~> 0.44.0'
   gem 'thor', '~> 1.1'
 end

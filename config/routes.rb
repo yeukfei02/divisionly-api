@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 
     resources :expenses, only: %i[create index show update destroy]
 
+    resources :expense_categories, only: %i[index]
+
     resources :currencies, only: %i[index]
 
     scope '/files' do
