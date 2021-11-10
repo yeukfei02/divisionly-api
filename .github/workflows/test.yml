@@ -29,7 +29,8 @@ jobs:
       - run: yarn
 
       - name: Run test case
-        run: bundle exec rspec
+      - uses: actions/checkout@v2
+      - run: bundle exec rspec
 
       - name: Upload coverage results
         uses: actions/upload-artifact@master
