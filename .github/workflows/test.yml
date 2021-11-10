@@ -73,6 +73,7 @@ jobs:
           REDIS_PORT: 6379
           REDIS_URL: redis://localhost:6379/0
           SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
           RAILS_ENV: test
 
       - name: Upload coverage results
