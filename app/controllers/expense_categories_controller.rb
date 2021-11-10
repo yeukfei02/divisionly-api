@@ -1,6 +1,6 @@
 class ExpenseCategoriesController < AuthApiController
   def index
-    @expense_categories = ExpenseCategory.all
+    @expense_categories = ExpenseCategory.all.group_by(&:expense_category_group)
 
     @message = 'getExpenseCategories'
     render :index, status: 200
