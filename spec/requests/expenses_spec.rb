@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Expenses', type: :request do
   before(:all) do
     @expense = create(:expense)
+    @expense_category = create(:expense_category)
 
     token = UsersHelper.get_jwt_token(@expense.user.email)
     @headers = {
@@ -17,7 +18,8 @@ RSpec.describe 'Expenses', type: :request do
         amount: @expense.amount,
         split_method: @expense.split_method,
         user_id: @expense.user_id,
-        group_id: @expense.group_id
+        group_id: @expense.group_id,
+        expense_category_id: @expense_category.id
       }
       post '/api/expenses', params: params, headers: @headers
     end
