@@ -7,13 +7,14 @@ class ExpensesController < AuthApiController
     user_id = params['user_id']
     group_id = params['group_id']
     expense_category_id = params['expense_category_id']
+    currency_id = params['currency_id']
 
     is_split_method_correct = false
     is_split_method_correct = true if Expense.expense_split_methods.has_value?(split_method)
 
     if is_split_method_correct
       expense = Expense.create!(description: description, amount: amount.to_f, split_method: split_method, image: image, user_id: user_id,
-                                group_id: group_id, expense_category_id: expense_category_id)
+                                group_id: group_id, expense_category_id: expense_category_id, currency_id: currency_id)
       if expense.present?
         create_activity(user_id)
 

@@ -11,6 +11,7 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  expense_category_id :uuid
+#  currency_id         :uuid
 #
 class Expense < ApplicationRecord
   enum expense_split_method: {
@@ -24,6 +25,7 @@ class Expense < ApplicationRecord
   belongs_to :user
   belongs_to :group
   belongs_to :expense_category
+  belongs_to :currency
   has_one_attached :image
 
   # callback

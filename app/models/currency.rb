@@ -14,6 +14,9 @@
 #  updated_at     :datetime         not null
 #
 class Currency < ApplicationRecord
+  # association
+  has_one :expense
+
   # validation
   validates :symbol, presence: true
   validates :name, presence: true
