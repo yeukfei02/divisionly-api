@@ -27,6 +27,7 @@ gem 'webpacker', '~> 5.0'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'codecov', '~> 0.6.0'
   gem 'factory_bot', '~> 6.2'
   gem 'faker', '~> 2.19'
   gem 'pronto', '~> 0.11.0'
