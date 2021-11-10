@@ -11,6 +11,7 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  expense_category_id :uuid
+#  currency_id         :uuid
 #
 require 'rails_helper'
 
