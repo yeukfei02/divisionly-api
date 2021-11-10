@@ -1,0 +1,39 @@
+name: Rails test case
+
+on: pull_request
+
+jobs:
+  test:
+    name: Run test case
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: [2.7.4]
+        node-version: [14.x]
+
+    steps:
+      - name: Checkout code
+      - uses: actions/checkout@v2
+
+      - name: Use Ruby ${{ matrix.ruby }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - run: bundle install
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn
+
+      - name: Run test case
+      - run: bundle exec rspec
+
+      - name: Upload coverage results
+        uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: coverage-report
+          path: coverage
