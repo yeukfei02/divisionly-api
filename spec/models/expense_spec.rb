@@ -2,14 +2,15 @@
 #
 # Table name: expenses
 #
-#  id           :uuid             not null, primary key
-#  description  :text             not null
-#  amount       :float            not null
-#  split_method :text             not null
-#  user_id      :uuid             not null
-#  group_id     :uuid             not null
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
+#  id                  :uuid             not null, primary key
+#  description         :text             not null
+#  amount              :float            not null
+#  split_method        :text             not null
+#  user_id             :uuid             not null
+#  group_id            :uuid             not null
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  expense_category_id :uuid
 #
 require 'rails_helper'
 

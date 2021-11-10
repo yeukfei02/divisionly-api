@@ -2,14 +2,15 @@
 #
 # Table name: expenses
 #
-#  id           :uuid             not null, primary key
-#  description  :text             not null
-#  amount       :float            not null
-#  split_method :text             not null
-#  user_id      :uuid             not null
-#  group_id     :uuid             not null
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
+#  id                  :uuid             not null, primary key
+#  description         :text             not null
+#  amount              :float            not null
+#  split_method        :text             not null
+#  user_id             :uuid             not null
+#  group_id            :uuid             not null
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  expense_category_id :uuid
 #
 class Expense < ApplicationRecord
   enum expense_split_method: {
@@ -22,7 +23,7 @@ class Expense < ApplicationRecord
   # association
   belongs_to :user
   belongs_to :group
-  has_one :expense_category
+  belongs_to :expense_category
   has_one_attached :image
 
   # callback

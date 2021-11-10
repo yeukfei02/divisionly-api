@@ -10,7 +10,7 @@
 #
 class ExpenseCategory < ApplicationRecord
   # association
-  belongs_to :expense
+  has_one :expense
   has_one_attached :image
 
   # callback
