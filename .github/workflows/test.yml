@@ -15,21 +15,18 @@ jobs:
       - name: Checkout code
       - uses: actions/checkout@v2
 
-      - name: Use Ruby ${{ matrix.ruby }}
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
-      - run: bundle install
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
       - run: yarn
 
-      - name: Run test case
-        run: |
+      - name: Use Ruby ${{ matrix.ruby }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - run: |
           gem install bundler
           bundle install
           COVERAGE=true bundle exec rspec
