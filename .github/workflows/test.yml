@@ -20,13 +20,13 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-        run: bundle install
+      - run: bundle install
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-        run: yarn
+      - run: yarn
 
       - name: Run test case
         run: bundle exec rspec
