@@ -1,0 +1,83 @@
+name: Rails test case
+
+on: pull_request
+
+jobs:
+  test:
+    name: Run test case
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: [2.7.4]
+        node-version: [14.x]
+
+    services:
+      postgres:
+        image: postgres:12.8
+        env:
+          POSTGRES_USER: divisionly_api
+          POSTGRES_PASSWORD: divisionly_api
+          POSTGRES_DB: divisionly_api_test
+        ports:
+          - 5432:5432
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis:6.2
+        ports:
+          - 6379:6379
+        # Set health checks to wait until redis has started
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Use Ruby ${{ matrix.ruby }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - run: bundle install
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn
+
+      - name: Run test case
+        run: |
+          sudo apt-get -y install libpq-dev
+          bundle exec rails db:migrate
+          bundle exec rspec
+        env:
+          POSTGRES_HOST: localhost
+          POSTGRES_PORT: 5432
+          POSTGRES_USER: divisionly_api
+          POSTGRES_PASSWORD: divisionly_api
+          POSTGRES_DB: divisionly_api_test
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          USER_ACCESS_KEY_ID: ${{ secrets.USER_ACCESS_KEY_ID }}
+          USER_SECRET_ACCESS_KEY: ${{ secrets.USER_SECRET_ACCESS_KEY }}
+          REDIS_HOST: localhost
+          REDIS_PORT: 6379
+          REDIS_URL: redis://localhost:6379/0
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+          RAILS_ENV: test
+
+      - name: Upload coverage results
+        uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: coverage-report
+          path: coverage

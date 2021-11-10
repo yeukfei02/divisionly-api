@@ -11,7 +11,7 @@ api url: <https://divisionly-api.herokuapp.com/>
 
 ## Requirement
 
-- install ruby (v2.7.2)
+- install ruby (v2.7.4)
 - install gem
 - install bundle
 - install yarn

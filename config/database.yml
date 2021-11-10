@@ -2,21 +2,21 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  port: <%= ENV['DB_PORT_NUMBER'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+  port: <%= ENV.fetch('DB_PORT_NUMBER', 5432) %>
+  username: <%= ENV.fetch('DB_USERNAME', 'divisionly_api') %>
+  password: <%= ENV.fetch('DB_PASSWORD', 'divisionly_api') %>
 
 development:
   <<: *default
-  host: <%= ENV['DB_HOST_DEV'] %>
-  database: <%= ENV['DB_NAME'] %>_dev
+  host: <%= ENV.fetch('DB_HOST_DEV', 'localhost') %>
+  database: <%= ENV.fetch('DB_NAME', 'divisionly_api') %>_dev
 
 test:
   <<: *default
-  host: <%= ENV['DB_HOST_TEST'] %>
-  database: <%= ENV['DB_NAME'] %>_test
+  host: <%= ENV.fetch('DB_HOST_TEST', 'localhost') %>
+  database: <%= ENV.fetch('DB_NAME', 'divisionly_api') %>_test
 
 production:
   <<: *default
-  host: <%= ENV['DB_HOST_PROD'] %>
-  database: <%= ENV['DB_NAME'] %>_prod
+  host: <%= ENV.fetch('DB_HOST_PROD', 'localhost') %>
+  database: <%= ENV.fetch('DB_NAME', 'divisionly_api') %>_prod
