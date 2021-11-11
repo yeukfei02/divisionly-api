@@ -7,6 +7,7 @@ class ExpensesController < AuthApiController
     split_method = params['split_method']
     image = params['image']
     user_id = params['user_id']
+    friend_id = params['friend_id']
     group_id = params['group_id']
     expense_category_id = params['expense_category_id']
     currency_id = params['currency_id']
@@ -16,7 +17,8 @@ class ExpensesController < AuthApiController
 
     if is_split_method_correct
       expense = Expense.create!(description: description, amount: amount.to_f, split_method: split_method, image: image, user_id: user_id,
-                                group_id: group_id, expense_category_id: expense_category_id, currency_id: currency_id)
+                                friend_id: friend_id, group_id: group_id, expense_category_id: expense_category_id,
+                                currency_id: currency_id)
       if expense.present?
         user = User.find(user_id)
         ApplicationHelper.create_activity(user, user_id, 'create', 'expense')
