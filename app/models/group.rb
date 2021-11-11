@@ -20,7 +20,7 @@ class Group < ApplicationRecord
 
   # association
   belongs_to :user
-
+  has_many :expenses, dependent: :destroy
   has_one_attached :image
 
   # callback

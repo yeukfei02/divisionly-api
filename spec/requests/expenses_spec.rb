@@ -19,6 +19,7 @@ RSpec.describe 'Expenses', type: :request do
         amount: @expense.amount,
         split_method: @expense.split_method,
         user_id: @expense.user_id,
+        friend_id: @expense.friend_id,
         group_id: @expense.group_id,
         expense_category_id: @expense_category.id,
         currency_id: @currency.id
