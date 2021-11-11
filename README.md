@@ -3,6 +3,10 @@
   <h2 align="center">divisionly-api</h2>
 </p>
 
+<p align="center">
+  <a href="https://codecov.io/gh/yeukfei02/divisionly-api"><img src="https://codecov.io/gh/yeukfei02/divisionly-api/branch/main/graph/badge.svg?token=CT6XT3J9DM" alt=""></a>
+</p>
+
 split expenses with friends
 
 documentation: <https://documenter.getpostman.com/view/3827865/UVBzoVbG>
