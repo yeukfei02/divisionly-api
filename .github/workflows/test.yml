@@ -69,8 +69,6 @@ jobs:
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
           USER_ACCESS_KEY_ID: ${{ secrets.USER_ACCESS_KEY_ID }}
           USER_SECRET_ACCESS_KEY: ${{ secrets.USER_SECRET_ACCESS_KEY }}
-          REDIS_HOST: localhost
-          REDIS_PORT: 6379
           REDIS_URL: redis://localhost:6379/0
           SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
