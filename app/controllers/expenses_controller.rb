@@ -1,4 +1,6 @@
 class ExpensesController < AuthApiController
+  include ApplicationHelper
+
   def create
     description = params['description']
     amount = params['amount']
@@ -16,7 +18,8 @@ class ExpensesController < AuthApiController
       expense = Expense.create!(description: description, amount: amount.to_f, split_method: split_method, image: image, user_id: user_id,
                                 group_id: group_id, expense_category_id: expense_category_id, currency_id: currency_id)
       if expense.present?
-        create_activity(user_id)
+        user = User.find(user_id)
+        ApplicationHelper.create_activity(user, user_id, 'create', 'expense')
 
         @message = 'createExpense'
         render :create, status: 200
@@ -78,7 +81,9 @@ class ExpensesController < AuthApiController
       expense = Expense.find(params[:id])
       if expense.present?
         expense.update!(description: description, amount: amount.to_f, split_method: split_method, image: image)
-        create_activity(user_id)
+
+        user = User.find(user_id)
+        ApplicationHelper.create_activity(user, user_id, 'update', 'expense')
 
         @message = 'updateExpenseById'
         render :update, status: 200
@@ -115,17 +120,5 @@ class ExpensesController < AuthApiController
     @message = 'deleteExpenseById error'
     @error = e.message.to_s
     render :destroy, status: 400
-  end
-
-  private
-
-  def create_activity(user_id)
-    user = User.find(user_id)
-    if user.present?
-      username = "#{user.first_name} #{user.last_name}"
-      title = "#{username} created expense"
-      description = "#{username} created expense"
-      Activity.create!(title: title, description: description, user_id: user_id)
-    end
   end
 end
