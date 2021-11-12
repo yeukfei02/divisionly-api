@@ -89,9 +89,13 @@ RSpec.describe 'Expenses', type: :request do
     end
   end
 
-  describe '005 - DELETE /api/expenses/:id' do
+  describe '005 - POST /api/expenses/remove' do
     before do
-      delete "/api/expenses/#{@expense.id}", headers: @headers
+      params = {
+        id: @expense.id,
+        user_id: @expense.user_id
+      }
+      post "/api/expenses/remove", params: params, headers: @headers
     end
 
     it 'test result' do
