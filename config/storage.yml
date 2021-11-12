@@ -7,12 +7,12 @@ test:
   root: <%= Rails.root.join("tmp/storage") %>
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
-amazon:
+amazon_dev:
   service: S3
   access_key_id: <%= ENV['USER_ACCESS_KEY_ID'] %>
   secret_access_key: <%= ENV['USER_SECRET_ACCESS_KEY'] %>
   region: ap-southeast-1
-  bucket: divisionly-api
+  bucket: divisionly-api-dev
   upload:
     acl: "public-read"
 
@@ -22,6 +22,15 @@ amazon_test:
   secret_access_key: <%= ENV['USER_SECRET_ACCESS_KEY'] %>
   region: ap-southeast-1
   bucket: divisionly-api-test
+  upload:
+    acl: "public-read"
+
+amazon:
+  service: S3
+  access_key_id: <%= ENV['USER_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['USER_SECRET_ACCESS_KEY'] %>
+  region: ap-southeast-1
+  bucket: divisionly-api
   upload:
     acl: "public-read"
 
