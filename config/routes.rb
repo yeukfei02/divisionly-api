@@ -33,6 +33,8 @@ Rails.application.routes.draw do
 
     resources :currencies, only: %i[index]
 
+    resources :countries, only: %i[index]
+
     scope '/files' do
       post '/upload', to: 'files#upload'
     end
