@@ -89,7 +89,7 @@ RSpec.describe 'Groups', type: :request do
         id: @group.id,
         user_id: @group.user_id
       }
-      post "/api/groups/remove", params:params, headers: @headers
+      post '/api/groups/remove', params: params, headers: @headers
     end
 
     it 'test result' do

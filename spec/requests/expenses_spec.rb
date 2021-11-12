@@ -95,7 +95,7 @@ RSpec.describe 'Expenses', type: :request do
         id: @expense.id,
         user_id: @expense.user_id
       }
-      post "/api/expenses/remove", params: params, headers: @headers
+      post '/api/expenses/remove', params: params, headers: @headers
     end
 
     it 'test result' do

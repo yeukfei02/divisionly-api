@@ -2,10 +2,10 @@ class RemoveActivityWorker
   include Sidekiq::Worker
 
   def perform
-    puts "### RemoveActivityWorker start ###"
+    puts '### RemoveActivityWorker start ###'
 
     Activity.delete_all
 
-    puts "### RemoveActivityWorker end ###"
+    puts '### RemoveActivityWorker end ###'
   end
 end
