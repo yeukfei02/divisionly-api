@@ -25,9 +25,9 @@ Rails.application.routes.draw do
 
     resources :friends, only: %i[create index show update destroy]
 
-    resources :activities, only: %i[create index show update destroy]
-
     resources :expenses, only: %i[create index show update destroy]
+
+    resources :activities, only: %i[create index show update destroy]
 
     resources :expense_categories, only: %i[index]
 
