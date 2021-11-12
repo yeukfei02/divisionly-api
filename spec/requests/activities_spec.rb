@@ -10,26 +10,7 @@ RSpec.describe 'Activities', type: :request do
     }
   end
 
-  describe '001 - POST /api/activities' do
-    before do
-      params = {
-        title: @activity.title,
-        description: @activity.description,
-        user_id: @activity.user_id
-      }
-      post '/api/activities', params: params, headers: @headers
-    end
-
-    it 'test result' do
-      response_body = JSON.parse(response.body)
-      puts "response_body = #{response_body}"
-      expect(response_body.present?).to be true
-
-      expect(response_body['message']).to eq('createActivity')
-    end
-  end
-
-  describe '002 - GET /api/activities' do
+  describe '001 - GET /api/activities' do
     before do
       params = {
         user_id: @activity.user.id
@@ -47,7 +28,7 @@ RSpec.describe 'Activities', type: :request do
     end
   end
 
-  describe '003 - GET /api/activities/:id' do
+  describe '002 - GET /api/activities/:id' do
     before do
       get "/api/activities/#{@activity.id}", headers: @headers
     end
@@ -59,38 +40,6 @@ RSpec.describe 'Activities', type: :request do
 
       expect(response_body['message']).to eq('getActivityById')
       expect(response_body['activity'].present?).to be true
-    end
-  end
-
-  describe '004 - PUT /api/activities/:id' do
-    before do
-      params = {
-        title: "#{@activity.title}-test",
-        description: "#{@activity.description}-test"
-      }
-      put "/api/activities/#{@activity.id}", params: params, headers: @headers
-    end
-
-    it 'test result' do
-      response_body = JSON.parse(response.body)
-      puts "response_body = #{response_body}"
-      expect(response_body.present?).to be true
-
-      expect(response_body['message']).to eq('updateActivityById')
-    end
-  end
-
-  describe '005 - DELETE /api/activities/:id' do
-    before do
-      delete "/api/activities/#{@activity.id}", headers: @headers
-    end
-
-    it 'test result' do
-      response_body = JSON.parse(response.body)
-      puts "response_body = #{response_body}"
-      expect(response_body.present?).to be true
-
-      expect(response_body['message']).to eq('deleteActivityById')
     end
   end
 end

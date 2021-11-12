@@ -21,13 +21,25 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :groups, only: %i[create index show update destroy]
+    resources :groups, only: %i[create index show update] do
+      collection do
+        post '/remove', to: 'groups#remove_group'
+      end
+    end
 
-    resources :friends, only: %i[create index show update destroy]
+    resources :friends, only: %i[create index show update] do
+      collection do
+        post '/remove', to: 'friends#remove_friend'
+      end
+    end
 
-    resources :activities, only: %i[create index show update destroy]
+    resources :expenses, only: %i[create index show update] do
+      collection do
+        post '/remove', to: 'expenses#remove_expense'
+      end
+    end
 
-    resources :expenses, only: %i[create index show update destroy]
+    resources :activities, only: %i[index show]
 
     resources :expense_categories, only: %i[index]
 

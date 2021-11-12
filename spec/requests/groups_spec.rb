@@ -83,9 +83,13 @@ RSpec.describe 'Groups', type: :request do
     end
   end
 
-  describe '005 - DELETE /api/groups/:id' do
+  describe '005 - POST /api/groups/remove' do
     before do
-      delete "/api/groups/#{@group.id}", headers: @headers
+      params = {
+        id: @group.id,
+        user_id: @group.user_id
+      }
+      post "/api/groups/remove", params:params, headers: @headers
     end
 
     it 'test result' do

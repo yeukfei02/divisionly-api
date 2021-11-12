@@ -16,7 +16,7 @@ class GroupsController < AuthApiController
                             user_id: user_id)
       if group.present?
         user = User.find(user_id)
-        ApplicationHelper.create_activity(user, user_id, 'create', 'group')
+        ApplicationHelper.create_activity(user, user_id, 'created', 'group')
 
         @message = 'createGroup'
         render :create, status: 200
@@ -80,7 +80,7 @@ class GroupsController < AuthApiController
         group.update!(name: name, description: description, group_type: group_type, image: image)
 
         user = User.find(user_id)
-        ApplicationHelper.create_activity(user, user_id, 'update', 'group')
+        ApplicationHelper.create_activity(user, user_id, 'updated', 'group')
 
         @message = 'updateGroupById'
         render :update, status: 200
@@ -100,22 +100,26 @@ class GroupsController < AuthApiController
     render :update, status: 400
   end
 
-  def destroy
-    group = Group.find(params[:id])
+  def remove_group
+    group = Group.find(params['id'])
     if group.present?
       group.destroy
 
+      user_id = params['user_id']
+      user = User.find(user_id)
+      ApplicationHelper.create_activity(user, user_id, 'removed', 'group')
+
       @message = 'deleteGroupById'
-      render :destroy, status: 200
+      render :remove_group, status: 200
     else
       @message = 'deleteGroupById error, no this group'
-      render :destroy, status: 400
+      render :remove_group, status: 400
     end
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'deleteGroupById error'
     @error = e.message.to_s
-    render :destroy, status: 400
+    render :remove_group, status: 400
   end
 end

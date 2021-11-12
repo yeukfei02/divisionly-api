@@ -83,9 +83,13 @@ RSpec.describe 'Friends', type: :request do
     end
   end
 
-  describe 'DELETE /api/friends/:id' do
+  describe 'POST /api/friends/remove' do
     before do
-      delete "/api/friends/#{@friend.id}", headers: @headers
+      params = {
+        id: @friend.id,
+        user_id: @friend.user_id
+      }
+      post "/api/friends/remove", params: params, headers: @headers
     end
 
     it 'test result' do
