@@ -9,3 +9,5 @@ class RemoveActivityWorker
     puts '### RemoveActivityWorker end ###'
   end
 end
+
+Sidekiq::Cron::Job.create(name: 'RemoveActivityWorker - every week', cron: '0 0 * * 0', class: 'RemoveActivityWorker')
