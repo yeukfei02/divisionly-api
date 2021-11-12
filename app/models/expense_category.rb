@@ -14,20 +14,20 @@ class ExpenseCategory < ApplicationRecord
   has_one_attached :image
 
   # callback
-  # before_validation :set_default_image
+  before_validation :set_default_image
 
   # validation
   validates :expense_category_group, presence: true
   validates :name, presence: true
-  # validates :image, presence: true, file_size: { less_than_or_equal_to: 10.megabytes },
-  #                   file_content_type: { allow: %w[image/jpeg image/png] }
+  validates :image, presence: true, file_size: { less_than_or_equal_to: 10.megabytes },
+                    file_content_type: { allow: %w[image/jpeg image/png] }
 
-  # private
-  #
-  # def set_default_image
-  #   if Rails.env == 'test' && !image.attached?
-  #     image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'dummy_expense.jpg')),
-  #                  filename: 'dummy_expense.jpg', content_type: 'image/jpg')
-  #   end
-  # end
+  private
+
+  def set_default_image
+    if Rails.env == 'test' && !image.attached?
+      image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'dummy_expense_category.jpg')),
+                   filename: 'dummy_expense_category.jpg', content_type: 'image/jpg')
+    end
+  end
 end
