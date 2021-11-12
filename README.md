@@ -51,11 +51,8 @@ $ rails db:migrate
 // db rollback
 $ rails db:rollback
 
-// db migration up
-$ rails db:migrate:up
-
-// db migration down
-$ rails db:migrate:down
+// create worker file
+$ rails g sidekiq:worker <workerName>
 
 // list routes
 $ rails routes
