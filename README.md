@@ -33,6 +33,9 @@ $ yarn
 // run api in local
 $ rails s
 
+// run rails console
+$ rails c
+
 // create controller
 $ rails g controller <controllerName>
 
