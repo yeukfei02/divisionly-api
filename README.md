@@ -60,6 +60,9 @@ $ rails routes
 // run test case
 $ bundle exec rspec
 
+// start sidekiq
+$ bundle exec sidekiq
+
 // rubocop
 $ rubocop --auto-correct
 
