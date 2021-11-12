@@ -21,7 +21,7 @@ class ExpensesController < AuthApiController
                                 currency_id: currency_id)
       if expense.present?
         user = User.find(user_id)
-        ApplicationHelper.create_activity(user, user_id, 'create', 'expense')
+        ApplicationHelper.create_activity(user, user_id, 'created', 'expense')
 
         @message = 'createExpense'
         render :create, status: 200
@@ -85,7 +85,7 @@ class ExpensesController < AuthApiController
         expense.update!(description: description, amount: amount.to_f, split_method: split_method, image: image)
 
         user = User.find(user_id)
-        ApplicationHelper.create_activity(user, user_id, 'update', 'expense')
+        ApplicationHelper.create_activity(user, user_id, 'updated', 'expense')
 
         @message = 'updateExpenseById'
         render :update, status: 200
@@ -105,22 +105,26 @@ class ExpensesController < AuthApiController
     render :update, status: 400
   end
 
-  def destroy
+  def remove_expense
     expense = Expense.find(params[:id])
     if expense.present?
       expense.destroy
 
+      user_id = params['user_id']
+      user = User.find(user_id)
+      ApplicationHelper.create_activity(user, user_id, 'removed', 'expense')
+
       @message = 'deleteExpenseById'
-      render :destroy, status: 200
+      render :remove_expense, status: 200
     else
       @message = 'deleteExpenseById error, no this expense'
-      render :destroy, status: 400
+      render :remove_expense, status: 400
     end
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'deleteExpenseById error'
     @error = e.message.to_s
-    render :destroy, status: 400
+    render :remove_expense, status: 400
   end
 end

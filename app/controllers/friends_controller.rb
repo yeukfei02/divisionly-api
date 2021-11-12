@@ -12,7 +12,7 @@ class FriendsController < AuthApiController
                             user_id: user_id)
     if friend.present?
       user = User.find(user_id)
-      ApplicationHelper.create_activity(user, user_id, 'create', 'friend')
+      ApplicationHelper.create_activity(user, user_id, 'created', 'friend')
 
       @message = 'createFriend'
       render :create, status: 200
@@ -68,7 +68,7 @@ class FriendsController < AuthApiController
       friend.update!(name: name, description: description, phone_number: phone_number.to_i, avatar: avatar)
 
       user = User.find(user_id)
-      ApplicationHelper.create_activity(user, user_id, 'update', 'friend')
+      ApplicationHelper.create_activity(user, user_id, 'updated', 'friend')
 
       @message = 'updateFriendById'
       render :update, status: 200
@@ -84,22 +84,26 @@ class FriendsController < AuthApiController
     render :update, status: 400
   end
 
-  def destroy
+  def remove_friend
     friend = Friend.find(params[:id])
     if friend.present?
       friend.destroy
 
+      user_id = params['user_id']
+      user = User.find(user_id)
+      ApplicationHelper.create_activity(user, user_id, 'removed', 'friend')
+
       @message = 'deleteFriendById'
-      render :destroy, status: 200
+      render :remove_friend, status: 200
     else
       @message = 'deleteFriendById error, no this friend'
-      render :destroy, status: 400
+      render :remove_friend, status: 400
     end
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'deleteFriendById error'
     @error = e.message.to_s
-    render :destroy, status: 400
+    render :remove_friend, status: 400
   end
 end

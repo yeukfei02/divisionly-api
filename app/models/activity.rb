@@ -31,13 +31,13 @@ class Activity < ApplicationRecord
       if Rails.env == 'test'
         image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'dummy_activity.jpg')),
                      filename: 'dummy_activity.jpg', content_type: 'image/jpg')
-      elsif title.include? 'group'
+      elsif description.include? 'group'
         image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'group.png')),
                      filename: 'group.png', content_type: 'image/png')
-      elsif title.include? 'friend'
+      elsif description.include? 'friend'
         image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'friend.png')),
                      filename: 'friend.png', content_type: 'image/png')
-      elsif title.include? 'expense'
+      elsif description.include? 'expense'
         image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'expense.png')),
                      filename: 'expense.png', content_type: 'image/png')
       end
