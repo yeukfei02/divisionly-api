@@ -89,7 +89,7 @@ RSpec.describe 'Friends', type: :request do
         id: @friend.id,
         user_id: @friend.user_id
       }
-      post "/api/friends/remove", params: params, headers: @headers
+      post '/api/friends/remove', params: params, headers: @headers
     end
 
     it 'test result' do
