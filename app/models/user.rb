@@ -9,6 +9,7 @@
 #  updated_at :datetime         not null
 #  first_name :text             not null
 #  last_name  :text             not null
+#  is_admin   :boolean          default(FALSE), not null
 #
 class User < ApplicationRecord
   # association
@@ -23,12 +24,17 @@ class User < ApplicationRecord
   before_validation :set_default_avatar
 
   # validation
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :is_admin, inclusion: { in: [true, false] }
   validates :avatar, presence: true, file_size: { less_than_or_equal_to: 10.megabytes },
                      file_content_type: { allow: %w[image/jpeg image/png] }
+
+  def admin?
+    is_admin
+  end
 
   private
 

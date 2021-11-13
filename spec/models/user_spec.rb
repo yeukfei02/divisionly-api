@@ -9,6 +9,7 @@
 #  updated_at :datetime         not null
 #  first_name :text             not null
 #  last_name  :text             not null
+#  is_admin   :boolean          default(FALSE), not null
 #
 require 'rails_helper'
 
