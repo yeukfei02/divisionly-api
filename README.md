@@ -51,6 +51,9 @@ $ rails db:migrate
 // db rollback
 $ rails db:rollback
 
+// run db seed
+$ rails db:seed
+
 // create worker file
 $ rails g sidekiq:worker <workerName>
 
