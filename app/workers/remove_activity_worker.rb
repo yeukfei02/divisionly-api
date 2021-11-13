@@ -10,4 +10,4 @@ class RemoveActivityWorker
   end
 end
 
-# Sidekiq::Cron::Job.create(name: 'RemoveActivityWorker - every week', cron: '0 0 * * 0', class: 'RemoveActivityWorker')
+Sidekiq::Cron::Job.create(name: 'RemoveActivityWorker - every week', cron: '0 0 * * 0', class: 'RemoveActivityWorker')
