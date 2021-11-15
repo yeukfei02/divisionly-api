@@ -35,9 +35,7 @@ class FriendsController < AuthApiController
 
     @friends = []
     @friends = Friend.where(user_id: user_id).order('created_at desc') if user_id.present?
-    if page.present? && page_size.present?
-      @friends = @friends.page(page.to_i).per(page_size.to_i)
-    end
+    @friends = @friends.page(page.to_i).per(page_size.to_i) if page.present? && page_size.present?
 
     @total_count = @friends.length
 
