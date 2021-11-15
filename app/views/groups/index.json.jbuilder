@@ -22,4 +22,5 @@ json.groups @groups do |group|
   json.created_at group.created_at
   json.updated_at group.updated_at
 end
+json.total_count @total_count
 json.error @error if @error.present?

@@ -30,9 +30,16 @@ class FriendsController < AuthApiController
 
   def index
     user_id = params['user_id']
+    page = params['page']
+    page_size = params['page_size']
 
     @friends = []
     @friends = Friend.where(user_id: user_id).order('created_at desc') if user_id.present?
+    if page.present? && page_size.present?
+      @friends = @friends.page(page.to_i).per(page_size.to_i)
+    end
+
+    @total_count = @friends.length
 
     @message = 'getFriends'
     render :index, status: 200

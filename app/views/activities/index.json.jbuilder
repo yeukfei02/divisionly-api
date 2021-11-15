@@ -21,4 +21,5 @@ json.activities @activities do |activity|
   json.created_at activity.created_at
   json.updated_at activity.updated_at
 end
+json.total_count @total_count
 json.error @error if @error.present?

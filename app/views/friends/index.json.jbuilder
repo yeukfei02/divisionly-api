@@ -22,4 +22,5 @@ json.friends @friends do |friend|
   json.created_at friend.created_at
   json.updated_at friend.updated_at
 end
+json.total_count @total_count
 json.error @error if @error.present?
