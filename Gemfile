@@ -25,6 +25,7 @@ gem 'sentry-ruby', '~> 4.7'
 gem 'sidekiq', '~> 6.2'
 gem 'sidekiq-cron', '~> 1.2'
 gem 'turbolinks', '~> 5'
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'webpacker', '~> 5.0'
 
 group :development, :test do
@@ -64,5 +65,3 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
-
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
