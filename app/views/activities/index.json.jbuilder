@@ -5,7 +5,7 @@ json.activities @activities do |activity|
   json.description activity.description
 
   json.image do
-    json.url activity.image.service_url
+    json.url activity.image.url
     json.filename activity.image.filename
   end
 
