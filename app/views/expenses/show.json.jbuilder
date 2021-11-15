@@ -24,6 +24,7 @@ if @expense.present?
       json.id @expense.group.id
       json.name @expense.group.name
       json.description @expense.group.description
+      json.group_type @expense.group.group_type
       json.created_at @expense.group.created_at
       json.updated_at @expense.group.updated_at
     end
