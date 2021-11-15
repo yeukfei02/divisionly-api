@@ -6,7 +6,7 @@ json.groups @groups do |group|
   json.group_type group.group_type
 
   json.image do
-    json.url group.image.service_url
+    json.url group.image.url
     json.filename group.image.filename
   end
 

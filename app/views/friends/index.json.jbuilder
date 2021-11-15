@@ -6,7 +6,7 @@ json.friends @friends do |friend|
   json.phone_number friend.phone_number
 
   json.avatar do
-    json.url friend.avatar.service_url
+    json.url friend.avatar.url
     json.filename friend.avatar.filename
   end
 

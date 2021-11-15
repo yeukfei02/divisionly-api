@@ -7,7 +7,7 @@ if @expense.present?
     json.split_method @expense.split_method
 
     json.image do
-      json.url @expense.image.service_url
+      json.url @expense.image.url
       json.filename @expense.image.filename
     end
 

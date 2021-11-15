@@ -9,7 +9,7 @@ if @user.present?
     json.last_name @user.last_name
 
     json.avatar do
-      json.url @user.avatar.service_url
+      json.url @user.avatar.url
       json.filename @user.avatar.filename
     end
 
