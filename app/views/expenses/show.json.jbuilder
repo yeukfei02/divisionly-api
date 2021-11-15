@@ -42,6 +42,12 @@ if @expense.present?
       json.id @expense.expense_category.id
       json.expense_category_group @expense.expense_category.expense_category_group
       json.name @expense.expense_category.name
+
+      json.image do
+        json.url @expense.expense_category.image.url
+        json.filename @expense.expense_category.image.filename
+      end
+
       json.created_at @expense.expense_category.created_at
       json.updated_at @expense.expense_category.updated_at
     end
