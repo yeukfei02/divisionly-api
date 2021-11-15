@@ -227,7 +227,7 @@ class CreateExpenseCategories < ActiveRecord::Migration[6.1]
       },
 
       {
-        'expense_category_group': 'Uncategoized',
+        'expense_category_group': 'Uncategorized',
         'name': 'General',
         'created_at': Time.zone.now,
         'updated_at': Time.zone.now

@@ -67,4 +67,5 @@ json.expenses @expenses do |expense|
   json.created_at expense.created_at
   json.updated_at expense.updated_at
 end
+json.total_count @total_count
 json.error @error if @error.present?

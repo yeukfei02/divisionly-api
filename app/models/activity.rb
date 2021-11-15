@@ -32,13 +32,13 @@ class Activity < ApplicationRecord
         image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'dummy_activity.jpg')),
                      filename: 'dummy_activity.jpg', content_type: 'image/jpg')
       elsif description.include? 'group'
-        image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'group.png')),
+        image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'activity', 'group.png')),
                      filename: 'group.png', content_type: 'image/png')
       elsif description.include? 'friend'
-        image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'friend.png')),
+        image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'activity', 'friend.png')),
                      filename: 'friend.png', content_type: 'image/png')
       elsif description.include? 'expense'
-        image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'expense.png')),
+        image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'activity', 'expense.png')),
                      filename: 'expense.png', content_type: 'image/png')
       end
     end
