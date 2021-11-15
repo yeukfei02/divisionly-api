@@ -119,4 +119,26 @@ class UsersController < AuthApiController
     @error = e.message.to_s
     render :change_password, status: 400
   end
+
+  def update_user
+    user_id = params['user_id']
+
+    user = User.find(user_id)
+    if user.present?
+      first_name = params['first_name']
+      last_name = params['last_name']
+      avatar = params['avatar']
+      user.update!(first_name: first_name, last_name: last_name, avatar: avatar)
+
+      @message = 'updateUser'
+      render :update_user, status: 200
+    else
+      @message = 'updateUser error, user not found'
+      render :update_user, status: 400
+    end
+  rescue StandardError => e
+    @message = 'updateUser error'
+    @error = e.message.to_s
+    render :update_user, status: 400
+  end
 end

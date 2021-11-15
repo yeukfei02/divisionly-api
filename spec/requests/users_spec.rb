@@ -98,4 +98,23 @@ RSpec.describe 'Users', type: :request do
       expect(response_body['message']).to eq('changePassword')
     end
   end
+
+  describe '006 - PUT /api/users/:id/update-user' do
+    before do
+      params = {
+        user_id: @user.id,
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name
+      }
+      put "/api/users/#{@user.id}/update-user", params: params, headers: @headers
+    end
+
+    it 'test result' do
+      response_body = JSON.parse(response.body)
+      puts "response_body = #{response_body}"
+      expect(response_body.present?).to be true
+
+      expect(response_body['message']).to eq('updateUser')
+    end
+  end
 end
