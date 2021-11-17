@@ -5,6 +5,11 @@ json.expenses @expenses do |expense|
   json.amount expense.amount
   json.split_method expense.split_method
 
+  if expense.split_method == 'you_paid_and_split_equally' || expense.split_method == 'friend_paid_and_split_equally'
+    json.your_amount expense.amount / 2
+    json.owe_amount expense.amount / 2
+  end
+
   json.image do
     json.url expense.image.url
     json.filename expense.image.filename
