@@ -52,5 +52,9 @@ Rails.application.routes.draw do
     scope '/files' do
       post '/upload', to: 'files#upload'
     end
+
+    scope '/qr-code' do
+      get '/generate-qr-code', to: 'qr_code#generate_qr_code'
+    end
   end
 end
