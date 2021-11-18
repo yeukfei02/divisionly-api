@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.4'
 
+gem 'acts_as_paranoid', '~> 0.7.3'
 gem 'annotate', '~> 3.1'
 gem 'aws-sdk-s3', '~> 1.104'
 gem 'bcrypt', '~> 3.1.16'
