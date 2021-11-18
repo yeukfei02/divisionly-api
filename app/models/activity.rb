@@ -8,8 +8,11 @@
 #  user_id     :uuid             not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  deleted_at  :datetime
 #
 class Activity < ApplicationRecord
+  acts_as_paranoid
+
   # association
   belongs_to :user
 
