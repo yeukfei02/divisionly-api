@@ -10,7 +10,7 @@ RSpec.describe 'Overalls', type: :request do
     }
   end
 
-  describe 'GET /api/overall/get-total-owe-amount' do
+  describe '001 - GET /api/overall/get-total-owe-amount' do
     before do
       params = {
         user_id: @user.id
