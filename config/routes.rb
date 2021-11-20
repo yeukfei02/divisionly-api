@@ -53,6 +53,10 @@ Rails.application.routes.draw do
       post '/upload', to: 'files#upload'
     end
 
+    scope 'overall' do
+      get '/get-total-owe-amount', to: 'overall#get_total_owe_amount'
+    end
+
     scope '/qr-code' do
       get '/generate-qr-code', to: 'qr_code#generate_qr_code'
     end
