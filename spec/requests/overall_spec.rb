@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Overalls', type: :request do
   before(:all) do
     @user = create(:user)
+    @expense = create(:expense, user: @user)
 
     token = UsersHelper.get_jwt_token(@user.email)
     @headers = {
@@ -13,7 +14,7 @@ RSpec.describe 'Overalls', type: :request do
   describe '001 - GET /api/overall/get-total-owe-amount' do
     before do
       params = {
-        user_id: @user.id
+        user_id: @expense.user.id
       }
       get '/api/overall/get-total-owe-amount', params: params, headers: @headers
     end
@@ -24,7 +25,8 @@ RSpec.describe 'Overalls', type: :request do
       expect(response_body.present?).to be true
 
       expect(response_body['message']).to eq('getTotalOweAmount')
-      expect(response_body['total_owe_amount'].present?).to be true
+      expect(response_body['total_owe_amount_list'].present?).to be true
+      expect(response_body['total_owe_amount'] > 0).to be true
     end
   end
 end
