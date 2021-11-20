@@ -8,19 +8,21 @@ class OverallController < AuthApiController
     total_owe_amount_list = []
     total_owe_amount = 0
     @expenses.each do |expense|
-      if expense.split_method == 'you_paid_and_split_equally' || expense.split_method == 'friend_paid_and_split_equally'
-        obj = {}
-
-        owe_amount = expense.amount / 2
-        currency = expense.currency
-
-        total_owe_amount += owe_amount.round(2)
-
-        obj['owe_amount'] = owe_amount.round(2)
-        obj['currency_code'] = currency.code
-        obj['currency_name'] = currency.name
-        total_owe_amount_list.push(obj)
+      unless expense.split_method == 'you_paid_and_split_equally' || expense.split_method == 'friend_paid_and_split_equally'
+        next
       end
+
+      obj = {}
+
+      owe_amount = expense.amount / 2
+      currency = expense.currency
+
+      total_owe_amount += owe_amount.round(2)
+
+      obj['owe_amount'] = owe_amount.round(2)
+      obj['currency_code'] = currency.code
+      obj['currency_name'] = currency.name
+      total_owe_amount_list.push(obj)
     end
 
     @message = 'getTotalOweAmount'
