@@ -9,9 +9,7 @@ class OverallController < AuthApiController
     total_owe_amount = 0
     @expenses.each do |expense|
       split_method = expense.split_method
-      unless split_method == 'you_paid_and_split_equally' || split_method == 'friend_paid_and_split_equally'
-        next
-      end
+      next unless %w[you_paid_and_split_equally friend_paid_and_split_equally].include?(split_method)
 
       obj = {}
 
