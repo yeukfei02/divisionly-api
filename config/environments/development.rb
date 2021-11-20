@@ -34,9 +34,19 @@ Rails.application.configure do
   config.active_storage.service = :amazon_dev
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'email-smtp.ap-southeast-1.amazonaws.com',
+    port: 587,
+    user_name: ENV['AWS_SES_USER_NAME'],
+    password: ENV['AWS_SES_PASSWORD'],
+    authentication: :login,
+    enable_starttls_auto: true
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

@@ -57,6 +57,9 @@ $ rails db:seed
 // create worker file
 $ rails g sidekiq:worker <workerName>
 
+// create mailer file
+$ rails g mailer <mailerName>
+
 // list routes
 $ rails routes
 
