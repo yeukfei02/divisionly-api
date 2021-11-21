@@ -24,7 +24,7 @@ class ExpenseCategory < ApplicationRecord
 
   def set_default_image
     unless image.attached?
-      if Rails.env == 'test'
+      if Rails.env.test?
         set_dummy_image
       else
         case expense_category_group

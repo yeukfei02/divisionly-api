@@ -3,12 +3,12 @@ class ExpenseCategoriesController < AuthApiController
     @expense_categories = ExpenseCategory.all.group_by(&:expense_category_group)
 
     @message = 'getExpenseCategories'
-    render :index, status: 200
+    render :index, status: :ok
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'getExpenseCategories error'
     @error = e.message.to_s
-    render :index, status: 400
+    render :index, status: :bad_request
   end
 end

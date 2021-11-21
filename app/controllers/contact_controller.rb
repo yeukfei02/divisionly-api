@@ -12,16 +12,16 @@ class ContactController < AuthApiController
       ContactMailer.contact_email(subject, formatted_message).deliver_now
 
       @message = 'contactDivisionlySupport'
-      render :contact_divisionly_support, status: 200
+      render :contact_divisionly_support, status: :ok
     else
       @message = 'contactDivisionlySupport error, user not found'
-      render :contact_divisionly_support, status: 400
+      render :contact_divisionly_support, status: :bad_request
     end
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'contactDivisionlySupport error'
     @error = e.message.to_s
-    render :contact_divisionly_support, status: 400
+    render :contact_divisionly_support, status: :bad_request
   end
 end

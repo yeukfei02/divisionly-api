@@ -16,17 +16,17 @@ class UsersController < AuthApiController
                         avatar: avatar)
     if user.present?
       @message = 'signup'
-      render :signup, status: 200
+      render :signup, status: :ok
     else
       @message = 'signup error'
-      render :signup, status: 400
+      render :signup, status: :bad_request
     end
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'signup error'
     @error = e.message.to_s
-    render :signup, status: 400
+    render :signup, status: :bad_request
   end
 
   def login
@@ -40,21 +40,21 @@ class UsersController < AuthApiController
         @token = UsersHelper.get_jwt_token(email)
 
         @message = 'login'
-        render :login, status: 200
+        render :login, status: :ok
       else
         @message = 'login error, wrong password'
-        render :login, status: 400
+        render :login, status: :bad_request
       end
     else
       @message = 'login error, user not found'
-      render :login, status: 400
+      render :login, status: :bad_request
     end
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'login error'
     @error = e.message.to_s
-    render :login, status: 400
+    render :login, status: :bad_request
   end
 
   def upload
@@ -62,38 +62,38 @@ class UsersController < AuthApiController
 
     if file.present?
       @message = 'user file upload success'
-      render :upload, status: 200
+      render :upload, status: :ok
     end
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'user file upload error'
     @error = e.message.to_s
-    render :upload, status: 400
+    render :upload, status: :bad_request
   end
 
   def index
     @message = 'getUsers'
     @users = User.all.order('created_at desc')
-    render :index, status: 200
+    render :index, status: :ok
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'getUsers error'
     @error = e.message.to_s
-    render :index, status: 400
+    render :index, status: :bad_request
   end
 
   def show
     @message = 'getUserById'
     @user = User.find(params[:id])
-    render :show, status: 200
+    render :show, status: :ok
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'getUserById error'
     @error = e.message.to_s
-    render :show, status: 400
+    render :show, status: :bad_request
   end
 
   def change_password
@@ -108,16 +108,16 @@ class UsersController < AuthApiController
         user.update!(password: hash_new_password)
 
         @message = 'changePassword'
-        render :change_password, status: 200
+        render :change_password, status: :ok
       else
         @message = 'changePassword error, old password is wrong'
-        render :change_password, status: 400
+        render :change_password, status: :bad_request
       end
     end
   rescue StandardError => e
     @message = 'changePassword error'
     @error = e.message.to_s
-    render :change_password, status: 400
+    render :change_password, status: :bad_request
   end
 
   def update_user
@@ -131,14 +131,14 @@ class UsersController < AuthApiController
       user.update!(first_name: first_name, last_name: last_name, avatar: avatar)
 
       @message = 'updateUser'
-      render :update_user, status: 200
+      render :update_user, status: :ok
     else
       @message = 'updateUser error, user not found'
-      render :update_user, status: 400
+      render :update_user, status: :bad_request
     end
   rescue StandardError => e
     @message = 'updateUser error'
     @error = e.message.to_s
-    render :update_user, status: 400
+    render :update_user, status: :bad_request
   end
 end

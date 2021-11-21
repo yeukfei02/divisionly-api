@@ -36,7 +36,7 @@ class Group < ApplicationRecord
   private
 
   def set_default_image
-    if Rails.env == 'test' && !image.attached?
+    if Rails.env.test? && !image.attached?
       image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'dummy_group.jpg')),
                    filename: 'dummy_group.jpg', content_type: 'image/jpg')
     end
