@@ -15,6 +15,8 @@ class UsersController < AuthApiController
     user = User.create!(email: email, password: hash_password, first_name: first_name, last_name: last_name,
                         avatar: avatar)
     if user.present?
+      # SignupMailer.signup_mail(email, first_name, last_name).deliver_now
+
       @message = 'signup'
       render :signup, status: :ok
     else
