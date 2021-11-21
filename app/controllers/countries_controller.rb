@@ -3,12 +3,12 @@ class CountriesController < AuthApiController
     @countries = Country.all
 
     @message = 'getCountries'
-    render :index, status: 200
+    render :index, status: :ok
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'getCountries error'
     @error = e.message.to_s
-    render :index, status: 400
+    render :index, status: :bad_request
   end
 end

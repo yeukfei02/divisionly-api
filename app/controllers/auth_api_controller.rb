@@ -15,14 +15,14 @@ class AuthApiController < ApplicationController
           data = {
             'message': 'Unauthorized, please check request authorization header'
           }
-          render json: data, status: 400
+          render json: data, status: :bad_request
         end
       end
     else
       data = {
         'message': 'Unauthorized, please enter request authorization header'
       }
-      render json: data, status: 400
+      render json: data, status: :bad_request
     end
   rescue StandardError => e
     puts "error = #{e}"
@@ -31,6 +31,6 @@ class AuthApiController < ApplicationController
       'message': 'Unauthorized, validate_jwt_token error',
       'error': e.message.to_s
     }
-    render json: data, status: 400
+    render json: data, status: :bad_request
   end
 end

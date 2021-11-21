@@ -27,12 +27,12 @@ class OverallController < AuthApiController
     @message = 'getTotalOweAmount'
     @total_owe_amount_list = total_owe_amount_list
     @total_owe_amount = total_owe_amount
-    render :get_total_owe_amount, status: 200
+    render :get_total_owe_amount, status: :ok
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'getTotalOweAmount error'
     @error = e.message.to_s
-    render :get_total_owe_amount, status: 400
+    render :get_total_owe_amount, status: :bad_request
   end
 end

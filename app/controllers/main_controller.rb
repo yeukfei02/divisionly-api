@@ -1,6 +1,6 @@
 class MainController < ApplicationController
   def index
     @message = 'divisionly-api'
-    render :index, status: 200
+    render :index, status: :ok
   end
 end

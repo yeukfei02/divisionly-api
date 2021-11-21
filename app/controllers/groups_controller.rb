@@ -19,21 +19,21 @@ class GroupsController < AuthApiController
         ApplicationHelper.create_activity(user, user_id, 'created', 'group')
 
         @message = 'createGroup'
-        render :create, status: 200
+        render :create, status: :ok
       else
         @message = 'createGroup error'
-        render :create, status: 400
+        render :create, status: :bad_request
       end
     else
       @message = 'createGroup error, wrong type'
-      render :create, status: 400
+      render :create, status: :bad_request
     end
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'createGroup error'
     @error = e.message.to_s
-    render :create, status: 400
+    render :create, status: :bad_request
   end
 
   def index
@@ -48,25 +48,25 @@ class GroupsController < AuthApiController
     @total_count = @groups.length
 
     @message = 'getGroups'
-    render :index, status: 200
+    render :index, status: :ok
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'getGroups error'
     @error = e.message.to_s
-    render :index, status: 400
+    render :index, status: :bad_request
   end
 
   def show
     @message = 'getGroupById'
     @group = Group.find(params[:id])
-    render :show, status: 200
+    render :show, status: :ok
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'getGroupById error'
     @error = e.message.to_s
-    render :show, status: 400
+    render :show, status: :bad_request
   end
 
   def update
@@ -88,21 +88,21 @@ class GroupsController < AuthApiController
         ApplicationHelper.create_activity(user, user_id, 'updated', 'group')
 
         @message = 'updateGroupById'
-        render :update, status: 200
+        render :update, status: :ok
       else
         @message = 'updateGroupById error, no this group'
-        render :update, status: 400
+        render :update, status: :bad_request
       end
     else
       @message = 'updateGroupById error, wrong type'
-      render :update, status: 400
+      render :update, status: :bad_request
     end
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'updateGroupById error'
     @error = e.message.to_s
-    render :update, status: 400
+    render :update, status: :bad_request
   end
 
   def remove_group
@@ -115,16 +115,16 @@ class GroupsController < AuthApiController
       ApplicationHelper.create_activity(user, user_id, 'removed', 'group')
 
       @message = 'deleteGroupById'
-      render :remove_group, status: 200
+      render :remove_group, status: :ok
     else
       @message = 'deleteGroupById error, no this group'
-      render :remove_group, status: 400
+      render :remove_group, status: :bad_request
     end
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'deleteGroupById error'
     @error = e.message.to_s
-    render :remove_group, status: 400
+    render :remove_group, status: :bad_request
   end
 end

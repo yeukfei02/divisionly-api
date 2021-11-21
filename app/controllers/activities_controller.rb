@@ -11,24 +11,24 @@ class ActivitiesController < AuthApiController
     @total_count = @activities.length
 
     @message = 'getActivities'
-    render :index, status: 200
+    render :index, status: :ok
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'getActivities error'
     @error = e.message.to_s
-    render :index, status: 400
+    render :index, status: :bad_request
   end
 
   def show
     @message = 'getActivityById'
     @activity = Activity.find(params[:id])
-    render :show, status: 200
+    render :show, status: :ok
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'getActivityById error'
     @error = e.message.to_s
-    render :show, status: 400
+    render :show, status: :bad_request
   end
 end

@@ -31,7 +31,7 @@ class Activity < ApplicationRecord
 
   def set_default_image
     unless image.attached?
-      if Rails.env == 'test'
+      if Rails.env.test?
         image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'dummy_activity.jpg')),
                      filename: 'dummy_activity.jpg', content_type: 'image/jpg')
       elsif description.include? 'group'

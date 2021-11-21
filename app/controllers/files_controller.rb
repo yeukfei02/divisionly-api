@@ -4,13 +4,13 @@ class FilesController < ApplicationController
 
     if file.present?
       @message = 'file upload success'
-      render :upload, status: 200
+      render :upload, status: :ok
     end
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'file upload error'
     @error = e.message.to_s
-    render :upload, status: 400
+    render :upload, status: :bad_request
   end
 end

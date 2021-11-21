@@ -15,17 +15,17 @@ class FriendsController < AuthApiController
       ApplicationHelper.create_activity(user, user_id, 'created', 'friend')
 
       @message = 'createFriend'
-      render :create, status: 200
+      render :create, status: :ok
     else
       @message = 'createFriend error'
-      render :create, status: 400
+      render :create, status: :bad_request
     end
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'createFriend error'
     @error = e.message.to_s
-    render :create, status: 400
+    render :create, status: :bad_request
   end
 
   def index
@@ -40,25 +40,25 @@ class FriendsController < AuthApiController
     @total_count = @friends.length
 
     @message = 'getFriends'
-    render :index, status: 200
+    render :index, status: :ok
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'getFriends error'
     @error = e.message.to_s
-    render :index, status: 400
+    render :index, status: :bad_request
   end
 
   def show
     @message = 'getFriendById'
     @friend = Friend.find(params[:id])
-    render :show, status: 200
+    render :show, status: :ok
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'getFriendById error'
     @error = e.message.to_s
-    render :show, status: 400
+    render :show, status: :bad_request
   end
 
   def update
@@ -76,17 +76,17 @@ class FriendsController < AuthApiController
       ApplicationHelper.create_activity(user, user_id, 'updated', 'friend')
 
       @message = 'updateFriendById'
-      render :update, status: 200
+      render :update, status: :ok
     else
       @message = 'updateFriendById error, no this friend'
-      render :update, status: 400
+      render :update, status: :bad_request
     end
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'updateFriendById error'
     @error = e.message.to_s
-    render :update, status: 400
+    render :update, status: :bad_request
   end
 
   def remove_friend
@@ -99,16 +99,16 @@ class FriendsController < AuthApiController
       ApplicationHelper.create_activity(user, user_id, 'removed', 'friend')
 
       @message = 'deleteFriendById'
-      render :remove_friend, status: 200
+      render :remove_friend, status: :ok
     else
       @message = 'deleteFriendById error, no this friend'
-      render :remove_friend, status: 400
+      render :remove_friend, status: :bad_request
     end
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'deleteFriendById error'
     @error = e.message.to_s
-    render :remove_friend, status: 400
+    render :remove_friend, status: :bad_request
   end
 end

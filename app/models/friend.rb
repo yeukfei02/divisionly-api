@@ -29,7 +29,7 @@ class Friend < ApplicationRecord
   private
 
   def set_default_avatar
-    if Rails.env == 'test' && !avatar.attached?
+    if Rails.env.test? && !avatar.attached?
       avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'dummy_friend.jpg')),
                     filename: 'dummy_friend.jpg', content_type: 'image/jpg')
     end

@@ -24,21 +24,21 @@ class ExpensesController < AuthApiController
         ApplicationHelper.create_activity(user, user_id, 'created', 'expense')
 
         @message = 'createExpense'
-        render :create, status: 200
+        render :create, status: :ok
       else
         @message = 'createExpense error'
-        render :create, status: 400
+        render :create, status: :bad_request
       end
     else
       @message = 'createExpense error, wrong split_method'
-      render :create, status: 400
+      render :create, status: :bad_request
     end
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'createExpense error'
     @error = e.message.to_s
-    render :create, status: 400
+    render :create, status: :bad_request
   end
 
   def index
@@ -53,25 +53,25 @@ class ExpensesController < AuthApiController
     @total_count = @expenses.length
 
     @message = 'getExpenses'
-    render :index, status: 200
+    render :index, status: :ok
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'getExpenses error'
     @error = e.message.to_s
-    render :index, status: 400
+    render :index, status: :bad_request
   end
 
   def show
     @message = 'getExpenseById'
     @expense = Expense.find(params[:id])
-    render :show, status: 200
+    render :show, status: :ok
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'getExpenseById error'
     @error = e.message.to_s
-    render :show, status: 400
+    render :show, status: :bad_request
   end
 
   def update
@@ -93,21 +93,21 @@ class ExpensesController < AuthApiController
         ApplicationHelper.create_activity(user, user_id, 'updated', 'expense')
 
         @message = 'updateExpenseById'
-        render :update, status: 200
+        render :update, status: :ok
       else
         @message = 'updateExpenseById error, no this expense'
-        render :update, status: 400
+        render :update, status: :bad_request
       end
     else
       @message = 'updateExpenseById error, wrong split_method'
-      render :update, status: 400
+      render :update, status: :bad_request
     end
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'updateExpenseById error'
     @error = e.message.to_s
-    render :update, status: 400
+    render :update, status: :bad_request
   end
 
   def remove_expense
@@ -120,16 +120,16 @@ class ExpensesController < AuthApiController
       ApplicationHelper.create_activity(user, user_id, 'removed', 'expense')
 
       @message = 'deleteExpenseById'
-      render :remove_expense, status: 200
+      render :remove_expense, status: :ok
     else
       @message = 'deleteExpenseById error, no this expense'
-      render :remove_expense, status: 400
+      render :remove_expense, status: :bad_request
     end
   rescue StandardError => e
     puts "error = #{e}"
 
     @message = 'deleteExpenseById error'
     @error = e.message.to_s
-    render :remove_expense, status: 400
+    render :remove_expense, status: :bad_request
   end
 end
