@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/yeukfei02/divisionly-api/compare/v0.1.2...v0.1.3) (2021-11-21)
+
+
+### Features
+
+* 🎸 add signup mailer and fix contact mailer ([6ecce40](https://github.com/yeukfei02/divisionly-api/commit/6ecce40b5585ca4e6963bc7717b3a1682395480e))
+
+
+### Bug Fixes
+
+* 🐛 add back Procfile ([7e58c84](https://github.com/yeukfei02/divisionly-api/commit/7e58c841d620493833932e67169c704089740da5))
+* 🐛 temp remove Procfile ([0199d9b](https://github.com/yeukfei02/divisionly-api/commit/0199d9bfc181a6e4007b200ad567011d5b3cb9fc))
+* 🐛 update buildspec.yml ([5dbe209](https://github.com/yeukfei02/divisionly-api/commit/5dbe2094822f131ad65d2cb23d6b1474c7d0930a))
+
 ### [0.1.2](https://github.com/yeukfei02/divisionly-api/compare/v0.1.1...v0.1.2) (2021-11-21)
 
 
