@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/yeukfei02/divisionly-api/compare/v0.1.1...v0.1.2) (2021-11-21)
+
+
+### Features
+
+* 🎸 add .rubocop.yml and fix rubocop auto correct ([55e6fb9](https://github.com/yeukfei02/divisionly-api/commit/55e6fb986bfafa4930239e8a5a546b4dc0e1dbfb))
+* 🎸 add action mailer config ([65ded08](https://github.com/yeukfei02/divisionly-api/commit/65ded085698b4ce963349db7808d7a595f162f6e))
+* 🎸 add contact_divisionly_support api ([7568656](https://github.com/yeukfei02/divisionly-api/commit/7568656801880587024a66b800ac44bbede022c7))
+* 🎸 add overall get total owe amount api ([953625d](https://github.com/yeukfei02/divisionly-api/commit/953625df912b21ac5e3702668eef065da3268f54))
+* 🎸 add semgrep.yml ([5aea54c](https://github.com/yeukfei02/divisionly-api/commit/5aea54c346a1ba80355e0f022985555500b443bb))
+
+
+### Bug Fixes
+
+* 🐛 fix duplicate var ([680df31](https://github.com/yeukfei02/divisionly-api/commit/680df31840bcaafc7ab775b5319efcefd45957cb))
+* 🐛 fix get_total_owe_amount api and test case ([8002e0a](https://github.com/yeukfei02/divisionly-api/commit/8002e0a7a3be1953ab85396efe40a6494f97d844))
+* 🐛 fix pronto.yml ([c8f5cba](https://github.com/yeukfei02/divisionly-api/commit/c8f5cbae256295b25b41d02175f933a10ca15bf9))
+* 🐛 fix rubocop ([6ce1c17](https://github.com/yeukfei02/divisionly-api/commit/6ce1c1742c17075a06467c149d14d749a49c97da))
+* 🐛 fix rubocop ([39db353](https://github.com/yeukfei02/divisionly-api/commit/39db35350a86ddceb047a5e0be5017e6a1f00c62))
+
 ### 0.1.1 (2021-11-18)
 
 
