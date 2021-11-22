@@ -30,6 +30,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'webpacker', '~> 5.0'
 
 group :development, :test do
+  gem 'bundler-audit', '~> 0.9.0'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot', '~> 6.2'
   gem 'faker', '~> 2.19'

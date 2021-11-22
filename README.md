@@ -77,6 +77,9 @@ $ reek
 
 // generate schema info in model
 $ annotate --models
+
+// audit Gemfile.lock
+$ bundler-audit
 ```
 
 ## Docker
