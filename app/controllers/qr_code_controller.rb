@@ -1,5 +1,7 @@
 class QrCodeController < AuthApiController
   def generate_qr_code
+    params.require(:user_id)
+
     user_id = params['user_id']
 
     uuid = SecureRandom.uuid

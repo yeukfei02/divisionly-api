@@ -1,5 +1,7 @@
 class FilesController < ApplicationController
   def upload
+    params.require(:file)
+
     file = params['file']
 
     if file.present?

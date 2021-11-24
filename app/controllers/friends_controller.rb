@@ -2,14 +2,12 @@ class FriendsController < AuthApiController
   include ApplicationHelper
 
   def create
-    name = params['name']
-    description = params['description']
-    phone_number = params['phone_number']
-    avatar = params['avatar']
-    user_id = params['user_id']
+    params.require(%i[name description phone_number user_id avatar])
+    permitted = params.permit(%i[name description phone_number user_id avatar])
 
-    friend = Friend.create!(name: name, description: description, phone_number: phone_number.to_i, avatar: avatar,
-                            user_id: user_id)
+    user_id = permitted['user_id']
+
+    friend = Friend.create!(permitted)
     if friend.present?
       user = User.find(user_id)
       ApplicationHelper.create_activity(user, user_id, 'created', 'friend')
@@ -29,6 +27,8 @@ class FriendsController < AuthApiController
   end
 
   def index
+    params.require(:user_id)
+
     user_id = params['user_id']
     page = params['page']
     page_size = params['page_size']
@@ -62,6 +62,8 @@ class FriendsController < AuthApiController
   end
 
   def update
+    params.require(%i[name description phone_number user_id avatar])
+
     name = params['name']
     description = params['description']
     phone_number = params['phone_number']
@@ -90,6 +92,8 @@ class FriendsController < AuthApiController
   end
 
   def remove_friend
+    params.require(%i[id user_id])
+
     friend = Friend.find(params[:id])
     if friend.present?
       friend.destroy
