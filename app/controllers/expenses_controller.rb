@@ -2,23 +2,19 @@ class ExpensesController < AuthApiController
   include ApplicationHelper
 
   def create
-    description = params['description']
-    amount = params['amount']
-    split_method = params['split_method']
-    image = params['image']
-    user_id = params['user_id']
-    friend_id = params['friend_id']
-    group_id = params['group_id']
-    expense_category_id = params['expense_category_id']
-    currency_id = params['currency_id']
+    params.require(%i[description amount split_method user_id friend_id group_id expense_category_id
+                      currency_id])
+    permitted = params.permit(%i[description amount split_method user_id friend_id group_id
+                                 expense_category_id currency_id])
+
+    split_method = permitted['split_method']
+    user_id = permitted['user_id']
 
     is_split_method_correct = false
     is_split_method_correct = true if Expense.expense_split_methods.has_value?(split_method)
 
     if is_split_method_correct
-      expense = Expense.create!(description: description, amount: amount.to_f, split_method: split_method, image: image, user_id: user_id,
-                                friend_id: friend_id, group_id: group_id, expense_category_id: expense_category_id,
-                                currency_id: currency_id)
+      expense = Expense.create!(permitted)
       if expense.present?
         user = User.find(user_id)
         ApplicationHelper.create_activity(user, user_id, 'created', 'expense')
@@ -42,6 +38,8 @@ class ExpensesController < AuthApiController
   end
 
   def index
+    params.require(:user_id)
+
     user_id = params['user_id']
     page = params['page']
     page_size = params['page_size']
@@ -75,11 +73,13 @@ class ExpensesController < AuthApiController
   end
 
   def update
-    description = params['description']
-    amount = params['amount']
-    split_method = params['split_method']
-    user_id = params['user_id']
-    image = params['image']
+    params.require(%i[description amount split_method user_id friend_id group_id expense_category_id
+                      currency_id])
+    permitted = params.permit(%i[description amount split_method user_id friend_id group_id
+                                 expense_category_id currency_id])
+
+    split_method = permitted['split_method']
+    user_id = permitted['user_id']
 
     is_split_method_correct = false
     is_split_method_correct = true if Expense.expense_split_methods.has_value?(split_method)
@@ -87,7 +87,7 @@ class ExpensesController < AuthApiController
     if is_split_method_correct
       expense = Expense.find(params[:id])
       if expense.present?
-        expense.update!(description: description, amount: amount.to_f, split_method: split_method, image: image)
+        expense.update!(permitted)
 
         user = User.find(user_id)
         ApplicationHelper.create_activity(user, user_id, 'updated', 'expense')
@@ -111,6 +111,8 @@ class ExpensesController < AuthApiController
   end
 
   def remove_expense
+    params.require(%i[id user_id])
+
     expense = Expense.find(params[:id])
     if expense.present?
       expense.destroy

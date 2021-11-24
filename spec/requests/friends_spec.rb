@@ -1,11 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'Friends', type: :request do
-  before(:all) do
-    @friend = create(:friend)
-
-    token = UsersHelper.get_jwt_token(@friend.user.email)
-    @headers = {
+  let!(:user) do
+    create(:user)
+  end
+  let!(:friend) do
+    create(:friend)
+  end
+  let!(:headers) do
+    token = UsersHelper.get_jwt_token(user.email)
+    {
       Authorization: "Bearer #{token}"
     }
   end
@@ -13,12 +17,12 @@ RSpec.describe 'Friends', type: :request do
   describe 'POST /api/friends' do
     before do
       params = {
-        name: @friend.name,
-        description: @friend.description,
-        phone_number: @friend.phone_number.to_s,
-        user_id: @friend.user_id
+        name: friend.name,
+        description: friend.description,
+        phone_number: friend.phone_number.to_s,
+        user_id: friend.user_id
       }
-      post '/api/friends', params: params, headers: @headers
+      post '/api/friends', params: params, headers: headers
     end
 
     it 'test result' do
@@ -33,9 +37,9 @@ RSpec.describe 'Friends', type: :request do
   describe 'GET /api/friends' do
     before do
       params = {
-        user_id: @friend.user.id
+        user_id: friend.user.id
       }
-      get '/api/friends', params: params, headers: @headers
+      get '/api/friends', params: params, headers: headers
     end
 
     it 'test result' do
@@ -50,7 +54,7 @@ RSpec.describe 'Friends', type: :request do
 
   describe 'GET /api/friends/:id' do
     before do
-      get "/api/friends/#{@friend.id}", headers: @headers
+      get "/api/friends/#{friend.id}", headers: headers
     end
 
     it 'test result' do
@@ -66,12 +70,12 @@ RSpec.describe 'Friends', type: :request do
   describe 'PUT /api/friends/:id' do
     before do
       params = {
-        name: "#{@friend.name}-test",
-        description: "#{@friend.description}-test",
+        name: "#{friend.name}-test",
+        description: "#{friend.description}-test",
         phone_number: '99998888',
-        user_id: @friend.user.id
+        user_id: friend.user.id
       }
-      put "/api/friends/#{@friend.id}", params: params, headers: @headers
+      put "/api/friends/#{friend.id}", params: params, headers: headers
     end
 
     it 'test result' do
@@ -86,10 +90,10 @@ RSpec.describe 'Friends', type: :request do
   describe 'POST /api/friends/remove' do
     before do
       params = {
-        id: @friend.id,
-        user_id: @friend.user_id
+        id: friend.id,
+        user_id: friend.user_id
       }
-      post '/api/friends/remove', params: params, headers: @headers
+      post '/api/friends/remove', params: params, headers: headers
     end
 
     it 'test result' do

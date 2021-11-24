@@ -1,5 +1,7 @@
 class OverallController < AuthApiController
   def get_total_owe_amount
+    params.require(:user_id)
+
     user_id = params['user_id']
 
     @expenses = []

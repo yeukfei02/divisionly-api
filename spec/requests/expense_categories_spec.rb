@@ -1,18 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe 'ExpenseCategories', type: :request do
-  before(:all) do
-    @user = create(:user)
-
-    token = UsersHelper.get_jwt_token(@user.email)
-    @headers = {
+  let!(:user) do
+    create(:user)
+  end
+  let!(:headers) do
+    token = UsersHelper.get_jwt_token(user.email)
+    {
       Authorization: "Bearer #{token}"
     }
   end
 
   describe '001 - GET /api/expense_categories' do
     before do
-      get '/api/expense_categories', headers: @headers
+      get '/api/expense_categories', headers: headers
     end
 
     it 'test result' do

@@ -2,18 +2,17 @@ class GroupsController < AuthApiController
   include ApplicationHelper
 
   def create
-    name = params['name']
-    description = params['description']
-    group_type = params['group_type']
-    image = params['image']
-    user_id = params['user_id']
+    params.require(%i[name description group_type user_id])
+    permitted = params.permit(%i[name description group_type user_id])
+
+    group_type = permitted['group_type']
+    user_id = permitted['user_id']
 
     is_type_correct = false
     is_type_correct = true if Group.types.has_value?(group_type)
 
     if is_type_correct
-      group = Group.create!(name: name, description: description, group_type: group_type, image: image,
-                            user_id: user_id)
+      group = Group.create!(permitted)
       if group.present?
         user = User.find(user_id)
         ApplicationHelper.create_activity(user, user_id, 'created', 'group')
@@ -37,6 +36,8 @@ class GroupsController < AuthApiController
   end
 
   def index
+    params.require(:user_id)
+
     user_id = params['user_id']
     page = params['page']
     page_size = params['page_size']
@@ -70,6 +71,8 @@ class GroupsController < AuthApiController
   end
 
   def update
+    params.require(%i[name description group_type user_id])
+
     name = params['name']
     description = params['description']
     group_type = params['group_type']
@@ -106,6 +109,8 @@ class GroupsController < AuthApiController
   end
 
   def remove_group
+    params.require(%i[id user_id])
+
     group = Group.find(params['id'])
     if group.present?
       group.destroy

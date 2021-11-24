@@ -4,16 +4,15 @@ class UsersController < AuthApiController
   before_action :validate_jwt_token, only: :change_password
 
   def signup
-    email = params['email']
-    password = params['password']
-    first_name = params['first_name']
-    last_name = params['last_name']
-    avatar = params['avatar']
+    params.require(%i[email password first_name last_name])
+    permitted = params.permit(%i[email password first_name last_name])
+
+    password = permitted['password']
 
     hash_password = UsersHelper.get_hash_password(password)
+    permitted['password'] = hash_password
 
-    user = User.create!(email: email, password: hash_password, first_name: first_name, last_name: last_name,
-                        avatar: avatar)
+    user = User.create!(permitted)
     if user.present?
       # SignupMailer.signup_mail(email, first_name, last_name).deliver_now
 
@@ -32,6 +31,8 @@ class UsersController < AuthApiController
   end
 
   def login
+    params.require(%i[email password])
+
     email = params['email']
     password = params['password']
 
@@ -60,6 +61,8 @@ class UsersController < AuthApiController
   end
 
   def upload
+    params.require(:file)
+
     file = params['file']
 
     if file.present?
@@ -99,6 +102,8 @@ class UsersController < AuthApiController
   end
 
   def change_password
+    params.require(%i[old_password new_password])
+
     old_password = params['old_password']
     new_password = params['new_password']
 
@@ -123,6 +128,8 @@ class UsersController < AuthApiController
   end
 
   def update_user
+    params.require(%i[first_name last_name user_id])
+
     user_id = params['user_id']
 
     user = User.find(user_id)

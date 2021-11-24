@@ -1,5 +1,7 @@
 class ActivitiesController < AuthApiController
   def index
+    params.require(:user_id)
+
     user_id = params['user_id']
     page = params['page']
     page_size = params['page_size']

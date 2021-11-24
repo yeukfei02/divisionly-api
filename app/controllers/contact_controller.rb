@@ -1,5 +1,7 @@
 class ContactController < AuthApiController
   def contact_divisionly_support
+    params.require(%i[user_id subject message])
+
     user_id = params['user_id']
     subject = params['subject']
     message = params['message']

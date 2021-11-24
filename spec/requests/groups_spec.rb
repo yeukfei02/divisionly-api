@@ -1,11 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'Groups', type: :request do
-  before(:all) do
-    @group = create(:group)
-
-    token = UsersHelper.get_jwt_token(@group.user.email)
-    @headers = {
+  let!(:user) do
+    create(:user)
+  end
+  let!(:group) do
+    create(:group)
+  end
+  let!(:headers) do
+    token = UsersHelper.get_jwt_token(user.email)
+    {
       Authorization: "Bearer #{token}"
     }
   end
@@ -13,12 +17,12 @@ RSpec.describe 'Groups', type: :request do
   describe '001 - POST /api/groups' do
     before do
       params = {
-        name: @group.name,
-        description: @group.description,
-        group_type: @group.group_type,
-        user_id: @group.user_id
+        name: group.name,
+        description: group.description,
+        group_type: group.group_type,
+        user_id: group.user_id
       }
-      post '/api/groups', params: params, headers: @headers
+      post '/api/groups', params: params, headers: headers
     end
 
     it 'test result' do
@@ -33,9 +37,9 @@ RSpec.describe 'Groups', type: :request do
   describe '002 - GET /api/groups' do
     before do
       params = {
-        user_id: @group.user.id
+        user_id: group.user.id
       }
-      get '/api/groups', params: params, headers: @headers
+      get '/api/groups', params: params, headers: headers
     end
 
     it 'test result' do
@@ -50,7 +54,7 @@ RSpec.describe 'Groups', type: :request do
 
   describe '003 - GET /api/groups/:id' do
     before do
-      get "/api/groups/#{@group.id}", headers: @headers
+      get "/api/groups/#{group.id}", headers: headers
     end
 
     it 'test result' do
@@ -66,12 +70,12 @@ RSpec.describe 'Groups', type: :request do
   describe '004 - PUT /api/groups/:id' do
     before do
       params = {
-        name: "#{@group.name}-test",
-        description: "#{@group.description}-test",
+        name: "#{group.name}-test",
+        description: "#{group.description}-test",
         group_type: Group.types['other'],
-        user_id: @group.user.id
+        user_id: group.user.id
       }
-      put "/api/groups/#{@group.id}", params: params, headers: @headers
+      put "/api/groups/#{group.id}", params: params, headers: headers
     end
 
     it 'test result' do
@@ -86,10 +90,10 @@ RSpec.describe 'Groups', type: :request do
   describe '005 - POST /api/groups/remove' do
     before do
       params = {
-        id: @group.id,
-        user_id: @group.user_id
+        id: group.id,
+        user_id: group.user_id
       }
-      post '/api/groups/remove', params: params, headers: @headers
+      post '/api/groups/remove', params: params, headers: headers
     end
 
     it 'test result' do
