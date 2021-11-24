@@ -4,8 +4,8 @@ class UsersController < AuthApiController
   before_action :validate_jwt_token, only: :change_password
 
   def signup
-    params.require(%i[email password first_name last_name avatar])
-    permitted = params.permit(%i[email password first_name last_name avatar])
+    params.require(%i[email password first_name last_name])
+    permitted = params.permit(%i[email password first_name last_name])
 
     password = permitted['password']
 
@@ -128,7 +128,7 @@ class UsersController < AuthApiController
   end
 
   def update_user
-    params.require(%i[first_name last_name user_id avatar])
+    params.require(%i[first_name last_name user_id])
 
     user_id = params['user_id']
 

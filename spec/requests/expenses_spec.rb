@@ -73,9 +73,13 @@ RSpec.describe 'Expenses', type: :request do
     before do
       params = {
         description: "#{@expense.description}-test",
-        amount: 200.22,
-        split_method: Expense.expense_split_methods['method_3'],
-        user_id: @expense.user.id
+        amount: Faker::Number.decimal(l_digits: 3, r_digits: 3),
+        split_method: @expense.split_method,
+        user_id: @expense.user_id,
+        friend_id: @expense.friend_id,
+        group_id: @expense.group_id,
+        expense_category_id: @expense_category.id,
+        currency_id: @currency.id
       }
       put "/api/expenses/#{@expense.id}", params: params, headers: @headers
     end
