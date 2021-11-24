@@ -1,12 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'Overalls', type: :request do
-  before(:all) do
-    @user = create(:user)
-    @expense = create(:expense, user: @user)
-
-    token = UsersHelper.get_jwt_token(@user.email)
-    @headers = {
+  let!(:user) do
+    create(:user)
+  end
+  let!(:expense) do
+    create(:expense, user: user)
+  end
+  let!(:headers) do
+    token = UsersHelper.get_jwt_token(user.email)
+    {
       Authorization: "Bearer #{token}"
     }
   end
@@ -14,9 +17,9 @@ RSpec.describe 'Overalls', type: :request do
   describe '001 - GET /api/overall/get-total-owe-amount' do
     before do
       params = {
-        user_id: @expense.user.id
+        user_id: expense.user.id
       }
-      get '/api/overall/get-total-owe-amount', params: params, headers: @headers
+      get '/api/overall/get-total-owe-amount', params: params, headers: headers
     end
 
     it 'test result' do

@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
-  before(:all) do
-    @user = create(:user)
-
-    token = UsersHelper.get_jwt_token(@user.email)
-    @headers = {
+  let!(:user) do
+    create(:user)
+  end
+  let!(:headers) do
+    token = UsersHelper.get_jwt_token(user.email)
+    {
       Authorization: "Bearer #{token}"
     }
   end
@@ -33,7 +34,7 @@ RSpec.describe 'Users', type: :request do
   describe '002 - POST /api/users/login' do
     before do
       params = {
-        email: @user.email,
+        email: user.email,
         password: 'test'
       }
       post '/api/users/login', params: params
@@ -47,7 +48,7 @@ RSpec.describe 'Users', type: :request do
       expect(response_body['message']).to eq('login')
       expect(response_body['token'].present?).to be true
       expect(response_body['user'].present?).to be true
-      expect(response_body['user']['id']).to eq(@user.id)
+      expect(response_body['user']['id']).to eq(user.id)
     end
   end
 
@@ -68,7 +69,7 @@ RSpec.describe 'Users', type: :request do
 
   describe '004 - GET /api/users/:id' do
     before do
-      get "/api/users/#{@user.id}"
+      get "/api/users/#{user.id}"
     end
 
     it 'test result' do
@@ -87,7 +88,7 @@ RSpec.describe 'Users', type: :request do
         old_password: 'test',
         new_password: 'test1'
       }
-      post "/api/users/#{@user.id}/change-password", params: params, headers: @headers
+      post "/api/users/#{user.id}/change-password", params: params, headers: headers
     end
 
     it 'test result' do
@@ -102,11 +103,11 @@ RSpec.describe 'Users', type: :request do
   describe '006 - PUT /api/users/:id/update-user' do
     before do
       params = {
-        user_id: @user.id,
+        user_id: user.id,
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name
       }
-      put "/api/users/#{@user.id}/update-user", params: params, headers: @headers
+      put "/api/users/#{user.id}/update-user", params: params, headers: headers
     end
 
     it 'test result' do

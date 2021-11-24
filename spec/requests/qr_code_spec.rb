@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'QrCodes', type: :request do
-  before(:all) do
-    @user = create(:user)
-
-    token = UsersHelper.get_jwt_token(@user.email)
-    @headers = {
+  let!(:user) do
+    create(:user)
+  end
+  let!(:headers) do
+    token = UsersHelper.get_jwt_token(user.email)
+    {
       Authorization: "Bearer #{token}"
     }
   end
@@ -13,9 +14,9 @@ RSpec.describe 'QrCodes', type: :request do
   describe '001 - GET /api/qr-code/generate-qr-code' do
     before do
       params = {
-        user_id: @user.id
+        user_id: user.id
       }
-      get '/api/qr-code/generate-qr-code', params: params, headers: @headers
+      get '/api/qr-code/generate-qr-code', params: params, headers: headers
     end
 
     it 'test result' do
