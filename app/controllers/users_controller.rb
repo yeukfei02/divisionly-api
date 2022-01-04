@@ -4,15 +4,18 @@ class UsersController < AuthApiController
   before_action :validate_jwt_token, only: :change_password
 
   def signup
-    params.require(%i[email password first_name last_name avatar])
-    permitted = params.permit(%i[email password first_name last_name avatar])
+    params.require(%i[email password first_name last_name])
 
-    password = permitted['password']
+    email = params['email']
+    password = params['password']
+    first_name = params['first_name']
+    last_name = params['last_name']
+    avatar = params['avatar']
 
     hash_password = UsersHelper.get_hash_password(password)
-    permitted['password'] = hash_password
 
-    user = User.create!(permitted)
+    user = User.create!(email: email, password: hash_password, first_name: first_name, last_name: last_name,
+                        avatar: avatar)
     if user.present?
       # SignupMailer.signup_mail(email, first_name, last_name).deliver_now
 
