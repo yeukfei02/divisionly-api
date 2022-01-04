@@ -3,20 +3,24 @@ default: &default
   encoding: unicode
   pool: 5
   port: <%= ENV.fetch('DB_PORT_NUMBER', 5432) %>
-  username: <%= ENV.fetch('DB_USERNAME', 'divisionly_api') %>
-  password: <%= ENV.fetch('DB_PASSWORD', 'divisionly_api') %>
 
 development:
   <<: *default
   host: <%= ENV.fetch('DB_HOST_DEV', 'localhost') %>
-  database: <%= ENV.fetch('DB_NAME', 'divisionly_api') %>_dev
+  username: <%= ENV.fetch('DB_USERNAME_DEV', 'divisionly_api') %>
+  password: <%= ENV.fetch('DB_PASSWORD_DEV', 'divisionly_api') %>
+  database: <%= ENV.fetch('DB_NAME_DEV', 'divisionly_api') %>
 
 test:
   <<: *default
   host: <%= ENV.fetch('DB_HOST_TEST', 'localhost') %>
-  database: <%= ENV.fetch('DB_NAME', 'divisionly_api') %>_test
+  username: <%= ENV.fetch('DB_USERNAME_TEST', 'divisionly_api') %>
+  password: <%= ENV.fetch('DB_PASSWORD_TEST', 'divisionly_api') %>
+  database: <%= ENV.fetch('DB_NAME_TEST', 'divisionly_api') %>
 
 production:
   <<: *default
   host: <%= ENV.fetch('DB_HOST_PROD', 'localhost') %>
-  database: <%= ENV.fetch('DB_NAME', 'divisionly_api') %>_prod
+  username: <%= ENV.fetch('DB_USERNAME_PROD', 'divisionly_api') %>
+  password: <%= ENV.fetch('DB_PASSWORD_PROD', 'divisionly_api') %>
+  database: <%= ENV.fetch('DB_NAME_PROD', 'divisionly_api') %>
