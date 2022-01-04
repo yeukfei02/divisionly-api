@@ -2,8 +2,8 @@ class GroupsController < AuthApiController
   include ApplicationHelper
 
   def create
-    params.require(%i[name description group_type user_id])
-    permitted = params.permit(%i[name description group_type user_id])
+    params.require(%i[name description group_type user_id image])
+    permitted = params.permit(%i[name description group_type user_id image])
 
     group_type = permitted['group_type']
     user_id = permitted['user_id']

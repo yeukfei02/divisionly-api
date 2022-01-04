@@ -2,8 +2,8 @@ class FriendsController < AuthApiController
   include ApplicationHelper
 
   def create
-    params.require(%i[name description phone_number user_id])
-    permitted = params.permit(%i[name description phone_number user_id])
+    params.require(%i[name description phone_number user_id avatar])
+    permitted = params.permit(%i[name description phone_number user_id avatar])
 
     user_id = permitted['user_id']
 
