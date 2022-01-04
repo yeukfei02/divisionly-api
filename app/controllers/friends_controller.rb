@@ -2,12 +2,16 @@ class FriendsController < AuthApiController
   include ApplicationHelper
 
   def create
-    params.require(%i[name description phone_number user_id avatar])
-    permitted = params.permit(%i[name description phone_number user_id avatar])
+    params.require(%i[name description phone_number user_id])
 
-    user_id = permitted['user_id']
+    name = params['name']
+    description = params['description']
+    phone_number = params['phone_number']
+    user_id = params['user_id']
+    avatar = params['avatar']
 
-    friend = Friend.create!(permitted)
+    friend = Friend.create!(name: name, description: description, phone_number: phone_number, user_id: user_id,
+                            avatar: avatar)
     if friend.present?
       user = User.find(user_id)
       ApplicationHelper.create_activity(user, user_id, 'created', 'friend')

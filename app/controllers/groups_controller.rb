@@ -2,17 +2,20 @@ class GroupsController < AuthApiController
   include ApplicationHelper
 
   def create
-    params.require(%i[name description group_type user_id image])
-    permitted = params.permit(%i[name description group_type user_id image])
+    params.require(%i[name description group_type user_id])
 
-    group_type = permitted['group_type']
-    user_id = permitted['user_id']
+    name = params['name']
+    description = params['description']
+    group_type = params['group_type']
+    user_id = params['user_id']
+    image = params['image']
 
     is_type_correct = false
     is_type_correct = true if Group.types.has_value?(group_type)
 
     if is_type_correct
-      group = Group.create!(permitted)
+      group = Group.create!(name: name, description: description, group_type: group_type, user_id: user_id,
+                            image: image)
       if group.present?
         user = User.find(user_id)
         ApplicationHelper.create_activity(user, user_id, 'created', 'group')
