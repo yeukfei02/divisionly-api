@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/yeukfei02/divisionly-api/compare/v0.1.3...v0.1.4) (2022-01-04)
+
+
+### Features
+
+* 🎸 add awesome_print ([32e59b7](https://github.com/yeukfei02/divisionly-api/commit/32e59b77749d1517ed41c609e44c76527fa19423))
+* 🎸 add bundler-audit lib ([85fe480](https://github.com/yeukfei02/divisionly-api/commit/85fe480a31456b1b07b1e46701053460c6042f3b))
+* 🎸 add lograge lib ([3f69d45](https://github.com/yeukfei02/divisionly-api/commit/3f69d452f34f18b5a83fd8d409887db52fd38743))
+* 🎸 add new relic ([f3cd443](https://github.com/yeukfei02/divisionly-api/commit/f3cd443d88531ac9120738f42de30257bb66c3a3))
+* 🎸 add params require and params permit ([de92e8f](https://github.com/yeukfei02/divisionly-api/commit/de92e8f160f6ae52d22e8394a11b23e124a32637))
+
+
+### Bug Fixes
+
+* 🐛 add timezone ([09fd196](https://github.com/yeukfei02/divisionly-api/commit/09fd1966707ee94cc0fd4162e60b8a579072eef7))
+* 🐛 change db config ([4ed6683](https://github.com/yeukfei02/divisionly-api/commit/4ed66838ed71c7dd4ab474fdac396afe8ef21745))
+* 🐛 fix rubocop ([eefb8d4](https://github.com/yeukfei02/divisionly-api/commit/eefb8d4d4b288fb18aeb8a49d9eac96bed331efa))
+* 🐛 fix test case and image/avatar in params require ([828a108](https://github.com/yeukfei02/divisionly-api/commit/828a1082157e72233cf6bfbce967cc1cd1a066dc))
+* 🐛 update Dockerfile ([135761a](https://github.com/yeukfei02/divisionly-api/commit/135761ac866ac0fef21ab625eae9f483c312fb95))
+* 🐛 use rspec let! ([5d18bad](https://github.com/yeukfei02/divisionly-api/commit/5d18bad6268c122415bae36c7306bd8d787c2af1))
+
 ### [0.1.3](https://github.com/yeukfei02/divisionly-api/compare/v0.1.2...v0.1.3) (2021-11-21)
 
 
