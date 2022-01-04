@@ -9,14 +9,14 @@ development:
   host: <%= ENV.fetch('DB_HOST_DEV', 'localhost') %>
   username: <%= ENV.fetch('DB_USERNAME_DEV', 'divisionly_api') %>
   password: <%= ENV.fetch('DB_PASSWORD_DEV', 'divisionly_api') %>
-  database: <%= ENV.fetch('DB_NAME_DEV', 'divisionly_api') %>
+  database: <%= ENV.fetch('DB_NAME_DEV', 'divisionly_api_dev') %>
 
 test:
   <<: *default
   host: <%= ENV.fetch('DB_HOST_TEST', 'localhost') %>
   username: <%= ENV.fetch('DB_USERNAME_TEST', 'divisionly_api') %>
   password: <%= ENV.fetch('DB_PASSWORD_TEST', 'divisionly_api') %>
-  database: <%= ENV.fetch('DB_NAME_TEST', 'divisionly_api') %>
+  database: <%= ENV.fetch('DB_NAME_TEST', 'divisionly_api_test') %>
 
 production:
   <<: *default
