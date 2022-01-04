@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/yeukfei02/divisionly-api/compare/v0.1.4...v0.1.5) (2022-01-04)
+
+
+### Bug Fixes
+
+* 🐛 fix missing param key ([76b4ce1](https://github.com/yeukfei02/divisionly-api/commit/76b4ce1120a63a3f90bfec12e5a78854e8ec0456))
+
 ### [0.1.4](https://github.com/yeukfei02/divisionly-api/compare/v0.1.3...v0.1.4) (2022-01-04)
 
 
