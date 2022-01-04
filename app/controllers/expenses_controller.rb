@@ -3,9 +3,9 @@ class ExpensesController < AuthApiController
 
   def create
     params.require(%i[description amount split_method user_id friend_id group_id expense_category_id
-                      currency_id])
+                      currency_id image])
     permitted = params.permit(%i[description amount split_method user_id friend_id group_id
-                                 expense_category_id currency_id])
+                                 expense_category_id currency_id image])
 
     split_method = permitted['split_method']
     user_id = permitted['user_id']
@@ -74,9 +74,9 @@ class ExpensesController < AuthApiController
 
   def update
     params.require(%i[description amount split_method user_id friend_id group_id expense_category_id
-                      currency_id])
+                      currency_id image])
     permitted = params.permit(%i[description amount split_method user_id friend_id group_id
-                                 expense_category_id currency_id])
+                                 expense_category_id currency_id image])
 
     split_method = permitted['split_method']
     user_id = permitted['user_id']
