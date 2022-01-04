@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/yeukfei02/divisionly-api/compare/v0.1.5...v0.1.6) (2022-01-04)
+
+
+### Bug Fixes
+
+* 🐛 fix wrong logic ([c77aa16](https://github.com/yeukfei02/divisionly-api/commit/c77aa1689be8e9de4e45a29be0047a70b05ea5a5))
+* 🐛 update database.yml ([06533f3](https://github.com/yeukfei02/divisionly-api/commit/06533f30f6e992bd832f81865de52927ebe5033c))
+
 ### [0.1.5](https://github.com/yeukfei02/divisionly-api/compare/v0.1.4...v0.1.5) (2022-01-04)
 
 
