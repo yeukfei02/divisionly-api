@@ -15,24 +15,16 @@ class ExpensesController < AuthApiController
     currency_id = params['currency_id']
     image = params['image']
 
-    is_split_method_correct = false
-    is_split_method_correct = true if Expense.expense_split_methods.has_value?(split_method)
+    expense = Expense.create!(description: description, amount: amount, split_method: split_method, user_id: user_id,
+                              friend_id: friend_id, group_id: group_id, expense_category_id: expense_category_id, currency_id: currency_id, image: image)
+    if expense.present?
+      user = User.find(user_id)
+      ApplicationHelper.create_activity(user, user_id, 'created', 'expense')
 
-    if is_split_method_correct
-      expense = Expense.create!(description: description, amount: amount, split_method: split_method, user_id: user_id,
-                                friend_id: friend_id, group_id: group_id, expense_category_id: expense_category_id, currency_id: currency_id, image: image)
-      if expense.present?
-        user = User.find(user_id)
-        ApplicationHelper.create_activity(user, user_id, 'created', 'expense')
-
-        @message = 'createExpense'
-        render :create, status: :ok
-      else
-        @message = 'createExpense error'
-        render :create, status: :bad_request
-      end
+      @message = 'createExpense'
+      render :create, status: :ok
     else
-      @message = 'createExpense error, wrong split_method'
+      @message = 'createExpense error'
       render :create, status: :bad_request
     end
   rescue StandardError => e
@@ -92,26 +84,18 @@ class ExpensesController < AuthApiController
     currency_id = params['currency_id']
     image = params['image']
 
-    is_split_method_correct = false
-    is_split_method_correct = true if Expense.expense_split_methods.has_value?(split_method)
+    expense = Expense.find(params[:id])
+    if expense.present?
+      expense.update!(description: description, amount: amount, split_method: split_method, user_id: user_id,
+                      friend_id: friend_id, group_id: group_id, expense_category_id: expense_category_id, currency_id: currency_id, image: image)
 
-    if is_split_method_correct
-      expense = Expense.find(params[:id])
-      if expense.present?
-        expense.update!(description: description, amount: amount, split_method: split_method, user_id: user_id,
-                        friend_id: friend_id, group_id: group_id, expense_category_id: expense_category_id, currency_id: currency_id, image: image)
+      user = User.find(user_id)
+      ApplicationHelper.create_activity(user, user_id, 'updated', 'expense')
 
-        user = User.find(user_id)
-        ApplicationHelper.create_activity(user, user_id, 'updated', 'expense')
-
-        @message = 'updateExpenseById'
-        render :update, status: :ok
-      else
-        @message = 'updateExpenseById error, no this expense'
-        render :update, status: :bad_request
-      end
+      @message = 'updateExpenseById'
+      render :update, status: :ok
     else
-      @message = 'updateExpenseById error, wrong split_method'
+      @message = 'updateExpenseById error, no this expense'
       render :update, status: :bad_request
     end
   rescue StandardError => e
