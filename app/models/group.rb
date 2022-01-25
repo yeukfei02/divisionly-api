@@ -29,7 +29,7 @@ class Group < ApplicationRecord
   # validation
   validates :name, presence: true
   validates :description, presence: true
-  validates :group_type, presence: true
+  validates :group_type, presence: true, inclusion: { in: types.keys }
   validates :image, presence: true, file_size: { less_than_or_equal_to: 10.megabytes },
                     file_content_type: { allow: %w[image/jpeg image/png] }
 

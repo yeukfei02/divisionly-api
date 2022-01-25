@@ -10,24 +10,16 @@ class GroupsController < AuthApiController
     user_id = params['user_id']
     image = params['image']
 
-    is_type_correct = false
-    is_type_correct = true if Group.types.has_value?(group_type)
+    group = Group.create!(name: name, description: description, group_type: group_type, user_id: user_id,
+                          image: image)
+    if group.present?
+      user = User.find(user_id)
+      ApplicationHelper.create_activity(user, user_id, 'created', 'group')
 
-    if is_type_correct
-      group = Group.create!(name: name, description: description, group_type: group_type, user_id: user_id,
-                            image: image)
-      if group.present?
-        user = User.find(user_id)
-        ApplicationHelper.create_activity(user, user_id, 'created', 'group')
-
-        @message = 'createGroup'
-        render :create, status: :ok
-      else
-        @message = 'createGroup error'
-        render :create, status: :bad_request
-      end
+      @message = 'createGroup'
+      render :create, status: :ok
     else
-      @message = 'createGroup error, wrong type'
+      @message = 'createGroup error'
       render :create, status: :bad_request
     end
   rescue StandardError => e
@@ -82,25 +74,17 @@ class GroupsController < AuthApiController
     user_id = params['user_id']
     image = params['image']
 
-    is_type_correct = false
-    is_type_correct = true if Group.types.has_value?(group_type)
+    group = Group.find(params[:id])
+    if group.present?
+      group.update!(name: name, description: description, group_type: group_type, image: image)
 
-    if is_type_correct
-      group = Group.find(params[:id])
-      if group.present?
-        group.update!(name: name, description: description, group_type: group_type, image: image)
+      user = User.find(user_id)
+      ApplicationHelper.create_activity(user, user_id, 'updated', 'group')
 
-        user = User.find(user_id)
-        ApplicationHelper.create_activity(user, user_id, 'updated', 'group')
-
-        @message = 'updateGroupById'
-        render :update, status: :ok
-      else
-        @message = 'updateGroupById error, no this group'
-        render :update, status: :bad_request
-      end
+      @message = 'updateGroupById'
+      render :update, status: :ok
     else
-      @message = 'updateGroupById error, wrong type'
+      @message = 'updateGroupById error, no this group'
       render :update, status: :bad_request
     end
   rescue StandardError => e

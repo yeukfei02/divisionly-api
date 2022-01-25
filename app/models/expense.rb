@@ -16,10 +16,10 @@
 #
 class Expense < ApplicationRecord
   enum expense_split_method: {
-    method_1: 'you_paid_and_split_equally',
-    method_2: 'you_owed_the_full_amount',
-    method_3: 'friend_paid_and_split_equally',
-    method_4: 'friend_owed_the_full_amount'
+    you_paid_and_split_equally: 'you_paid_and_split_equally',
+    you_owed_the_full_amount: 'you_owed_the_full_amount',
+    friend_paid_and_split_equally: 'friend_paid_and_split_equally',
+    friend_owed_the_full_amount: 'friend_owed_the_full_amount'
   }
 
   # association
@@ -36,7 +36,7 @@ class Expense < ApplicationRecord
   # validation
   validates :description, presence: true
   validates :amount, presence: true, numericality: { only_float: true }
-  validates :split_method, presence: true
+  validates :split_method, presence: true, inclusion: { in: expense_split_methods.keys }
   validates :image, presence: true, file_size: { less_than_or_equal_to: 10.megabytes },
                     file_content_type: { allow: %w[image/jpeg image/png] }
 

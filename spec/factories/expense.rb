@@ -7,7 +7,7 @@ FactoryBot.define do
     association :currency
     description { Faker::Lorem.sentence }
     amount { Faker::Number.decimal(l_digits: 3, r_digits: 3) }
-    split_method { Expense.expense_split_methods['method_1'] }
+    split_method { Expense.expense_split_methods['you_paid_and_split_equally'] }
     user_id { user.id }
     friend_id { friend.id }
     group_id { group.id }
