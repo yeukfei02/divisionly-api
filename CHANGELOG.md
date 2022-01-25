@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/yeukfei02/divisionly-api/compare/v0.1.6...v0.1.7) (2022-01-25)
+
+
+### Bug Fixes
+
+* 🐛 fix validation with enum ([f797928](https://github.com/yeukfei02/divisionly-api/commit/f7979283b8842da6fe3f405dde9bdaaf3363f496))
+
 ### [0.1.6](https://github.com/yeukfei02/divisionly-api/compare/v0.1.5...v0.1.6) (2022-01-04)
 
 
