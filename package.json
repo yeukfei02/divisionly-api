@@ -1,6 +1,6 @@
 {
   "name": "divisionly-api",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",

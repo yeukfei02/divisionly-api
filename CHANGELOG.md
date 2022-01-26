@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/yeukfei02/divisionly-api/compare/v0.1.7...v0.1.8) (2022-01-26)
+
+
+### Features
+
+* 🎸 add model spec test case ([e1ead6c](https://github.com/yeukfei02/divisionly-api/commit/e1ead6c5703f772a3f855de4f1d5b6be8725513f))
+
 ### [0.1.7](https://github.com/yeukfei02/divisionly-api/compare/v0.1.6...v0.1.7) (2022-01-25)
 
 
