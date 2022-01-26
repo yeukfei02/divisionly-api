@@ -11,5 +11,17 @@
 require 'rails_helper'
 
 RSpec.describe ExpenseCategory, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let!(:expense_category) do
+    create(:expense_category)
+  end
+
+  describe 'associations' do
+    it { is_expected.to have_one(:expense).class_name('Expense') }
+    it { is_expected.to have_one_attached(:image) }
+  end
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:expense_category_group) }
+    it { is_expected.to validate_presence_of(:name) }
+  end
 end
