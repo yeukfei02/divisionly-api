@@ -407,6 +407,8 @@ GEM
       concurrent-ruby
       faraday
     sexp_processor (4.16.0)
+    shoulda-matchers (5.1.0)
+      activesupport (>= 5.2.0)
     sidekiq (6.2.2)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
@@ -530,6 +532,7 @@ DEPENDENCIES
   selenium-webdriver
   sentry-rails (~> 4.7)
   sentry-ruby (~> 4.7)
+  shoulda-matchers (~> 5.1)
   sidekiq (~> 6.2)
   sidekiq-cron (~> 1.2)
   simplecov (~> 0.21.2)

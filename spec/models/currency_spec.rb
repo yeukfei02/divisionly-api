@@ -16,5 +16,26 @@
 require 'rails_helper'
 
 RSpec.describe Currency, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let!(:currency) do
+    create(:currency)
+  end
+
+  describe 'associations' do
+    it { is_expected.to have_one(:expense).class_name('Expense') }
+  end
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:symbol) }
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:symbol_native) }
+
+    it { is_expected.to validate_presence_of(:decimal_digits) }
+    it { is_expected.to validate_numericality_of(:decimal_digits).only_integer }
+
+    it { is_expected.to validate_presence_of(:rounding) }
+    it { is_expected.to validate_numericality_of(:rounding).only_integer }
+
+    it { is_expected.to validate_presence_of(:code) }
+    it { is_expected.to validate_presence_of(:name_plural) }
+  end
 end

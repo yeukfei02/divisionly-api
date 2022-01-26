@@ -14,5 +14,26 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let!(:user) do
+    create(:user)
+  end
+
+  describe 'associations' do
+    it { is_expected.to have_many(:groups).class_name('Group') }
+    it { is_expected.to have_many(:friends).class_name('Friend') }
+    it { is_expected.to have_many(:activities).class_name('Activity') }
+    it { is_expected.to have_many(:expenses).class_name('Expense') }
+    it { is_expected.to have_one_attached(:avatar) }
+  end
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:email) }
+    it { is_expected.to validate_uniqueness_of(:email) }
+
+    it { is_expected.to validate_presence_of(:password) }
+    it { is_expected.to validate_presence_of(:first_name) }
+    it { is_expected.to validate_presence_of(:last_name) }
+
+    it { is_expected.to validate_inclusion_of(:is_admin).in_array([true, false]) }
+  end
 end

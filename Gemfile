@@ -50,6 +50,7 @@ group :development, :test do
   gem 'rubocop-performance', '~> 1.12'
   gem 'rubocop-rails', '~> 2.12'
   gem 'rubocop-rspec', '~> 2.6'
+  gem 'shoulda-matchers', '~> 5.1'
   gem 'simplecov', '~> 0.21.2'
   gem 'simplecov-cobertura', '~> 1.4'
   gem 'solargraph', '~> 0.44.0'
