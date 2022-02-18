@@ -51,6 +51,9 @@ $ rails db:migrate
 // db rollback
 $ rails db:rollback
 
+// db reset
+$ rails db:migrate:reset
+
 // run db seed
 $ rails db:seed
 
