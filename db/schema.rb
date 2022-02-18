@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_18_082443) do
+ActiveRecord::Schema.define(version: 2022_02_18_071824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -52,6 +52,11 @@ ActiveRecord::Schema.define(version: 2021_11_18_082443) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
+    t.index ["created_at"], name: "index_activities_on_created_at"
+    t.index ["deleted_at"], name: "index_activities_on_deleted_at"
+    t.index ["description"], name: "index_activities_on_description"
+    t.index ["title"], name: "index_activities_on_title"
+    t.index ["updated_at"], name: "index_activities_on_updated_at"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
@@ -64,6 +69,14 @@ ActiveRecord::Schema.define(version: 2021_11_18_082443) do
     t.integer "phone_code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["created_at"], name: "index_countries_on_created_at"
+    t.index ["iso"], name: "index_countries_on_iso"
+    t.index ["iso3"], name: "index_countries_on_iso3"
+    t.index ["name"], name: "index_countries_on_name"
+    t.index ["nice_name"], name: "index_countries_on_nice_name"
+    t.index ["num_code"], name: "index_countries_on_num_code"
+    t.index ["phone_code"], name: "index_countries_on_phone_code"
+    t.index ["updated_at"], name: "index_countries_on_updated_at"
   end
 
   create_table "currencies", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -76,6 +89,15 @@ ActiveRecord::Schema.define(version: 2021_11_18_082443) do
     t.string "name_plural", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["code"], name: "index_currencies_on_code"
+    t.index ["created_at"], name: "index_currencies_on_created_at"
+    t.index ["decimal_digits"], name: "index_currencies_on_decimal_digits"
+    t.index ["name"], name: "index_currencies_on_name"
+    t.index ["name_plural"], name: "index_currencies_on_name_plural"
+    t.index ["rounding"], name: "index_currencies_on_rounding"
+    t.index ["symbol"], name: "index_currencies_on_symbol"
+    t.index ["symbol_native"], name: "index_currencies_on_symbol_native"
+    t.index ["updated_at"], name: "index_currencies_on_updated_at"
   end
 
   create_table "expense_categories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -83,6 +105,10 @@ ActiveRecord::Schema.define(version: 2021_11_18_082443) do
     t.text "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["created_at"], name: "index_expense_categories_on_created_at"
+    t.index ["expense_category_group"], name: "index_expense_categories_on_expense_category_group"
+    t.index ["name"], name: "index_expense_categories_on_name"
+    t.index ["updated_at"], name: "index_expense_categories_on_updated_at"
   end
 
   create_table "expenses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -96,7 +122,15 @@ ActiveRecord::Schema.define(version: 2021_11_18_082443) do
     t.uuid "expense_category_id"
     t.uuid "currency_id"
     t.uuid "friend_id"
+    t.index ["amount"], name: "index_expenses_on_amount"
+    t.index ["created_at"], name: "index_expenses_on_created_at"
+    t.index ["currency_id"], name: "index_expenses_on_currency_id"
+    t.index ["description"], name: "index_expenses_on_description"
+    t.index ["expense_category_id"], name: "index_expenses_on_expense_category_id"
+    t.index ["friend_id"], name: "index_expenses_on_friend_id"
     t.index ["group_id"], name: "index_expenses_on_group_id"
+    t.index ["split_method"], name: "index_expenses_on_split_method"
+    t.index ["updated_at"], name: "index_expenses_on_updated_at"
     t.index ["user_id"], name: "index_expenses_on_user_id"
   end
 
@@ -107,6 +141,11 @@ ActiveRecord::Schema.define(version: 2021_11_18_082443) do
     t.uuid "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["created_at"], name: "index_friends_on_created_at"
+    t.index ["description"], name: "index_friends_on_description"
+    t.index ["name"], name: "index_friends_on_name"
+    t.index ["phone_number"], name: "index_friends_on_phone_number"
+    t.index ["updated_at"], name: "index_friends_on_updated_at"
     t.index ["user_id"], name: "index_friends_on_user_id"
   end
 
@@ -117,6 +156,11 @@ ActiveRecord::Schema.define(version: 2021_11_18_082443) do
     t.uuid "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["created_at"], name: "index_groups_on_created_at"
+    t.index ["description"], name: "index_groups_on_description"
+    t.index ["group_type"], name: "index_groups_on_group_type"
+    t.index ["name"], name: "index_groups_on_name"
+    t.index ["updated_at"], name: "index_groups_on_updated_at"
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
@@ -128,6 +172,13 @@ ActiveRecord::Schema.define(version: 2021_11_18_082443) do
     t.text "first_name", null: false
     t.text "last_name", null: false
     t.boolean "is_admin", default: false, null: false
+    t.index ["created_at"], name: "index_users_on_created_at"
+    t.index ["email"], name: "index_users_on_email"
+    t.index ["first_name"], name: "index_users_on_first_name"
+    t.index ["is_admin"], name: "index_users_on_is_admin"
+    t.index ["last_name"], name: "index_users_on_last_name"
+    t.index ["password"], name: "index_users_on_password"
+    t.index ["updated_at"], name: "index_users_on_updated_at"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
