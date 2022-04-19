@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](https://github.com/yeukfei02/divisionly-api/compare/v0.1.9...v0.1.10) (2022-04-19)
+
+
+### Bug Fixes
+
+* 🐛 fix test case and rubocop -A ([020d6bc](https://github.com/yeukfei02/divisionly-api/commit/020d6bc576467c00f7d32c504b18e7bf8e8946d2))
+
 ### [0.1.9](https://github.com/yeukfei02/divisionly-api/compare/v0.1.8...v0.1.9) (2022-02-18)
 
 
