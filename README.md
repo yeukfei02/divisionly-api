@@ -74,6 +74,7 @@ $ bundle exec sidekiq
 
 // rubocop
 $ rubocop --auto-correct
+$ rubocop -A
 
 // reek
 $ reek

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Activities', type: :request do
@@ -14,7 +16,7 @@ RSpec.describe 'Activities', type: :request do
     }
   end
 
-  describe '001 - GET /api/activities' do
+  context '001 - GET /api/activities' do
     before do
       params = {
         user_id: activity.user.id
@@ -22,7 +24,7 @@ RSpec.describe 'Activities', type: :request do
       get '/api/activities', params: params, headers: headers
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true
@@ -32,12 +34,12 @@ RSpec.describe 'Activities', type: :request do
     end
   end
 
-  describe '002 - GET /api/activities/:id' do
+  context '002 - GET /api/activities/:id' do
     before do
       get "/api/activities/#{activity.id}", headers: headers
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true

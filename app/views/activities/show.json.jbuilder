@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.message @message
 if @activity.present?
   json.activity do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CountriesController < AuthApiController
   def index
     @countries = Country.all
@@ -5,7 +7,7 @@ class CountriesController < AuthApiController
     @message = 'getCountries'
     render :index, status: :ok
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'getCountries error'
     @error = e.message.to_s

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < AuthApiController
   include UsersHelper
 
@@ -26,7 +28,7 @@ class UsersController < AuthApiController
       render :signup, status: :bad_request
     end
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'signup error'
     @error = e.message.to_s
@@ -56,7 +58,7 @@ class UsersController < AuthApiController
       render :login, status: :bad_request
     end
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'login error'
     @error = e.message.to_s
@@ -73,7 +75,7 @@ class UsersController < AuthApiController
       render :upload, status: :ok
     end
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'user file upload error'
     @error = e.message.to_s
@@ -85,7 +87,7 @@ class UsersController < AuthApiController
     @users = User.all.order('created_at desc')
     render :index, status: :ok
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'getUsers error'
     @error = e.message.to_s
@@ -97,7 +99,7 @@ class UsersController < AuthApiController
     @user = User.find(params[:id])
     render :show, status: :ok
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'getUserById error'
     @error = e.message.to_s

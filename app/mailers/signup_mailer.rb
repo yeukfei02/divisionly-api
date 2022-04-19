@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SignupMailer < ApplicationMailer
   default from: 'welcome@divisionly.net'
 

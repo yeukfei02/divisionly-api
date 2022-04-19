@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: expenses
@@ -24,7 +26,7 @@ RSpec.describe Expense, type: :model do
   #   create(:expense, expense_category: expense_category)
   # end
   #
-  # describe 'associations' do
+  # context 'associations' do
   #   it { is_expected.to belong_to(:user).class_name('User') }
   #   it { is_expected.to belong_to(:friend).class_name('Friend') }
   #   it { is_expected.to belong_to(:group).class_name('Group') }
@@ -33,7 +35,7 @@ RSpec.describe Expense, type: :model do
   #   it { is_expected.to have_one_attached(:image) }
   # end
   #
-  # describe 'validations' do
+  # context 'validations' do
   #   it { is_expected.to validate_presence_of(:description) }
   #
   #   it { is_expected.to validate_presence_of(:amount) }

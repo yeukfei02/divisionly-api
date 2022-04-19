@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: expense_categories
@@ -15,12 +17,12 @@ RSpec.describe ExpenseCategory, type: :model do
     create(:expense_category)
   end
 
-  describe 'associations' do
+  context 'associations' do
     it { is_expected.to have_one(:expense).class_name('Expense') }
     it { is_expected.to have_one_attached(:image) }
   end
 
-  describe 'validations' do
+  context 'validations' do
     it { is_expected.to validate_presence_of(:expense_category_group) }
     it { is_expected.to validate_presence_of(:name) }
   end

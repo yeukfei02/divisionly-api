@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: groups
@@ -17,17 +19,17 @@ RSpec.describe Group, type: :model do
     create(:group)
   end
 
-  describe 'associations' do
+  context 'associations' do
     it { is_expected.to belong_to(:user).class_name('User') }
     it { is_expected.to have_many(:expenses).class_name('Expense') }
     it { is_expected.to have_one_attached(:image) }
   end
 
-  describe 'validations' do
+  context 'validations' do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:description) }
 
     it { is_expected.to validate_presence_of(:group_type) }
-    it { is_expected.to validate_inclusion_of(:group_type).in_array(Group.types.keys) }
+    it { is_expected.to validate_inclusion_of(:group_type).in_array(described_class.types.keys) }
   end
 end

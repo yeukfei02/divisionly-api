@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddExpenseCategoryIdInExpense < ActiveRecord::Migration[6.1]
   def change
     add_column :expenses, :expense_category_id, :uuid

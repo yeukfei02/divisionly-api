@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Currencies', type: :request do
@@ -11,12 +13,12 @@ RSpec.describe 'Currencies', type: :request do
     }
   end
 
-  describe '001 - GET /api/currencies' do
+  context '001 - GET /api/currencies' do
     before do
       get '/api/currencies', headers: headers
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true

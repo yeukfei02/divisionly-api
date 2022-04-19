@@ -1,22 +1,24 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Mains', type: :request do
-  describe '001 - GET /' do
+  context '001 - GET /' do
     before do
       get '/'
     end
 
-    it 'test result' do
+    it 'return success' do
       assert_result(response)
     end
   end
 
-  describe '002 - GET /api' do
+  context '002 - GET /api' do
     before do
       get '/api'
     end
 
-    it 'test result' do
+    it 'return success' do
       assert_result(response)
     end
   end

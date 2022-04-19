@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: friends
@@ -17,13 +19,13 @@ RSpec.describe Friend, type: :model do
     create(:friend)
   end
 
-  describe 'associations' do
+  context 'associations' do
     it { is_expected.to belong_to(:user).class_name('User') }
     it { is_expected.to have_many(:expenses).class_name('Expense') }
     it { is_expected.to have_one_attached(:avatar) }
   end
 
-  describe 'validations' do
+  context 'validations' do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:description) }
 

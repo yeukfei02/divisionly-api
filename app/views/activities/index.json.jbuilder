@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.message @message
 json.activities @activities do |activity|
   json.id activity.id

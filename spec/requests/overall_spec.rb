@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Overalls', type: :request do
@@ -14,7 +16,7 @@ RSpec.describe 'Overalls', type: :request do
     }
   end
 
-  describe '001 - GET /api/overall/get-total-owe-amount' do
+  context '001 - GET /api/overall/get-total-owe-amount' do
     before do
       params = {
         user_id: expense.user.id
@@ -22,7 +24,7 @@ RSpec.describe 'Overalls', type: :request do
       get '/api/overall/get-total-owe-amount', params: params, headers: headers
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true

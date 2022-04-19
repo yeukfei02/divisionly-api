@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FilesController < ApplicationController
   def upload
     params.require(:file)
@@ -9,7 +11,7 @@ class FilesController < ApplicationController
       render :upload, status: :ok
     end
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'file upload error'
     @error = e.message.to_s

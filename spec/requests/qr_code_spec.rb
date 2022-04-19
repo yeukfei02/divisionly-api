@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'QrCodes', type: :request do
@@ -11,7 +13,7 @@ RSpec.describe 'QrCodes', type: :request do
     }
   end
 
-  describe '001 - GET /api/qr-code/generate-qr-code' do
+  context '001 - GET /api/qr-code/generate-qr-code' do
     before do
       params = {
         user_id: user.id
@@ -19,7 +21,7 @@ RSpec.describe 'QrCodes', type: :request do
       get '/api/qr-code/generate-qr-code', params: params, headers: headers
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true

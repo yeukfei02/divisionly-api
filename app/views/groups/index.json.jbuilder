@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.message @message
 json.groups @groups do |group|
   json.id group.id

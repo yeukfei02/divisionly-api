@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.message @message
 if @expense.present?
   json.expense do

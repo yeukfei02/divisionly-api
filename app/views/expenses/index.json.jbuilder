@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.message @message
 json.expenses @expenses do |expense|
   json.id expense.id

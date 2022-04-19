@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FriendsController < AuthApiController
   include ApplicationHelper
 
@@ -23,7 +25,7 @@ class FriendsController < AuthApiController
       render :create, status: :bad_request
     end
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'createFriend error'
     @error = e.message.to_s
@@ -46,7 +48,7 @@ class FriendsController < AuthApiController
     @message = 'getFriends'
     render :index, status: :ok
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'getFriends error'
     @error = e.message.to_s
@@ -58,7 +60,7 @@ class FriendsController < AuthApiController
     @friend = Friend.find(params[:id])
     render :show, status: :ok
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'getFriendById error'
     @error = e.message.to_s
@@ -88,7 +90,7 @@ class FriendsController < AuthApiController
       render :update, status: :bad_request
     end
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'updateFriendById error'
     @error = e.message.to_s
@@ -113,7 +115,7 @@ class FriendsController < AuthApiController
       render :remove_friend, status: :bad_request
     end
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'deleteFriendById error'
     @error = e.message.to_s

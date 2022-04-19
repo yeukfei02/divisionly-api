@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: currencies
@@ -20,11 +22,11 @@ RSpec.describe Currency, type: :model do
     create(:currency)
   end
 
-  describe 'associations' do
+  context 'associations' do
     it { is_expected.to have_one(:expense).class_name('Expense') }
   end
 
-  describe 'validations' do
+  context 'validations' do
     it { is_expected.to validate_presence_of(:symbol) }
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:symbol_native) }

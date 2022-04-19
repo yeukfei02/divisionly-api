@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
@@ -11,7 +13,7 @@ RSpec.describe 'Users', type: :request do
     }
   end
 
-  describe '001 - POST /api/users/signup' do
+  context '001 - POST /api/users/signup' do
     before do
       params = {
         email: Faker::Internet.email,
@@ -22,7 +24,7 @@ RSpec.describe 'Users', type: :request do
       post '/api/users/signup', params: params
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true
@@ -31,7 +33,7 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe '002 - POST /api/users/login' do
+  context '002 - POST /api/users/login' do
     before do
       params = {
         email: user.email,
@@ -40,7 +42,7 @@ RSpec.describe 'Users', type: :request do
       post '/api/users/login', params: params
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true
@@ -52,12 +54,12 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe '003 - GET /api/users' do
+  context '003 - GET /api/users' do
     before do
       get '/api/users'
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true
@@ -67,12 +69,12 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe '004 - GET /api/users/:id' do
+  context '004 - GET /api/users/:id' do
     before do
       get "/api/users/#{user.id}"
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true
@@ -82,7 +84,7 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe '005 - POST /api/users/:id/change-password' do
+  context '005 - POST /api/users/:id/change-password' do
     before do
       params = {
         old_password: 'test',
@@ -91,7 +93,7 @@ RSpec.describe 'Users', type: :request do
       post "/api/users/#{user.id}/change-password", params: params, headers: headers
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true
@@ -100,7 +102,7 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe '006 - PUT /api/users/:id/update-user' do
+  context '006 - PUT /api/users/:id/update-user' do
     before do
       params = {
         user_id: user.id,
@@ -110,7 +112,7 @@ RSpec.describe 'Users', type: :request do
       put "/api/users/#{user.id}/update-user", params: params, headers: headers
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true
