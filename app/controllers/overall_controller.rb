@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OverallController < AuthApiController
   def get_total_owe_amount
     params.require(:user_id)
@@ -31,7 +33,7 @@ class OverallController < AuthApiController
     @total_owe_amount = total_owe_amount
     render :get_total_owe_amount, status: :ok
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'getTotalOweAmount error'
     @error = e.message.to_s

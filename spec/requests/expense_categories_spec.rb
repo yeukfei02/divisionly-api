@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'ExpenseCategories', type: :request do
@@ -11,12 +13,12 @@ RSpec.describe 'ExpenseCategories', type: :request do
     }
   end
 
-  describe '001 - GET /api/expense_categories' do
+  context '001 - GET /api/expense_categories' do
     before do
       get '/api/expense_categories', headers: headers
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true

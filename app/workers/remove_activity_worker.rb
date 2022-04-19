@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class RemoveActivityWorker
   include Sidekiq::Worker
 
   def perform
-    puts '### RemoveActivityWorker start ###'
+    Rails.logger.debug '### RemoveActivityWorker start ###'
 
     Activity.delete_all
 
-    puts '### RemoveActivityWorker end ###'
+    Rails.logger.debug '### RemoveActivityWorker end ###'
   end
 end
 

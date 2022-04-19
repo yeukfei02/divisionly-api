@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UsersHelper
   def self.get_hash_password(password)
     BCrypt::Password.create(password)

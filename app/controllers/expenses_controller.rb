@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ExpensesController < AuthApiController
   include ApplicationHelper
 
@@ -28,7 +30,7 @@ class ExpensesController < AuthApiController
       render :create, status: :bad_request
     end
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'createExpense error'
     @error = e.message.to_s
@@ -51,7 +53,7 @@ class ExpensesController < AuthApiController
     @message = 'getExpenses'
     render :index, status: :ok
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'getExpenses error'
     @error = e.message.to_s
@@ -63,7 +65,7 @@ class ExpensesController < AuthApiController
     @expense = Expense.find(params[:id])
     render :show, status: :ok
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'getExpenseById error'
     @error = e.message.to_s
@@ -99,7 +101,7 @@ class ExpensesController < AuthApiController
       render :update, status: :bad_request
     end
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'updateExpenseById error'
     @error = e.message.to_s
@@ -124,7 +126,7 @@ class ExpensesController < AuthApiController
       render :remove_expense, status: :bad_request
     end
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'deleteExpenseById error'
     @error = e.message.to_s

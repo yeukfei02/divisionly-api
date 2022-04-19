@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def self.create_activity(user, user_id, action, type)
     if user.present?

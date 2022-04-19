@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GroupsController < AuthApiController
   include ApplicationHelper
 
@@ -23,7 +25,7 @@ class GroupsController < AuthApiController
       render :create, status: :bad_request
     end
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'createGroup error'
     @error = e.message.to_s
@@ -46,7 +48,7 @@ class GroupsController < AuthApiController
     @message = 'getGroups'
     render :index, status: :ok
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'getGroups error'
     @error = e.message.to_s
@@ -58,7 +60,7 @@ class GroupsController < AuthApiController
     @group = Group.find(params[:id])
     render :show, status: :ok
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'getGroupById error'
     @error = e.message.to_s
@@ -88,7 +90,7 @@ class GroupsController < AuthApiController
       render :update, status: :bad_request
     end
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'updateGroupById error'
     @error = e.message.to_s
@@ -113,7 +115,7 @@ class GroupsController < AuthApiController
       render :remove_group, status: :bad_request
     end
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'deleteGroupById error'
     @error = e.message.to_s

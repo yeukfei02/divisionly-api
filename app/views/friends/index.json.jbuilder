@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.message @message
 json.friends @friends do |friend|
   json.id friend.id

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: activities
@@ -17,12 +19,12 @@ RSpec.describe Activity, type: :model do
     create(:activity)
   end
 
-  describe 'associations' do
+  context 'associations' do
     it { is_expected.to belong_to(:user).class_name('User') }
     it { is_expected.to have_one_attached(:image) }
   end
 
-  describe 'validations' do
+  context 'validations' do
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_presence_of(:description) }
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class QrCodeController < AuthApiController
   def generate_qr_code
     params.require(:user_id)
@@ -10,7 +12,7 @@ class QrCodeController < AuthApiController
     @message = 'generateQRCode'
     render :generate_qr_code, status: :ok
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'generateQRCode error'
     @error = e.message.to_s

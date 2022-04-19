@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Groups', type: :request do
@@ -14,7 +16,7 @@ RSpec.describe 'Groups', type: :request do
     }
   end
 
-  describe '001 - POST /api/groups' do
+  context '001 - POST /api/groups' do
     before do
       params = {
         name: group.name,
@@ -25,7 +27,7 @@ RSpec.describe 'Groups', type: :request do
       post '/api/groups', params: params, headers: headers
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true
@@ -34,7 +36,7 @@ RSpec.describe 'Groups', type: :request do
     end
   end
 
-  describe '002 - GET /api/groups' do
+  context '002 - GET /api/groups' do
     before do
       params = {
         user_id: group.user.id
@@ -42,7 +44,7 @@ RSpec.describe 'Groups', type: :request do
       get '/api/groups', params: params, headers: headers
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true
@@ -52,12 +54,12 @@ RSpec.describe 'Groups', type: :request do
     end
   end
 
-  describe '003 - GET /api/groups/:id' do
+  context '003 - GET /api/groups/:id' do
     before do
       get "/api/groups/#{group.id}", headers: headers
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true
@@ -67,7 +69,7 @@ RSpec.describe 'Groups', type: :request do
     end
   end
 
-  describe '004 - PUT /api/groups/:id' do
+  context '004 - PUT /api/groups/:id' do
     before do
       params = {
         name: "#{group.name}-test",
@@ -78,7 +80,7 @@ RSpec.describe 'Groups', type: :request do
       put "/api/groups/#{group.id}", params: params, headers: headers
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true
@@ -87,7 +89,7 @@ RSpec.describe 'Groups', type: :request do
     end
   end
 
-  describe '005 - POST /api/groups/remove' do
+  context '005 - POST /api/groups/remove' do
     before do
       params = {
         id: group.id,
@@ -96,7 +98,7 @@ RSpec.describe 'Groups', type: :request do
       post '/api/groups/remove', params: params, headers: headers
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true

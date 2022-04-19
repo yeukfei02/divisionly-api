@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CurrenciesController < AuthApiController
   def index
     @currencies = Currency.all
@@ -5,7 +7,7 @@ class CurrenciesController < AuthApiController
     @message = 'getCurrencies'
     render :index, status: :ok
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'getCurrencies error'
     @error = e.message.to_s

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ContactController < AuthApiController
   def contact_divisionly_support
     params.require(%i[user_id subject message])
@@ -20,7 +22,7 @@ class ContactController < AuthApiController
       render :contact_divisionly_support, status: :bad_request
     end
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'contactDivisionlySupport error'
     @error = e.message.to_s

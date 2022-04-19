@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.message @message
 if @group.present?
   json.group do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ActivitiesController < AuthApiController
   def index
     params.require(:user_id)
@@ -15,7 +17,7 @@ class ActivitiesController < AuthApiController
     @message = 'getActivities'
     render :index, status: :ok
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'getActivities error'
     @error = e.message.to_s
@@ -27,7 +29,7 @@ class ActivitiesController < AuthApiController
     @activity = Activity.find(params[:id])
     render :show, status: :ok
   rescue StandardError => e
-    puts "error = #{e}"
+    Rails.logger.debug "error = #{e}"
 
     @message = 'getActivityById error'
     @error = e.message.to_s

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -18,7 +20,7 @@ RSpec.describe User, type: :model do
     create(:user)
   end
 
-  describe 'associations' do
+  context 'associations' do
     it { is_expected.to have_many(:groups).class_name('Group') }
     it { is_expected.to have_many(:friends).class_name('Friend') }
     it { is_expected.to have_many(:activities).class_name('Activity') }
@@ -26,7 +28,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_one_attached(:avatar) }
   end
 
-  describe 'validations' do
+  context 'validations' do
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_uniqueness_of(:email) }
 

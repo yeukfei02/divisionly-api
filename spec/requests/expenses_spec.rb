@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Expenses', type: :request do
@@ -20,7 +22,7 @@ RSpec.describe 'Expenses', type: :request do
     }
   end
 
-  describe '001 - POST /api/expenses' do
+  context '001 - POST /api/expenses' do
     before do
       params = {
         description: expense.description,
@@ -35,7 +37,7 @@ RSpec.describe 'Expenses', type: :request do
       post '/api/expenses', params: params, headers: headers
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true
@@ -44,7 +46,7 @@ RSpec.describe 'Expenses', type: :request do
     end
   end
 
-  describe '002 - GET /api/expenses' do
+  context '002 - GET /api/expenses' do
     before do
       params = {
         user_id: expense.user.id
@@ -52,7 +54,7 @@ RSpec.describe 'Expenses', type: :request do
       get '/api/expenses', params: params, headers: headers
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true
@@ -62,12 +64,12 @@ RSpec.describe 'Expenses', type: :request do
     end
   end
 
-  describe '003 - GET /api/expenses/:id' do
+  context '003 - GET /api/expenses/:id' do
     before do
       get "/api/expenses/#{expense.id}", headers: headers
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true
@@ -77,7 +79,7 @@ RSpec.describe 'Expenses', type: :request do
     end
   end
 
-  describe '004 - PUT /api/expenses/:id' do
+  context '004 - PUT /api/expenses/:id' do
     before do
       params = {
         description: "#{expense.description}-test",
@@ -92,7 +94,7 @@ RSpec.describe 'Expenses', type: :request do
       put "/api/expenses/#{expense.id}", params: params, headers: headers
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true
@@ -101,7 +103,7 @@ RSpec.describe 'Expenses', type: :request do
     end
   end
 
-  describe '005 - POST /api/expenses/remove' do
+  context '005 - POST /api/expenses/remove' do
     before do
       params = {
         id: expense.id,
@@ -110,7 +112,7 @@ RSpec.describe 'Expenses', type: :request do
       post '/api/expenses/remove', params: params, headers: headers
     end
 
-    it 'test result' do
+    it 'return success' do
       response_body = JSON.parse(response.body)
       puts "response_body = #{response_body}"
       expect(response_body.present?).to be true

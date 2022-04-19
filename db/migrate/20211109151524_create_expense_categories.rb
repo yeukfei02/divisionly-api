@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateExpenseCategories < ActiveRecord::Migration[6.1]
   def change
     create_table :expense_categories, id: :uuid do |t|
