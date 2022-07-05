@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11](https://github.com/yeukfei02/divisionly-api/compare/v0.1.10...v0.1.11) (2022-07-05)
+
+
+### Bug Fixes
+
+* 🐛 fix Gemfile.lock ([7a03244](https://github.com/yeukfei02/divisionly-api/commit/7a032445eb835abdb47a366271fe47c7af72913c))
+* 🐛 remove pronto and update Gemfile.lock ([b3db736](https://github.com/yeukfei02/divisionly-api/commit/b3db7364f9cf512c92fb5706b879f8c306b48ca7))
+
 ### [0.1.10](https://github.com/yeukfei02/divisionly-api/compare/v0.1.9...v0.1.10) (2022-04-19)
 
 
