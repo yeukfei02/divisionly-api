@@ -39,12 +39,6 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot', '~> 6.2'
   gem 'faker', '~> 2.19'
-  gem 'pronto', '~> 0.11.0'
-  gem 'pronto-brakeman', '~> 0.11.0'
-  gem 'pronto-fasterer', '~> 0.11.1'
-  gem 'pronto-rails_best_practices', '~> 0.11.0'
-  gem 'pronto-reek', '~> 0.11.0'
-  gem 'pronto-rubocop', '~> 0.11.1'
   gem 'reek', '~> 6.0'
   gem 'rexml', '~> 3.2'
   gem 'rspec-rails', '~> 5.0'
