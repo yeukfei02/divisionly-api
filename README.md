@@ -11,8 +11,6 @@ split expenses with friends
 
 documentation: <https://documenter.getpostman.com/view/3827865/UVBzoVbG>
 
-api url: <https://divisionly-api.herokuapp.com/>
-
 ## Requirement
 
 - install ruby (v2.7.4)
